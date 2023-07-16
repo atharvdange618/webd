@@ -9,18 +9,62 @@
 
 <body>
     <form action="/action">
+
+        <!--text-->
         <div>
             <label for="username">Username:</label>
             <input type="text" placeholder="Enter Username" id="username" name="username">
         </div>
+
+        <!--password-->
         <div>
             <label for="password">Password:</label>
             <input type="password" placeholder="Enter Password" id="password" name="password">
         </div>
+
+        <!--number-->
         <div>
             <label for="age">Enter Age:</label>
             <input type="number" placeholder="age" id="age" name="age">
         </div>
+
+        <!--radio buttons-->
+        <div>
+            Gender:
+            <label for="Male">Male</label>
+            <input type="radio" name="gender" id="Male" value="Male">
+            <label for="Female">Female</label>
+            <input type="radio" name="gender" id="Female" value="Female">
+        </div>
+
+        <!--dropdown-->
+        <div>
+            Choose your profession:
+            <select name="profession" id="profession">
+                <option value="nothing">Select</option>
+                <option value="Student">Student</option>
+                <option value="Developer">Developer</option>
+            </select>
+        </div>
+
+        <!--range-->
+        <div>
+            <label for="vol">Select your volume</label>
+            <input type="range" name="vol" id="vol" min="0" max="100" step="10" value="70">
+        </div>
+
+        <!--textarea-->
+        <div>
+            <label for="feedback">Please provide your valuable feedback:</label>
+            <textarea name="feedback" id="feedback" rows="2" cols="10" placeholder="write your feedback here"></textarea>
+        </div>
+
+        <!--checkbox-->
+        <div>
+            <input type="checkbox" name="terms">i agree to terms and conditions
+        </div>
+
+        <!--button-->
         <button>Submit</button>
         <button type="reset">Reset</button>
     </form>
