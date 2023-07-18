@@ -1,0 +1,63 @@
+* {
+    font-family: 'Courier New';
+
+}
+
+h1,
+h3 {
+    color: #b92b27;
+}
+
+/* id selector */
+#login {
+    background-color: white;
+}
+
+#signup {
+    background-color: #b92b27;
+    color: white;
+}
+
+/* class selector */
+.upvote {
+    background-color: green;
+    color: aliceblue;
+}
+
+/* descendant selector*/
+p a {
+    color: purple;
+    background-color: yellow;
+}
+
+nav ul li {
+    color: hotpink;
+}
+
+/* sibling combinator*/
+p+h3 {
+    text-decoration: underline;
+}
+
+.upvote+button {
+    background-color: cornflowerblue;
+    color: darkblue;
+}
+
+/* Child combinator */
+div>input {
+    background-color: beige;
+}
+
+/* attribute selector */
+input[type="text"]{
+    color: red;
+}
+
+input[type="password"]{
+    color: green;
+}
+
+input[type]{
+    background-color: ghostwhite;
+}
