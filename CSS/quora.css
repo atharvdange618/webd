@@ -50,14 +50,57 @@ div>input {
 }
 
 /* attribute selector */
-input[type="text"]{
+input[type="text"] {
     color: red;
 }
 
-input[type="password"]{
+input[type="password"] {
     color: green;
 }
 
-input[type]{
+input[type] {
     background-color: ghostwhite;
+}
+
+/* psuedo class */
+button:hover {
+    background-color: beige;
+    color: red;
+}
+
+h3:hover {
+    text-decoration: none;
+}
+
+button:active {
+    background-color: hotpink;
+    color: black;
+}
+
+p:active {
+    font-weight: bold;
+    color: greenyellow;
+}
+
+input[type="radio"]:checked+label {
+    color: red;
+    font-weight: bold;
+}
+
+div:nth-of-type(2) {
+    background-color: blanchedalmond;
+}
+
+/* psuedo elements */
+
+h1::first-letter {
+    color: black;
+}
+
+p::first-line {
+    color: purple;
+}
+
+p::selection {
+    background-color: rgb(239, 231, 66);
 }
