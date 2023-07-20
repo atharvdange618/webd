@@ -1,0 +1,15 @@
+div {
+    background-color: beige;
+}
+
+/* form{
+    background-color: violet;
+} */
+
+input{
+    background-color: inherit;
+}
+
+button{
+    background-color: inherit;
+}
