@@ -20,3 +20,15 @@ h1 {
     font-size: 2em;
     padding: 1em;
 }
+
+button {
+    font-size: 30px;
+    border-radius: 15px;
+    border: 5px solid green;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+div{
+    font-size: 2rem;
+}
