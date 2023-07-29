@@ -1,0 +1,22 @@
+h1 {
+    border: 2px solid black;
+    width: 50%;
+}
+
+#outer {
+    height: 200px;
+    width: 200px;
+    background-color: pink;
+    border: 2px solid black;
+    font-size: 10px;
+}
+
+#inner {
+    height: 70px;
+    width: 70px;
+    background-color: cornflowerblue;
+    margin-left: 10%;
+    border: 1.5px solid black;
+    font-size: 2em;
+    padding: 1em;
+}
