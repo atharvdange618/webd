@@ -2,10 +2,39 @@ div{
     height: 200px;
     width: 200px;
     /* background-color: rgba(255,0,0,0.5); can be writeen in both hex and rgba combos in hex last two letters are the alpha channel variables*/
-    background-color: #4d4d4dff; 
+    background-color: #4d4d4d0e; 
 }
 
 #opacity{
     background-color: yellow;
-    opacity: 1;
+    opacity: 0.5;
+}
+
+.transitions{
+    height: 200px;
+    width: 200px;
+    background-color: violet;
+    transition-duration: 1s;
+    transition-delay: 1s;
+}
+
+.transitions:hover{
+    background-color: beige;
+    border-radius: 50%;
+}
+
+/* to center a div, use margin: 0 auto property */
+
+.dropping{
+    height: 100px;
+    width: 100px;
+    background-color: lightcoral;
+    margin: 0 auto;
+    margin-top: 1opx;
+    transition: margin-top 2s ease-in 0.2s;
+}
+
+.dropping:hover{
+    margin-top: 400px;
+    background-color: lightgreen;
 }
