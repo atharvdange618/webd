@@ -1,6 +1,6 @@
 # Tribute Page to Dr. APJ Abdul Kalam
 
-![Screenshot](/path/to/screenshot.png)
+![image](https://github.com/atharvdange618/webd/assets/103875845/c9b19b24-67f2-4a6c-9d06-c244d5ec85da)
 
 A tribute page dedicated to Dr. APJ Abdul Kalam, showcasing his life, achievements, and contributions.
 
