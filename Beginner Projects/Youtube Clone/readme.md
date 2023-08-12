@@ -1,6 +1,6 @@
 # CSS YouTube Homepage Clone
 
-![Screenshot](/path/to/screenshot.png)
+![image](https://github.com/atharvdange618/webd/assets/103875845/54914210-b1ac-45a0-bdcb-a61c62f8b81e)
 
 A CSS-based clone of YouTube's homepage, showcasing frontend web development skills.
 
