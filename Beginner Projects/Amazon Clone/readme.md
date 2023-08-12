@@ -8,7 +8,6 @@ A CSS-based clone of Amazon's homepage, demonstrating frontend web development s
 ## Table of Contents
 
 - [Description](#description)
-- [Demo](#demo)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
