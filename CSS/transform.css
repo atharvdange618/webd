@@ -1,0 +1,36 @@
+section {
+    margin-top: 100px;
+}
+
+div {
+    height: 50px;
+    width: 200px;
+    background-color: #7aa874;
+    text-align: center;
+    border: 2px solid black;
+    margin: 10px;
+}
+
+div:nth-of-type(2n) {
+    background-color: #f7db6a;
+}
+
+div:nth-of-type(3n) {
+    background-color: #ebb02d;
+}
+
+/* transform-rotate */
+
+#one {
+    transform: rotate(45deg);
+}
+
+/* transform-scale */
+#two {
+    transform: scale(0.5);
+    /* scale has x and y properties too */
+
+    /* transform-translate */
+    transform: translateX(1.5);
+    transform: translateY(2);
+}
