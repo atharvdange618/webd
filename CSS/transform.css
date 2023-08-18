@@ -8,7 +8,7 @@ div {
     background-color: #7aa874;
     text-align: center;
     border: 2px solid black;
-    margin: 10px;
+    margin: 10px auto;
 }
 
 div:nth-of-type(2n) {
