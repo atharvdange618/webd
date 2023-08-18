@@ -1,6 +1,6 @@
 # Tribute Page to Dr. APJ Abdul Kalam
 
-![Screenshot](/path/to/screenshot.png)
+![image](https://github.com/atharvdange618/webd/assets/103875845/c9b19b24-67f2-4a6c-9d06-c244d5ec85da)
 
 A tribute page dedicated to Dr. APJ Abdul Kalam, showcasing his life, achievements, and contributions.
 
@@ -34,7 +34,7 @@ This tribute page is created to honor the remarkable life and legacy of Dr. APJ 
 
 To view this tribute page locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/apj-abdul-kalam-tribute.git`
+1. Clone the repository: `git clone https://github.com/atharvdange618/webd/tree/4bc38d63992183f087d3f8cbb005683e12ca73d5/Beginner%20Projects/Tribute%20Page`
 2. Navigate to the project directory: `cd apj-abdul-kalam-tribute`
 3. Open `index.html` in a web browser to access the tribute page.
 
