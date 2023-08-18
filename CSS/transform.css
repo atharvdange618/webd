@@ -29,8 +29,22 @@ div:nth-of-type(3n) {
 #two {
     transform: scale(0.5);
     /* scale has x and y properties too */
+}
 
-    /* transform-translate */
-    transform: translateX(1.5);
-    transform: translateY(2);
+/* transform-translate */
+#three {
+    /* 
+    transform: translateX(100px);
+    transform: translateY(100px); 
+    */
+    transform: translate(-100px);
+}
+
+/* transform-skew */
+#four {
+    transform: skew(30deg);
+}
+
+#five {
+    transform: rotate(30deg) translate(150px);
 }
