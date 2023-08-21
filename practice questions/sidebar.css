@@ -1,0 +1,13 @@
+.sidebar {
+    width: 50px;
+    height: 200px;
+    background-color: beige;
+    display: inline-block;
+    transition: width 1s ease-in 0.5s;
+    overflow: hidden;
+}
+
+.sidebar:hover{
+    width: 100px;
+    color: violet;
+}
