@@ -4,7 +4,6 @@
 
 * {
     margin: 0;
-    ;
     padding: 0;
     box-sizing: border-box;
 }
@@ -24,14 +23,13 @@ body {
 
 h1 {
     font-size: 3rem;
-
 }
 
 h2 {
     font-size: 2rem;
 }
 
-h2 {
+h3 {
     font-size: 1.5rem;
 }
 
@@ -62,6 +60,7 @@ ul {
     max-width: 1180px;
     margin-inline: auto;
     padding-inline: var(--padding-inline-section);
+    overflow: hidden;
 }
 
 .flex {
@@ -69,7 +68,16 @@ ul {
     align-items: center;
 }
 
-.primary-btn {
+.hover-link {
+    color: var(--primary-text-color);
+    transition: 0.2s ease-out;
+}
+
+.hover-link:hover {
+    color: var(--accent-color);
+}
+
+.primary-button {
     background-color: var(--accent-color);
     border-radius: 6px;
     font-weight: 700;
@@ -77,13 +85,14 @@ ul {
     padding: 12px 24px;
     box-shadow: 0 0 2px var(--secondary-text-color);
     transition: 0.2s ease-out;
+    text-align: center;
 }
 
-.primary-btn:hover {
+.primary-button:hover {
     background-color: var(--accent-color-dark);
 }
 
-.secondary-btn {
+.secondary-button {
     border: 0.5px solid var(--secondary-text-color);
     border-radius: 6px;
     font-weight: 700;
@@ -92,13 +101,15 @@ ul {
     transition: 0.2s ease-out;
 }
 
-.secondary-btn:hover {
+.secondary-button:hover {
+    border-color: var(--accent-color);
     color: var(--accent-color) !important;
 }
 
 /* top banner */
+
 .top-banner {
-    background-image: url(assets/asset\ 30.png);
+    background-image: url('./assets/asset\ 30.png');
     background-color: #4dadf7;
     background-size: 300px;
 }
@@ -109,10 +120,11 @@ ul {
     text-align: center;
 }
 
+/* nav bar */
+
 .main-nav {
     margin-top: 20px;
     justify-content: space-between;
-
 }
 
 .company-logo img {
@@ -128,19 +140,14 @@ ul {
     gap: 40px;
 }
 
-.hover-links {
-    color: var(--primary-text-color);
-    transition: 0.2s ease-out;
+.nav-toggle {
+    display: none;
 }
 
-.hover-links:hover {
-    color: var(--accent-color);
-}
+/* header section */
 
-/* header */
 header {
     padding: 50px var(--padding-inline-section) 0;
-
 }
 
 .header-section {
@@ -156,25 +163,26 @@ header {
     margin-top: 20px;
 }
 
-.try-btn {
+.get-started-btn {
     margin-top: 20px;
 }
 
 .header-right img {
-    width: 600px;
+    width: 100%;
 }
 
-/* companies */
+/* companies section */
+
 .companies-header {
     text-align: center;
-    margin: 50px 0 0;
+    margin-block: 30px;
     color: var(--primary-text-color);
 }
 
 .logos {
-    margin: 30px 0;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
 .logo {
@@ -184,17 +192,18 @@ header {
 /* features section */
 
 .features-section {
-    padding: 80px var(--padding-inline-section);
-    background-image: url(assets/asset\ 32.svg);
+    padding: 80px var(--padding-inline-section) 0;
+    background-image: url(./assets/asset\ 32.svg);
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .features-header {
     text-align: center;
+    margin-bottom: 40px;
 }
 
-.features-header h2 {
+.features-heading-text {
     margin-bottom: 20px;
 }
 
@@ -238,6 +247,8 @@ header {
     flex-direction: column;
     align-items: flex-start;
 }
+
+/* examples section */
 
 .examples-section {
     padding: 80px var(--padding-inline-section)
