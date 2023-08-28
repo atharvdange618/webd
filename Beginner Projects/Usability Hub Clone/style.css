@@ -93,13 +93,13 @@ ul {
 }
 
 .secondary-btn:hover {
-    border-color: var(--accent-color) !important;
+    color: var(--accent-color) !important;
 }
 
 /* top banner */
 .top-banner {
     background-image: url(assets/asset\ 30.png);
-    background-color: #4fb3d4;
+    background-color: #4dadf7;
     background-size: 300px;
 }
 
@@ -135,4 +135,48 @@ ul {
 
 .hover-links:hover {
     color: var(--accent-color);
+}
+
+/* header */
+header {
+    padding: 50px var(--padding-inline-section) 0;
+
+}
+
+.header-section {
+    justify-content: center;
+    gap: 50px;
+}
+
+.header-left {
+    max-width: 40vw;
+}
+
+.header-left h1 {
+    margin-top: 20px;
+}
+
+.try-btn {
+    margin-top: 20px;
+}
+
+.header-right img {
+    width: 600px;
+}
+
+/* companies */
+.companies-header {
+    text-align: center;
+    margin-block: 30px;
+    color: var(--primary-text-color);
+}
+
+.logos {
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    height: 46px;
+
 }
