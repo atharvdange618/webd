@@ -215,3 +215,26 @@ header {
 .features-card img {
     width: 60px;
 }
+
+/* big feature section */
+
+.big-feature-section {
+    padding: 30px var(--padding-inline-section) 0;
+}
+
+.big-feature-container {
+    gap: 30px;
+}
+
+#second-big-feature {
+    flex-direction: row-reverse;
+}
+
+.feature-img img {
+    width: 100%;
+}
+
+.feature-desc {
+    flex-direction: column;
+    align-items: flex-start;
+}
