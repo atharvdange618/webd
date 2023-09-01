@@ -48,8 +48,40 @@ function toggleSkills() {
 skillsHeader.forEach((el) => {
     el.addEventListener('click', toggleSkills)
 })
-/*==================== QUALIFICATION TABS ====================*/
 
+/*==================== QUALIFICATION TABS ====================*/
+// Get references to the qualification buttons and content sections
+const tabs = document.querySelectorAll('.qualification__button[data-target]');
+const contentSections = document.querySelectorAll('.qualification__content[data-content]');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Get the target content ID from the clicked tab
+        const targetContentId = tab.getAttribute('data-target');
+
+        // Hide all content sections
+        contentSections.forEach(section => {
+            section.classList.remove('qualification__active');
+        });
+
+        // Show the content section corresponding to the clicked tab
+        const targetContent = document.querySelector(targetContentId);
+        if (targetContent) {
+            targetContent.classList.add('qualification__active');
+        }
+
+        // Remove the 'qualification__active' class from all tabs
+        tabs.forEach(t => {
+            t.classList.remove('qualification__active');
+        });
+
+        // Add the 'qualification__active' class to the clicked tab
+        tab.classList.add('qualification__active');
+    });
+});
+
+// Set the default active state (you can choose which section to show by default)
+tabs[0].click(); // This will make the "Education" tab active by default
 
 /*==================== SERVICES MODAL ====================*/
 
