@@ -77,28 +77,28 @@ tabs.forEach(tab => {
 tabs[0].click();
 
 /*==================== SERVICES MODAL ====================*/
-const modalViews = document.querySelectorAll('.services__modal'),
-    modalBtns = document.querySelectorAll('.services__button'),
-    modalCloses = document.querySelectorAll('.services__modal-close')
-
+const modalViews = document.querySelectorAll('.services__modal');
+const modalBtns = document.querySelectorAll('.services__button');
+const modalCloses = document.querySelectorAll('.services__modal-close');
 
 let modal = function (modalClick) {
-    modalViews[modalClick].classList.add('active-modal')
+    modalViews[modalClick].classList.add('active-modal');
 }
 
 modalBtns.forEach((modalBtn, i) => {
     modalBtn.addEventListener('click', () => {
-        modal(i)
-    })
-})
+        modal(i);
+    });
+});
 
-modalCloses.forEach((modalCloses) => {
+modalCloses.forEach((modalClose) => {
     modalClose.addEventListener('click', () => {
-        modalViews.forEach((modalViews) => {
-            modalView.classList.remove('active-modal')
-        })
-    })
-})
+        modalViews.forEach((modalView) => { // Fix variable name here
+            modalView.classList.remove('active-modal');
+        });
+    });
+});
+
 /*==================== PORTFOLIO SWIPER  ====================*/
 
 
