@@ -1197,3 +1197,11 @@ img {
 .btnss {
   border: none;
 }
+
+/* Style for the success message */
+.message {
+  display: block; /* Display the message as a block element (on a new line) */
+  margin-top: 10px; /* Adjust the top margin as needed */
+  color: green; /* Change the text color for success messages */
+  font-weight: bold; /* Add bold font weight for emphasis */
+}
