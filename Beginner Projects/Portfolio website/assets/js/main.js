@@ -179,3 +179,9 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
 
+function resetFormInputs() {
+    // Replace 'myForm' with the ID of your form
+    var form = document.getElementById('myForm');
+    form.reset();
+}
+

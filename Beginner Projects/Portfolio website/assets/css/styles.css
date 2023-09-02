@@ -1193,3 +1193,7 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.btnss {
+  border: none;
+}

@@ -586,32 +586,34 @@
                         </div>
                     </div>
                 </div>
-                <form action="" class="contact__form grid">
+                <form
+                    action="https://script.google.com/macros/s/AKfycbxT8lpy3bKT6R41bcWApec_67ECd5hzMGB4bDTbGkeGSKKuCvKYx3qrSFhjpg8dwPO8bQ/exec"
+                    method="POST" class="contact__form grid" id="myForm" onsubmit="resetFormInputs()">
                     <div class="contact__inputs grid">
                         <div class="contact__content">
                             <label for="" class="contact__label">Name</label>
-                            <input type="text" class="contact__input">
+                            <input type="text" class="contact__input" name="Name">
                         </div>
 
                         <div class="contact__content">
                             <label for="" class="contact__label">Email</label>
-                            <input type="email" class="contact__input">
+                            <input type="email" class="contact__input" name="Email">
                         </div>
                     </div>
                     <div class="contact__content">
                         <label for="" class="contact__label">Project</label>
-                        <input type="text" class="contact__input">
+                        <input type="text" class="contact__input" name="Project">
                     </div>
                     <div class="contact__content">
                         <label for="" class="contact__label">Message</label>
-                        <textarea name="" id="" cols="0" rows="7" class="contact__input"></textarea>
+                        <textarea name="Messsage" id="" cols="0" rows="7" class="contact__input"></textarea>
                     </div>
 
                     <div>
-                        <a href="#" class="button button--flex">
+                        <button type="submit" class="button button--flex btnss">
                             Send Message
-                            <i class="uil uil-message button__icon"></i>
-                        </a>
+                            <i class=" uil uil-message button__icon"></i>
+                        </button>
                     </div>
                 </form>
             </div>
