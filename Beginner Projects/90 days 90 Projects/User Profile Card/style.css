@@ -78,7 +78,6 @@ body {
 
 .hire-me:hover {
     background: radial-gradient(circle at 100% 107%, #fdf497 0%, #fdf497 5%#fd5949 45%, #d6249f 60%, #285aeb 90%);
-
 }
 
 .social-container {
@@ -98,7 +97,7 @@ body {
 
 .social-item li {
     list-style: none;
-    padding: 0.8rem;
+    padding: .8rem;
     border-radius: 15%;
 }
 
