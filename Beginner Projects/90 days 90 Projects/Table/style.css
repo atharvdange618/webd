@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@300;700&display=swap');
+
+:root {
+    --background: #ebecf0;
+    --table-background: #ffffff;
+    --primary: #101824;
+    --gray: #a0a7b1;
+    --odd-row: #f6f9ff;
+    --gray-background: #edeef1;
+    --gray-mid: #f1f2f6;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 16px;
+    background-color: var(--background);
+}
+
+.table-widget {
+    border-radius: 16px;
+    background-color: var(--table-background);
+    padding: 24px;
+    border: 2px solid var(--gray-background);
+    box-shadow:
+        rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+        rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    text-align: left;
+    overflow: auto;
+}
+
+.table-widget table {
+    max-width: fit-content;
+    border-collapse: collapse;
+}
+
+.table-widget caption {
+    font-size: 1.12rem;
+    font-weight: 700;
+    text-align: left;
+    margin: 8px 0px;
+}
+
+.table-widget th {
+    padding: 20px 16px;
+    font-size: .875rem;
+    color: var(--gray);
+}
+
+.table-widget thead {
+    border-top: 2px solid var(--gray-background);
+}
+
+.table-widget tfoot {
+    margin-top: 16px;
+    border-top: 2px solid var(--gray-background);
+}
+
+.table-widget td {
+    padding: 8px 16px;
+    vertical-align: middle;
+}
+
+.table-widget tbody tr {
+    cursor: pointer;
+}
+
+.table-widget tbody tr:nth-child(odd) {
+    background-color: var(--odd-row);
+}
+
+.table-widget tbody tr:hover {
+    background-color: #e2ecff;
+}
+
+.table-row-count{
+    font-size: .8rem;
+    font-weight: 700;
+}
