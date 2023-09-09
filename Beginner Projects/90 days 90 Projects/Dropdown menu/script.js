@@ -9,6 +9,3 @@ mainItems.forEach((mainItem) => {
     );
   })
 });
-
-
-
