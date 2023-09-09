@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,26 +15,27 @@
                 Team Members
                 <span class="table-row-count"></span>
             </caption>
-
             <thead>
-                <th>Name</th>
-                <th>Status</th>
-                <th>Email Address</th>
-                <th>Tags</th>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Email address</th>
+                    <th>Tags</th>
+                </tr>
             </thead>
-            <tbody id="team-member-rows"></tbody>
+            <tbody id="team-member-rows">
+            </tbody>
             <tfoot>
                 <tr>
                     <td colspan="4">
                         <ul class="pagination">
-
                         </ul>
                     </td>
                 </tr>
             </tfoot>
         </table>
     </div>
-    <script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
