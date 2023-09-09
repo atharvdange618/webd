@@ -1,6 +1,3 @@
-
-
-
 :root {
     --white: #FFF;
     --gray: #F3F3F3;
@@ -16,9 +13,7 @@ body {
     display: flex;
     height: 100vh;
     padding: 16px;
-    background-color: var(
-        --body-background
-    );
+    background-color: var(--body-background);
 }
 
 * {
@@ -33,7 +28,9 @@ button {
     justify-content: center;
 }
 
-button:focus { outline: revert } 
+button:focus {
+    outline: revert
+}
 
 html {
     scroll-behavior: smooth;
@@ -50,8 +47,7 @@ header {
     max-width: 480px;
     display: flex;
     align-items: center;
-    box-shadow: rgba(100, 100, 111, 0.2)
-        0px 7px 29px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .navigation__group {
@@ -75,11 +71,11 @@ header {
     align-items: center;
 }
 
-.navigation__group > button:nth-child(1) {
+.navigation__group>button:nth-child(1) {
     margin-right: auto;
 }
 
-.navigation__group button:hover, 
+.navigation__group button:hover,
 .navigation__group button:focus {
     background-color: var(--button-hover);
     border-radius: 50%;
@@ -104,10 +100,8 @@ header {
     flex-direction: column;
     background-color: white;
     gap: 4px;
-    animation: fadeOutAnimation ease-in-out 
-        0.5s forwards;
-    box-shadow: rgba(100, 100, 111, 0.2)
-        0px 7px 29px 0px;
+    animation: fadeOutAnimation ease-in-out 0.5s forwards;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .dropdown__wrapper h3 {
@@ -137,8 +131,7 @@ header {
 }
 
 .dropdown__wrapper--fade-in {
-    animation: fadeInAnimation ease-in-out
-        0.5s forwards;
+    animation: fadeInAnimation ease-in-out 0.5s forwards;
 }
 
 .none {
@@ -148,8 +141,7 @@ header {
 .hide {
     opacity: 0;
     visibility: hidden;
-    animation: fadeOutAnimation ease-in-out
-        0.5s forwards;
+    animation: fadeOutAnimation ease-in-out 0.5s forwards;
 }
 
 .app svg {
@@ -164,6 +156,7 @@ header {
         visibility: hidden;
         height: 120px;
     }
+
     100% {
         opacity: 1;
         visibility: visible;
@@ -177,6 +170,7 @@ header {
         height: 200px;
         visibility: visible;
     }
+
     100% {
         opacity: 0;
         height: 120px;

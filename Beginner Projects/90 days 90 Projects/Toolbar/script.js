@@ -15,5 +15,3 @@ document.addEventListener("click", (event) => {
         dropdown.classList.add('dropdown__wrapper--fade-in');
     }
 });
-
-

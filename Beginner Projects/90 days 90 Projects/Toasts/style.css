@@ -1,5 +1,5 @@
 :root {
-    --background:#f3f1f9;
+    --background: #f3f1f9;
     --toast-background: #292B2D;
     --toast-success: #9CE6A8;
     --text: white;
@@ -8,7 +8,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;  
+    box-sizing: border-box;
 }
 
 html {
@@ -86,11 +86,9 @@ body {
     height: 3px;
     transform: scaleX(0);
     transform-origin: left;
-    background: linear-gradient(
-        to right, 
-        var(--toast-background),  
-        var(--toast-success)
-    );
+    background: linear-gradient(to right,
+            var(--toast-background),
+            var(--toast-success));
     border-radius: inherit;
     animation: progress 2.5s 0.3s linear;
 }
@@ -118,6 +116,7 @@ body {
         visibility: visible;
         transform: translateY(0);
     }
+
     95% {
         opacity: 1;
         transform: translateY(0);
