@@ -1,4 +1,3 @@
-
 const toggleMenu = () => {
     const burgerMenu = document.querySelector(".menu-icon");
     const src = burgerMenu.getAttribute('src');
@@ -19,6 +18,3 @@ const toggleMenu = () => {
         'navigation--mobile'
     );
 };
-
-
-
