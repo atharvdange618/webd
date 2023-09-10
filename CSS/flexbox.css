@@ -1,13 +1,31 @@
 #container {
-    height: 300px;
-    width: 80%;
+    height: 600px;
+    width: 60%;
     background-color: azure;
     margin: 10px auto;
     border: 2px solid black;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    /* flex-wrap: wrap; */
+    /* align-items: baseline;  */
+    align-content: flex-start;
+}
 
+#org {
+    align-self: flex-start;
+    /* flex-basis: 50px; */
+    /* flex-grow: 1; */
+    /* flex-shrink: 1; */
+    flex: 2 2 100px;
+}
+
+#blue {
+    /* flex-basis: 400px; */
+    /* flex-grow: 2; */
+    /* max-width: 400px;  */
+    /* flex-shrink: 2; */
+    flex-grow: 2;
 }
 
 h1 {
@@ -16,7 +34,7 @@ h1 {
 
 #container div {
     height: 100px;
-    width: 300px;
+    width: 50px;
     color: #fff;
     text-align: center;
     font-size: 1.5rem;
