@@ -4,32 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>File Server | Login</title>
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="index.js"></script>
-</head>
 
 <body>
-    <main>
-        <div class="wrapper">
-            <div class="card-switch">
-                <label class="switch">
-                    <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                            <div class="title">Log in</div>
-                            <form class="flip-card__form" id="loginForm" onsubmit="loginUser()" method="post">
-                                <input class="flip-card__input" type="text" name="username" placeholder="Username"
-                                    required>
-                                <input class="flip-card__input" type="password" name="password" placeholder="Password"
-                                    required>
-                                <button class="flip-card__btn">Let`s go!</button>
-                            </form>
-                        </div>
-                    </div>
-                </label>
-            </div>
+    <nav class="navbar">
+        <div class="left">
+            <h1>File Fortress</h1>
         </div>
-    </main>
+    </nav>
+    <div class="form-container wrapper">
+        <div class="logo title">
+            <h2>Login</h2>
+        </div>
+        <form class="flip-card__form ">
+            <input type="text" name="text" class="flip-card__input " placeholder="username" id="username">
+            <input type="password" name="password" class="flip-card__input" placeholder="password" id="password">
+            <button class="flip-card__btn" type="button" onclick="authentication()">Login</button>
+        </form>
+    </div>
+
 </body>
 
 </html>

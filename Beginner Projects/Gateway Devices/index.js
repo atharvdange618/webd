@@ -1,4 +1,4 @@
-function loginUser() {
+function authentication() {
     // Get the values entered by the user
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;

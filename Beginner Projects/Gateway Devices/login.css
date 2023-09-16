@@ -1,18 +1,10 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@300;700&display=swap');
+
+* {
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-}
-
-/* Main Content Styles */
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .wrapper {
@@ -24,45 +16,35 @@ main {
     --main-color: #323232;
 }
 
-/* card */
-.flip-card__inner {
-    width: 300px;
-    height: 350px;
-    position: relative;
-    background-color: transparent;
-    perspective: 1000px;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+.navbar {
+    background-color: black;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    line-height: 5rem;
 }
 
-.toggle:checked~.flip-card__inner {
-    transform: rotateY(180deg);
+.left h1 {
+    font-size: 1.8rem;
+    cursor: pointer;
 }
 
-.toggle:checked~.flip-card__front {
-    box-shadow: none;
-}
-
-.flip-card__front,
-.flip-card__back {
-    padding: 20px;
-    position: absolute;
+.form-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    background: ghostwhite;
+    align-items: center;
+    padding: 20px; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-color);
     gap: 20px;
     border-radius: 5px;
     border: 2px solid var(--main-color);
     box-shadow: 4px 4px var(--main-color);
-}
-
-.flip-card__back {
-    width: 100%;
-    transform: rotateY(180deg);
 }
 
 .flip-card__form {
