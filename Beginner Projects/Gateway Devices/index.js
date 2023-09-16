@@ -14,3 +14,13 @@ function authentication() {
 
     return false;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const logoutLink = document.getElementById("logout");
+
+    logoutLink.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        window.location.href = "login.html";
+    });
+});
