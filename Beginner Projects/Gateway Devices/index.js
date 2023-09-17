@@ -9,7 +9,9 @@ function authentication() {
     if (username === validUsername && password === validPassword) {
         window.location.href = "index.html";
     } else {
-        alert("Invalid username or password. Please try again.");
+        var errorArea = document.getElementById("error-area");
+        errorArea.textContent = "Invalid username or password. Please try again.";
+        document.getElementById('formId').reset();
     }
 
     return false;
@@ -24,3 +26,4 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "login.html";
     });
 });
+
