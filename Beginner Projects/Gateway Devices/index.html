@@ -8,7 +8,7 @@
     <title>File Server | Home</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="index.js"></script>
+    <script src="functions.js"></script>
 </head>
 
 <body>
@@ -22,13 +22,13 @@
                 <i class="fa fa-bars"></i>
             </label>
             <ul class="list">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Download</a></li>
-                <li><a href="#">Upload</a></li>
-                <li><a href="#">Request</a></li>
-                <li><a href="#">Delete</a></li>
-                <li><a href="#">Directory</a></li>
-                <li><a href="#" id="logout">Logout</a></li>
+                <li><a onclick="goToHome()">Home</a></li>
+                <li><a onclick="downloadFile()">Download</a></li>
+                <li><a href="upload.html">Upload</a></li>
+                <li><a onclick="requestFile()">Request</a></li>
+                <li><a onclick="deleteFile()">Delete</a></li>
+                <li><a onclick="browseDirectory()">Directory</a></li>
+                <li><a onclick="logout()">Logout</a></li>
             </ul>
         </div>
     </nav>
