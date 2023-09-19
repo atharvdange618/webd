@@ -3,7 +3,7 @@
     height: 100px;
     background-color: pink;
 
-    animation-name: animation, colorAnimate;
+    animation-name: colorAnimate;
     animation-duration: 2s;
     animation-timing-function: ease-in;
     animation-delay: 0;
@@ -22,11 +22,15 @@
 }
 
 @keyframes colorAnimate {
-    from {
+    0% {
         background-color: green;
     }
 
-    to {
-        background-color: blue;
+    50% {
+        background-color: yellow;
+    }
+
+    100% {
+        background-color: red;
     }
 }
