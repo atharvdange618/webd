@@ -3,43 +3,66 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Directory Page</title>
-    <link rel="stylesheet" href="style.css"> <!-- You can link your CSS file here -->
+    <title>File Server | Directory</title>
+    <link rel="stylesheet" href="directory.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="index.js"></script>
 </head>
 
 <body>
-    <h1>Directory Page</h1>
+    <nav class="navbar">
+        <div class="left">
+            <h1>File Fortress</h1>
+        </div>
+        <input type="checkbox" class="checkBtn" id="check">
+        <label for="check" class="checkLabel">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="right">
+            <ul class="list">
+                <li><a href="index.html">Home</a></li>
+                <li><a onclick="downloadFile()">Download</a></li>
+                <li><a href="upload.html">Upload</a></li>
+                <li><a href="request.html">Request</a></li>
+                <li><a onclick="deleteFile()">Delete</a></li>
+                <li><a href="directory.html">Directory</a></li>
+                <li><a id="logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>File Name</th>
-                <th>File Size</th>
-                <th>File Type</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Sample data for demonstration purposes -->
-            <tr>
-                <td>Document.pdf</td>
-                <td>2.5 MB</td>
-                <td>PDF</td>
-            </tr>
-            <tr>
-                <td>Image.jpg</td>
-                <td>1.2 MB</td>
-                <td>JPEG</td>
-            </tr>
-            <tr>
-                <td>Spreadsheet.xlsx</td>
-                <td>850 KB</td>
-                <td>Excel</td>
-            </tr>
-            <!-- Add more rows for additional files -->
-        </tbody>
-    </table>
+    <h2>File Directory</h2>
+    <div class="table-widget">
+        <table>
+            <caption>
+                Files
+                <span class="table-row-count"></span><br><br>
+                <input type="text" id="file-search" placeholder="Search Files">
+                <button id="search-button">Search</button>
+            </caption>
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>File Type</th>
+                    <th>File Size</th>
+                </tr>
+            </thead>
+            <tbody id="file-rows">
+                <!-- file profiles will be dynamically generated here -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <ul class="pagination"></ul>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script src="directory.js"></script>
 </body>
 
 </html>

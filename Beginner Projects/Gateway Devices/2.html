@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Operations Example</title>
+</head>
+
+<body>
+    <h1>File Operations Example</h1>
+
+    <!-- Input to allow the user to choose a file -->
+    <input type="file" id="fileInput">
+
+    <!-- Buttons for operations -->
+    <button onclick="downloadFile()">Download File</button>
+    <button onclick="deleteFile()">Delete File</button>
+    <button onclick="uploadFile()">Upload File</button>
+
+    <script>
+        let uploadedFile;
+        let fileInput;
+        let selectedFile;
+        let blob;
+        let link;
+
+        function downloadFile() {
+            if (uploadedFile) {
+                blob = new Blob([uploadedFile], { type: uploadedFile.type });
+                link = document.createElement('a');
+                link.download = uploadedFile.name;
+                link.href = window.URL.createObjectURL(blob);
+
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                alert('No file uploaded or file deleted.');
+            }
+        }
+
+        function deleteFile() {
+            if (uploadedFile) {
+                uploadedFile = null; // Remove reference to the uploaded file
+                alert('File deleted.');
+                clearFileName(); // Clear the file name from the anchor tag
+            } else {
+                alert('No file uploaded.');
+            }
+        }
+
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const selectedFile = fileInput.files[0];
+
+            if (selectedFile) {
+                uploadedFile = selectedFile;
+                updateFileName(selectedFile.name); // Update the file name in the anchor tag
+                alert('File uploaded: ' + selectedFile.name);
+            } else {
+                alert('Please select a file to upload.');
+            }
+        }
+
+        function updateFileName(fileName) {
+            const fileNameElement = document.getElementById('fileName');
+            if (fileNameElement) {
+                fileNameElement.textContent = fileName;
+            }
+        }
+
+        function clearFileName() {
+            const fileNameElement = document.getElementById('fileName');
+            if (fileNameElement) {
+                fileNameElement.textContent = '';
+            }
+        }
+    </script>
+
+    <!-- Display the file name in an anchor tag -->
+    <p>File Name: <span id="fileName"></span></p>
+</body>
+
+</html>

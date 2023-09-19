@@ -3,10 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Server | Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="request.css">
     <script src="index.js"></script>
 </head>
 
@@ -33,6 +32,24 @@
             </ul>
         </div>
     </nav>
+
+    <div class="request-container">
+        <h2 class="request-title">Request a File</h2>
+        <form id="request-form">
+            <input type="text" class="request-input" name="fileName" placeholder="Enter file name" required>
+            <button type="submit" class="request-btn">Request</button>
+        </form>
+    </div>
+
+    <div class="display-container">
+        <h2 class="display-title">File Display</h2>
+        <div id="file-display">
+            <!-- File display content will go here -->
+        </div>
+    </div>
+
+    <script src="request.js"></script>
+    <script src="upload.js"></script>
 </body>
 
 </html>
