@@ -1,0 +1,32 @@
+.box {
+    width: 300px;
+    height: 100px;
+    background-color: pink;
+
+    animation-name: animation, colorAnimate;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-delay: 0;
+    animation-iteration-count: 3;
+    animation-direction: normal;
+}
+
+@keyframes animation {
+    from {
+        font-size: 20px;
+    }
+
+    to {
+        font-size: 40px;
+    }
+}
+
+@keyframes colorAnimate {
+    from {
+        background-color: green;
+    }
+
+    to {
+        background-color: blue;
+    }
+}
