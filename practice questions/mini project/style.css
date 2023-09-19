@@ -10,22 +10,25 @@
     background-size: cover;
 }
 
-.btn_one {
+.btn_one i {
     color: white;
     font-size: 30px;
     font-weight: 700;
     position: absolute;
     left: 16px;
     line-height: 60px;
+    cursor: pointer;
+    transition: all 0.3s linear;
 }
 
 .sidebar_menu {
     position: fixed;
-    /* left: -350px; */
+    left: -350px;
     height: 100vh;
     width: 300px;
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    transition: all 0.3s linear;
 }
 
 .sidebar_menu .logo {
@@ -33,6 +36,7 @@
     width: 100%;
     line-height: 60px;
     box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+    height: 60px;
 }
 
 .sidebar_menu .logo a {
@@ -47,17 +51,19 @@
 .sidebar_menu .menu {
     color: white;
     position: absolute;
-    width: 100vh;
+    width: 100%;
     top: 80px;
 }
 
-.sidebar_menu .btn_two {
+.sidebar_menu .btn_two i {
     color: grey;
     font-size: 25px;
     line-height: 60px;
     position: absolute;
     left: 275px;
     opacity: 0;
+    cursor: pointer;
+    transition: all 0.3s linear;
 }
 
 .sidebar_menu .menu li {
@@ -89,6 +95,35 @@ a {
     padding: 0 5px;
 }
 
-#check{
+#check {
     display: none;
+}
+
+.sidebar_menu .menu li:hover {
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+.btn_one i:hover {
+    font-size: 32px;
+}
+
+.btn_two i:hover {
+    font-size: 28px;
+}
+
+.sidebar_menu .social_media i:hover {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#check:checked~.sidebar_menu {
+    left: 0;
+}
+
+#check:checked~.btn_one i {
+    opacity: 0;
+}
+
+#check:checked~.sidebar_menu .btn_two i {
+    opacity: 1;
 }
