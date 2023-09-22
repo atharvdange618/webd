@@ -5,9 +5,265 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Server | Directory</title>
-    <link rel="stylesheet" href="directory.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="index.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@300;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        :root {
+            --background: #EBECF0;
+            --table-background: #FFFFFF;
+            --primary: #101824;
+            --gray: #A0A7B1;
+            --odd-row: #f6f9ff;
+            --gray-background: #EDEEF1;
+            --gray-mid: #F1F2F6;
+        }
+
+        .navbar {
+            background-color: black;
+            color: #ddd;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            line-height: 5rem;
+        }
+
+        .left h1 {
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+
+        .checkBtn {
+            display: none;
+        }
+
+        .right ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .right ul li a {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 1s;
+        }
+
+        .right ul li a:hover {
+            background-color: #fff;
+            box-shadow: 0 0 6px rgb(227, 221, 221);
+            border-radius: 7px;
+            color: black;
+        }
+
+        /* Mobile menu styles */
+        @media screen and (max-width: 805px) {
+            .checkLabel {
+                color: white;
+                font-size: 30px;
+                font-weight: 700;
+                position: absolute;
+                right: 16px;
+                line-height: 60px;
+                cursor: pointer;
+                transition: all 0.3s linear;
+            }
+
+            .checkLabel span {
+                display: block;
+                width: 30px;
+                height: 3px;
+                background-color: white;
+                margin: 6px auto;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .checkBtn:checked+.checkLabel span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 5px);
+            }
+
+            .checkBtn:checked+.checkLabel span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .checkBtn:checked+.checkLabel span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -5px);
+            }
+
+            .list {
+                width: 100%;
+                height: 100vh;
+                background-color: black;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 4rem;
+                left: 100%;
+                transition: all 1s;
+            }
+
+            .checkBtn:checked+.checkLabel+.right .list {
+                left: 0%;
+            }
+
+            .checkBtn {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                z-index: 2;
+                display: none;
+            }
+        }
+
+        /* Table styles */
+        /* Default styles for larger screens */
+        h2 {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .table-widget {
+            width: 400px;
+            margin-top: 40px;
+            margin-left: 20px;
+            border-radius: 16px;
+            background-color: var(--table-background);
+            padding: 24px;
+            border: 2px solid var(--gray-background);
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            text-align: left;
+            overflow-x: auto;
+        }
+
+        /* Search container styles */
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        #file-search {
+            padding: 5px;
+            flex-grow: 1;
+            border: 1px solid var(--gray);
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        #search-button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #search-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Table styles */
+        .table-widget table {
+            max-width: fit-content;
+            border-collapse: collapse;
+        }
+
+        .table-widget caption {
+            font-size: 1.12rem;
+            font-weight: 700;
+            text-align: left;
+            margin: 8px 0px;
+        }
+
+        .table-widget th {
+            padding: 20px 16px;
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        .table-widget thead {
+            border-top: 2px solid var(--gray-background);
+        }
+
+        .table-widget tfoot {
+            margin-top: 16px;
+            border-top: 2px solid var(--gray-background);
+        }
+
+        .table-widget td {
+            padding: 8px 16px;
+            vertical-align: middle;
+        }
+
+        .table-widget tbody tr {
+            cursor: pointer;
+        }
+
+        .table-widget tbody tr:nth-child(odd) {
+            background-color: var(--odd-row);
+        }
+
+        .table-widget tbody tr:hover {
+            background-color: #e2ecff;
+        }
+
+        .table-row-count {
+            font-size: 0.8rem;
+            font-weight: 700;
+            background-color: var(--gray-mid);
+            padding: 8px;
+            display: inline-flex;
+            align-items: center;
+            margin-left: 16px;
+            border-radius: 8px;
+        }
+
+        #listFilesButton {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 8px;
+            margin-top: 5px;
+        }
+
+        #listFilesButton:hover {
+            background-color: #0056b3;
+        }
+
+        /* Mobile responsiveness */
+        @media screen and (max-width: 600px) {
+            .table-widget {
+                width: auto;
+                margin: 20px;
+            }
+
+            .search-container {
+                flex-direction: column;
+                margin-bottom: 10px;
+            }
+
+            #file-search {
+                margin-right: 0;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -42,27 +298,127 @@
                 <span class="table-row-count"></span><br><br>
                 <input type="text" id="file-search" placeholder="Search Files">
                 <button id="search-button">Search</button>
+                <!-- Moved the "List Files" button inside the caption -->
+                <button id="listFilesButton">List Files</button>
             </caption>
             <thead>
-                <tr>
-                    <th>File Name</th>
-                    <th>File Type</th>
-                    <th>File Size</th>
-                </tr>
+                <!-- Table header content -->
             </thead>
             <tbody id="file-rows">
-                <!-- file profiles will be dynamically generated here -->
+                <!-- Files will be dynamically generated here by JavaScript -->
             </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="4">
-                        <ul class="pagination"></ul>
-                    </td>
-                </tr>
-            </tfoot>
         </table>
     </div>
-    <script src="directory.js"></script>
+    <script>
+        function authentication() {
+            // Get the values entered by the user
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            var validUsername = "Admin";
+            var validPassword = "Admin@123";
+
+            if (username === validUsername && password === validPassword) {
+                window.location.href = "index.html";
+            } else {
+                var errorArea = document.getElementById("error-area");
+                errorArea.textContent = "Invalid username or password. Please try again.";
+                document.getElementById('formId').reset();
+            }
+
+            return false;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const logoutLink = document.getElementById("logout");
+
+            logoutLink.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                window.location.href = "login.html";
+            });
+        });
+
+        // Function to update row count
+        function updateRowCount() {
+            const rowCountSpan = document.querySelector(".table-row-count");
+            const visibleRows = document.querySelectorAll("#file-rows tr:not([style='display: none;'])").length;
+            const totalRows = document.querySelectorAll("#file-rows tr").length;
+            rowCountSpan.textContent = `${visibleRows} of ${totalRows} files shown`;
+        }
+
+        // Function to filter files based on search input
+        function filterFiles(searchText) {
+            const files = document.querySelectorAll('#file-rows tr');
+            files.forEach(function (file) {
+                const name = file.querySelector('td:first-child').textContent.toLowerCase();
+                if (name.includes(searchText.toLowerCase())) {
+                    file.style.display = ''; // Show matching file
+                } else {
+                    file.style.display = 'none'; // Hide non-matching file
+                }
+            });
+            updateRowCount(); // Update the row count when filtering
+        }
+
+        // Event listener for search button
+        document.getElementById('search-button').addEventListener('click', function () {
+            const searchText = document.getElementById('file-search').value;
+            filterFiles(searchText);
+        });
+
+        // Event listener for input field on Enter key press
+        document.getElementById('file-search').addEventListener('keyup', function (event) {
+            if (event.key === 'Enter') {
+                const searchText = this.value;
+                filterFiles(searchText);
+            }
+        });
+
+        // Event listener for clearing the search field
+        document.getElementById('file-search').addEventListener('input', function () {
+            if (this.value === '') {
+                // If the search input is empty, show all files
+                const files = document.querySelectorAll('#file-rows tr');
+                files.forEach(function (file) {
+                    file.style.display = '';
+                });
+                updateRowCount(); // Update the row count when clearing search
+            }
+        });
+
+        // Event listener for "List Files" button
+        document.getElementById("listFilesButton").addEventListener("click", function () {
+            fetch("/fetchFiles")
+                .then((response) => response.json()) // Parse JSON response
+                .then((data) => {
+                    const tbody = document.getElementById("file-rows");
+                    tbody.innerHTML = ""; // Clear previous table content
+
+                    // Process the JSON data
+                    data.files.forEach(function (file) {
+                        const row = tbody.insertRow();
+                        const nameCell = row.insertCell(0);
+                        const sizeCell = row.insertCell(1);
+
+                        // Set the text content of the cells
+                        nameCell.textContent = file.name;
+                        sizeCell.textContent = file.size + " bytes";
+                    });
+
+                    updateRowCount(); // Update the row count after listing files
+                })
+                .catch((error) => {
+                    console.error("Error fetching files:", error);
+                    document.getElementById("file-rows").innerHTML = "Error fetching files.";
+                });
+        });
+
+        // Initial row count update
+        updateRowCount();
+    </script>
+
+
 </body>
 
 </html>
