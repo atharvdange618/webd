@@ -335,11 +335,14 @@ a {
     background-color: #1bd760;
     border-radius: 50%;
     margin-top: -6px;
+    display: none;
 }
 
 .controls i{
     margin-left: -10px;
     margin-right: -10px;
+    font-size: 1.15rem;
+    opacity: .7;
 }
 .controls input{
     margin-left: -10px;
