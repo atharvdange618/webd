@@ -133,8 +133,41 @@
         </div>
     </div>
     <div class="music-player">
+        <div class="album">
+            <img src="./assets/song.jfif" alt="">
+            <div class="album-content">
+                <p class="alb-p1">I Still Love You</p>
+                <p class="alb-p2">Night Traveler</p>
+            </div>
+            <input type="checkbox" id="check">
+            <label for="check" class="heart-label">
+                <i class="fa-regular fa-heart"></i>
+            </label>
 
-    </div>
+        </div>
+        <div class="player">
+            <div class="player-controls">
+                <img src="./assets/player_icon1.png" class="player-control-icon">
+                <img src="./assets/player_icon2.png" class="player-control-icon">
+                <img src="./assets/player_icon3.png" class="player-control-icon" style="opacity: 1; height: 2rem;">
+                <img src="./assets/player_icon4.png" class="player-control-icon">
+                <img src="./assets/player_icon5.png" class="player-control-icon">
+            </div>
+            <div class="playback-bar">
+                <span class="current-time">00:00</span>
+                <input type="range" min="0" max="100" class="progress-bar" step="1">
+                <span class="tot-time">03:30</span>
+            </div>
+        </div>
+        <div class="controls">
+            <i class="fa-regular fa-circle-play"></i>
+            <i class="fa-solid fa-microphone"></i>
+            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-computer"></i>
+            <i class="fa-solid fa-volume-low"></i>
+            <input type="range" min="0" max="100" class="volume-bar" step="1">
+            <i class="fa-regular fa-window-restore"></i>
+        </div>
     </div>
 </body>
 
