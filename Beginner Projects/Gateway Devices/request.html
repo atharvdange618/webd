@@ -6,7 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Server | Home</title>
     <link rel="stylesheet" href="request.css">
-    <script src="index.js"></script>
+    <script>
+        function listFiles() {
+            fetch('/list')
+                .then(response => response.json())
+                .then(data => {
+                    const fileList = document.getElementById('fileList');
+                    fileList.innerHTML = '';
+                    data.forEach(file => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = file;
+                        listItem.addEventListener('click', () => {
+                            // When a file is clicked, set its path in the download input
+                            const filePathInput = document.getElementById('filePath');
+                            filePathInput.value = file;
+                            downloadFile();
+                        });
+                        fileList.appendChild(listItem);
+                    });
+                });
+        }
+
+        function downloadFile() {
+            const filePath = document.getElementById('filePath').value;
+            fetch('/download?filepath=' + encodeURIComponent(filePath))
+                .then(response => response.text())
+                .then(data => {
+                    const fileContent = document.getElementById('fileContent');
+                    fileContent.textContent = data;
+                });
+        }
+    </script>
 </head>
 
 <body>
@@ -44,12 +74,9 @@
     <div class="display-container">
         <h2 class="display-title">File Display</h2>
         <div id="file-display">
-            <!-- File display content will go here -->
+            <pre id="fileContent"></pre>
         </div>
     </div>
-
-    <script src="request.js"></script>
-    <script src="upload.js"></script>
 </body>
 
 </html>
