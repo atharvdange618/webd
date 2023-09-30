@@ -49,7 +49,7 @@ void setup() {
 
     // Serve HTML and handle API requests
     server.on("/", HTTP_GET, []() {
-        File htmlFile = SPIFFS.open("/index.html", "r");
+        File htmlFile = SPIFFS.open("/download.html", "r");
         server.streamFile(htmlFile, "text/html");
         htmlFile.close();
     });
