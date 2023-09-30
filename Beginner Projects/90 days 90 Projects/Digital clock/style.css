@@ -1,0 +1,20 @@
+#body {
+    background-color: black;
+    color: white;
+}
+
+#div1 {
+    transform: translateY(33%);
+}
+
+#time {
+    font-size: 18vw;
+    text-align: center;
+    text-shadow: 8px 8px 20px;
+}
+
+#date {
+    font-size: 18vmin;
+    text-align: center;
+    text-shadow: 8px 8px 20px blue;
+}
