@@ -1,4 +1,6 @@
 /*
+
+//basic understanding of data types and operations
 age
 23
 typeof age
@@ -81,4 +83,59 @@ let avg = ( hindi + math + eng) / 3;
 undefined
 avg
 90
+
+//operators learned 
+let age = 10
+undefined
+let newage = ++age
+undefined
+age
+11
+newage
+11
+newage = age++
+11
+age
+12
+newage
+11
+let a = 5
+undefined
+a++
+5
+a
+6
+++a
+7
+a
+7
+
+//boolean ans string learned
+let age = 13;
+undefined
+let isAdult = false
+undefined
+isAdult
+false
+age = 23;
+23
+isAdult = true;
+true
+isAdult
+true
+typeof isAdult
+'boolean'
+isAdult = 'True'
+'True'
+typeof isAdult
+'string'
+let a = 5;
+undefined
+typeof a
+'number'
+a = "atharv"
+'atharv'
+typeof a
+'string'
+
 */
