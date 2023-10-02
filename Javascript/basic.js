@@ -138,4 +138,39 @@ a = "atharv"
 typeof a
 'string'
 
+//string indices
+let name = "Tony Stark"
+undefined
+name
+'Tony Stark'
+name[0]
+'T'
+name[5]
+'S'
+name[9]
+'k'
+name.le
+undefined
+name.length
+10
+typeof name.length
+'number'
+name[name.length-1]
+'k'
+name[name.length-4]
+'t'
+"atharv".length
+6
+"atharv"[3]
+'a'
+"atharv" + " " + "dange"
+'atharv dange'
+"atharv" + 1
+'atharv1'
+"atharv" - 1
+NaN
+"atharv" - "dange"
+NaN
+1 - "atharv"
+NaN
 */
