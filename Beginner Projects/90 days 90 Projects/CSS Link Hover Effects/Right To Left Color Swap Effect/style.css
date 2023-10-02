@@ -1,0 +1,48 @@
+body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    background: #151515;
+    font-family: "Poppins", sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+a {
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.5s ease-in-out;
+    /* Transition the text color */
+    color: #fff;
+    /* Initial text color */
+    text-decoration: none;
+    /* Remove underline */
+}
+
+a::before {
+    content: "";
+    background-image: linear-gradient(to right, #54b3d6, #54b3d6 50%, #fff 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
+    /* Start the gradient from the right */
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    transition: background-position 0.5s ease-in-out;
+    /* Transition the gradient position */
+}
+
+a:hover {
+    color: #54b3d6;
+    /* Change the text color on hover */
+}
+
+a:hover::before {
+    background-position: 0;
+    /* Move the gradient from right to left on hover */
+}
