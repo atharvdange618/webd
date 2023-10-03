@@ -173,4 +173,39 @@ NaN
 NaN
 1 - "atharv"
 NaN
+
+null and undefined learnt
+let name
+undefined
+name
+undefined
+typeof name
+'undefined'
+name = "atharv dange"
+'atharv dange'
+name.length
+12
+let firstName = "atharv"
+undefined
+firstName[0]
+'a'
+firstName.length
+6
+firstName[5]
+'v'
+firstName[firstName.length-1]
+'v'
+"atharv"+123
+'atharv123'
+let emptyString = " "
+undefined
+emptyString.len
+undefined
+emptyString.length
+1
+let emptyString = ""
+undefined
+emptyString.length
+0
+
 */
