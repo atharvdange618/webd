@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: #fff;
+    background-color: #1f1f38;
+    font-family: sans-serif;
+}
+
+.heading {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.skills {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    padding: 2rem;
+    flex-wrap: wrap;
+}
+
+.left {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 24rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.right {
+    width: 50%;
+}
+
+.right ul .bar {
+    height: .4rem;
+    position: relative;
+    list-style: none;
+    border-radius: 10px;
+    margin: 3rem 0;
+    animation: skills;
+    animation-duration: 1s;
+}
+
+.right ul .html {
+    width: 90%;
+    background-color: #e54c21;
+}
+
+.right ul .css {
+    width: 80%;
+    background-color: #00a0e4;
+}
+
+
+.right ul .js {
+    width: 50%;
+    background-color: yellow;
+}
+
+.right ul .bootstrap {
+    width: 80%;
+    background-color: #7952b3;
+}
+
+
+.right ul .reactjs {
+    width: 30%;
+    background-color: #153de0;
+}
+
+.right ul .php {
+    width: 40%;
+    background-color: #7027dd;
+}
+
+.language {
+    position: absolute;
+    bottom: .6rem;
+    left: 0;
+}
+
+.percentage {
+    position: absolute;
+    bottom: .6rem;
+    right: 0;
+}
+
+@media screen and (max-width: 834px) {
+    .skills {
+        padding: .5rem;
+    }
+
+    .right {
+        width: 90%;
+    }
+}
