@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    text-align: center;
+    padding: 1rem 0;
+    color: #fff;
+    background-color: blueviolet;
+}
+
+.home-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.home-left,
+.home-right {
+    width: 28rem;
+    margin-top: 1.5rem;
+}
+
+.heading {
+    line-height: 2.5rem;
+    font-size: 2rem;
+    margin: 1rem auto;
+}
+
+.bold-heading {
+    font-weight: bold;
+}
+
+.home-description {
+    font-size: .9rem;
+}
+
+.home-right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .4s;
+    cursor: pointer;
+}
+
+.home-right img {
+    position: relative;
+    border-radius: 50%;
+    width: 20rem;
+    transition: all .4s;
+
+    box-shadow: 1px 7px 13px 0 #58555369;
+}
+
+.home-right:hover img {
+    transition: all .4s;
+    box-shadow: 8px 14px 25px 0 #58555369;
+    transform: translateY(-5px);
+}
+
+.home-left h2 {
+    margin: 1rem 0;
+}
+
+.contact {
+    margin: .8rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contact p,
+a {
+    margin-top: 1rem;
+}
+
+.contact a {
+    text-decoration: none;
+    color: white;
+    background-color: blue;
+    padding: .7rem .9rem;
+    border-radius: 10px;
+    transition: all .5s;
+}
+
+.contact a:hover {
+    transition: all .5s;
+    box-shadow: 8px 14px 25px 0 #27242469;
+    transform: translateY(-5px);
+}
+
+.countdown {
+    width: 80%;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.timer-container {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.timer-container p {
+    margin: 0 .5rem;
+}
+
+.number {
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 570px) {
+    .home-right img {
+        width: 15rem;
+    }
+
+    .home-section,
+    .countdown {
+        padding: 0;
+        margin: 1rem auto;
+    }
+}
+
+@media screen and (max-width: 1153px) {
+    .home-left {
+        width: 100%;
+    }
+}
