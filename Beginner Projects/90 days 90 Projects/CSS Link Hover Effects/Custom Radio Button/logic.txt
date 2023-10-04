@@ -1,0 +1,7 @@
+Create a .radio-container and use flexbox to create the appropriate layout for the radio buttons.
+
+Reset the styles on the <input> and use it to create the outline and background of the radio button.
+
+Use the ::before element to create the inner circle of the radio button.
+
+Use transform: scale(1) and a CSS transition to create an animation effect on state change.
