@@ -1,0 +1,15 @@
+Use display: flex and justify-content: center to setup the layout for the container.
+
+Use display: flex and flex-direction: column to setup the layout for the slides.
+
+Use scroll-snap-type: y mandatory and overscroll-behavior-y: contain to create a snap effect on vertical scroll. Snap elements to the start of the container using scroll-snap-align: start.
+
+Hide scrollbars using scrollbar-width: none and styling the pseudo-element ::-webkit-scrollbar to display: none.
+
+Use Element.scrollTo() to define a scrollToElement function, that scrolls the gallery to the given item.
+
+Use Array.prototype.map() and Array.prototype.join() to populate the .thumbnails element. Give each thumbnail a data-id attribute with the index of the image.
+
+Use Document.querySelectorAll() to get all the thumbnail elements. Use Array.prototype.forEach() to register a handler for the 'click' event on each thumbnail, using EventTarget.addEventListener() and the scrollToElement function.
+
+Use Document.querySelector() and EventTarget.addEventListener() to register a handler for the 'scroll' event. Update the .thumbnails and .scrollbar elements to match the current scroll position, using the scrollThumb function.
