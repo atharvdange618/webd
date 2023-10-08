@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Input</title>
+</head>
+
+<body>
+    <!-- //Name: Atharv Dange
+    //Roll No: 404A038
+    //A3 batch -->
+    <h2>Object to Array Variable Check</h2>
+
+    <!-- Input for Object Name -->
+    <label for="objectName">Name of Object:</label>
+    <input type="text" id="objectName"><br><br>
+
+    <!-- Input for Object Fields -->
+    <label for="objectFields">Fields of Object (comma-separated):</label>
+    <input type="text" id="objectFields"><br><br>
+
+    <!-- Input for Object Values -->
+    <label for="objectValues">Values of Object (comma-separated):</label>
+    <input type="text" id="objectValues"><br><br>
+
+    <!-- Button to Execute JS Code -->
+    <button onclick="addObjectAndDisplayArray()">Object to Array</button>
+
+    <!-- Display Array -->
+    <h2>Array:</h2>
+    <div id="displayArray"></div>
+
+    <!-- Display Array Check Result -->
+    <h2>Is it an Array?</h2>
+    <div id="isArrayResult"></div>
+
+    <script>
+        // Initialize an empty array
+        let objectArray = [];
+
+        // Function to add object to the array
+        function addObjectToArray(name, fields, values) {
+            const object = {
+                Object: name,
+            };
+
+            const fieldArray = fields.split(',').map(field => field.trim());
+            const valueArray = values.split(',').map(value => value.trim());
+
+            if (fieldArray.length === valueArray.length) {
+                for (let i = 0; i < fieldArray.length; i++) {
+                    object[fieldArray[i]] = valueArray[i];
+                }
+                objectArray.push(object);
+            } else {
+                alert("Number of fields should match the number of values.");
+            }
+        }
+
+        // Function to display the array
+        function displayArray() {
+            document.getElementById('displayArray').textContent = JSON.stringify(objectArray, null, 2);
+        }
+
+        // Function to check if a variable is an array
+        function isArray(variable) {
+            return Array.isArray(variable);
+        }
+
+        // Function to display the result of isArray function
+        function displayIsArrayResult() {
+            const isArrayResult = isArray(objectArray);
+            document.getElementById('isArrayResult').innerHTML = `${isArrayResult}`;
+        }
+
+        // Function to add object to the array and display the array
+        function addObjectAndDisplayArray() {
+            const name = document.getElementById('objectName').value;
+            const fields = document.getElementById('objectFields').value;
+            const values = document.getElementById('objectValues').value;
+
+            addObjectToArray(name, fields, values);
+            displayArray();
+            displayIsArrayResult();
+        }
+
+    </script>
+</body>
+
+</html>

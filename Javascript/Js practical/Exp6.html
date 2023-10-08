@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+</head>
+
+<body>
+    <!-- //Name: Atharv Dange
+    //Roll No: 404A038
+    //A3 batch -->
+    <h1>Array Operations</h1>
+
+    <h2>Enter Array Elements</h2>
+    <label for="arrayInput">Array Elements (comma-separated):</label>
+    <input type="text" id="arrayInput">
+    <br>
+    <button onclick="readArray()">Submit Array</button>
+
+    <h2>Enter Element to Remove</h2>
+    <label for="elementToRemove">Element to Remove:</label>
+    <input type="text" id="elementToRemove">
+    <br>
+    <button onclick="removeArrayElement()">Remove Element</button>
+
+    <h2>Check If an Array Contains a Specified Value</h2>
+    <label for="elementToCheck">Element to Check:</label>
+    <input type="text" id="elementToCheck">
+    <br>
+    <button onclick="checkArrayElement()">Check Element</button>
+
+    <h2>Empty the Array</h2>
+    <button onclick="emptyArrayElements()">Empty Array</button>
+    <p id="result"></p>
+    <p id="arrayOutput"></p> <!-- Display the updated array -->
+
+    <script>
+        let array = [];
+
+        function readArray() {
+            const arrayInput = document.getElementById('arrayInput').value;
+            array = arrayInput.split(',').map(element => element.trim());
+            document.getElementById('result').textContent = 'Array submitted.';
+            document.getElementById('arrayOutput').textContent = `Current Array: [${array.join(', ')}]`;
+        }
+
+        function removeArrayElement() {
+            const elementToRemove = document.getElementById('elementToRemove').value;
+
+            if (array.length === 0) {
+                document.getElementById('result').textContent = 'Please enter an array first.';
+            } else {
+                const index = array.indexOf(elementToRemove);
+
+                if (index !== -1) {
+                    array.splice(index, 1);
+                    document.getElementById('result').textContent = `Element '${elementToRemove}' removed.`;
+                } else {
+                    document.getElementById('result').textContent = `Element '${elementToRemove}' not found in the array.`;
+                }
+
+                document.getElementById('arrayOutput').textContent = `Updated Array: [${array.join(', ')}]`;
+            }
+        }
+
+        function checkArrayElement() {
+            const elementToCheck = document.getElementById('elementToCheck').value;
+
+            if (array.length === 0) {
+                document.getElementById('result').textContent = 'Please enter an array first.';
+            } else {
+                const index = array.indexOf(elementToCheck);
+
+                if (index !== -1) {
+                    document.getElementById('result').textContent = `Element '${elementToCheck}' found at index ${index} in the array.`;
+                } else {
+                    document.getElementById('result').textContent = `Element '${elementToCheck}' not found in the array.`;
+                }
+
+                document.getElementById('arrayOutput').textContent = `Current Array: [${array.join(', ')}]`;
+            }
+        }
+
+        function emptyArrayElements() {
+            array = [];
+            document.getElementById('result').textContent = 'Array emptied.';
+            document.getElementById('arrayOutput').textContent = 'Current Array: []';
+        }
+    </script>
+</body>
+
+</html>

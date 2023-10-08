@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp 5</title>
+</head>
+
+<body>
+    <!-- //Name: Atharv Dange
+    //Roll No: 404A038
+    //A3 batch -->
+    <label for="expiryDate">Expiry Date: </label>
+    <input type="date" id="expiryDate"><br><br>
+    <label for="expiryTime">Expiry Time: </label>
+    <input type="time" id="expiryTime"><br><br>
+    <button onclick="Countdown()">Start Countdown</button>
+
+    <h2>Current Time: <span id="currentTime"></span></h2>
+    <h2>Expiry Time: <span id="expiryTimeDisplay"></span></h2>
+    <h1 id="timer"></h1>
+
+    <script>
+        function Countdown() {
+            // Get the values of the expiry date and time inputs
+            var expiryDateInput = document.getElementById("expiryDate").value;
+            var expiryTimeInput = document.getElementById("expiryTime").value;
+
+            // Combine date and time input and create a new Date object
+            var expiryDateTime = new Date(expiryDateInput + " " + expiryTimeInput);
+
+            // Get the current date and time
+            var currentTimeElement = document.getElementById("currentTime");
+            var expiryTimeElement = document.getElementById("expiryTimeDisplay");
+            var timerElement = document.getElementById("timer");
+
+            // Set the current time and expiry time elements
+            currentTimeElement.textContent = new Date().toLocaleString();
+            expiryTimeElement.textContent = expiryDateTime.toLocaleString();
+
+            //update the countdown every 1000 milliseconds (1 sec)
+            var countdownInterval = setInterval(function () {
+                var currentTime = new Date();
+                var timeDifference = expiryDateTime - currentTime;
+
+                // Check if the countdown has expired
+                if (timeDifference <= 0) {
+                    clearInterval(countdownInterval);
+                    timerElement.style.color = "green";
+                    timerElement.textContent = "Countdown expired !";
+                } else {
+                    // Calculate the days, hours, minutes and seconds remaining
+                    var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                    // Display the result in the element with id="timer"
+                    timerElement.textContent = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+                    timerElement.style.color = "red";
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

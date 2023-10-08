@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp 3</title>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <!-- //Name: Atharv Dange
+    //Roll No: 404A038
+    //A3 batch -->
+    <h3>Exp 3 String Operations</h3>
+    <table>
+        <tr>
+            <th colspan="2">
+                <h3>String Reversal</h3>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <label for="String">Enter a String:</label>
+                <input type="text" name="String" id="String"><br>
+                <button onclick="reverseStringInbuilt()">Reverse</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Reversed String: <span id="reversedString"></span></p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <th colspan="2">
+                <h3>String Replacement</h3>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <label>Enter a String:</label>
+                <input type="text" id="originalString"><br>
+                <label>String to be replaced:</label>
+                <input type="text" id="replaceString"><br>
+                <label>Enter Replacement:</label>
+                <input type="text" id="replacementString"><br>
+                <button onclick="performReplacement()">Replace</button>
+                <button onclick="performReplaceAll()">ReplaceAll</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Replaced String: <span id="replacedString"></span></p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <th colspan="2">
+                <h3>Palindrome Checker</h3>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <label>Enter a String:</label>
+                <input type="text" id="inputString">
+                <button onclick="checkPalindrome()">Check Palindrome</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Result: <span id="palindromeResult"></span></p>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

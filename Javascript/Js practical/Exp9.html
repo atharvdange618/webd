@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        /* Add some basic styling for the calculator buttons and input field */
+        .container {
+            text-align: center;
+            border: 1px solid black;
+            max-width: 300px;
+            position: relative;
+            left: 50px;
+        }
+
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .calculator button {
+            font-size: 18px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .calculator input[type="text"] {
+            grid-column: span 4;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- //Name: Atharv Dange
+    //Roll No: 404A038
+    //A3 batch -->
+    <div class="container">
+        <h2>Calculator</h2>
+        <div class="calculator">
+            <input type="text" id="output" readonly>
+            <button onclick="addToOutput('1')">1</button>
+            <button onclick="addToOutput('2')">2</button>
+            <button onclick="addToOutput('3')">3</button>
+            <button onclick="addToOutput('+')">+</button>
+            <button onclick="addToOutput('4')">4</button>
+            <button onclick="addToOutput('5')">5</button>
+            <button onclick="addToOutput('6')">6</button>
+            <button onclick="addToOutput('-')">-</button>
+            <button onclick="addToOutput('7')">7</button>
+            <button onclick="addToOutput('8')">8</button>
+            <button onclick="addToOutput('9')">9</button>
+            <button onclick="addToOutput('*')">*</button>
+            <button onclick="addToOutput('0')">0</button>
+            <button onclick="addToOutput('.')">.</button>
+            <button onclick="addToOutput('/')">/</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="addToOutput('%')">%</button>
+            <button onclick="clearOutput()">Clear</button>
+            <button onclick="deleteLastCharacter()">Delete</button>
+        </div>
+    </div>
+
+
+    <script>
+        // Function to add values to the output field
+        function addToOutput(value) {
+            const output = document.getElementById('output');
+            output.value += value;
+        }
+
+        // Function to clear the output field
+        function clearOutput() {
+            const output = document.getElementById('output');
+            output.value = '';
+        }
+
+        // Function to delete the last character from the output field
+        function deleteLastCharacter() {
+            const output = document.getElementById('output');
+            output.value = output.value.slice(0, -1);
+        }
+
+        // Function to calculate the result and display it in the output field
+        function calculate() {
+            const output = document.getElementById('output');
+            try {
+                output.value = eval(output.value);
+            } catch (error) {
+                alert('Invalid input!');
+                clearOutput();
+            }
+        }
+    </script>
+</body>
+
+</html>

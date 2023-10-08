@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+</head>
+
+<body>
+    <!-- //Name: Atharv Dange
+    //Roll No: 404A038
+    //A3 batch -->
+    <!-- Section 1 -->
+    <div onmouseover="changeBgColor()">
+        <h1>Welcome to My Website</h1>
+        <p>This is the home page.</p>
+    </div>
+
+    <!-- Section 2 -->
+    <div id="section2">
+        <h2>Section 2</h2>
+        <p>This is the second section.</p>
+        <input type="text" id="focusMe" onfocus="changeFocus()">
+    </div>
+
+    <!-- Section 3 -->
+    <div>
+        <h2>Section 3</h2>
+        <p>This is the third section.</p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to change background color to light blue on mouseover
+        function changeBgColor() {
+            document.body.style.backgroundColor = 'lightblue';
+        }
+
+        // Function to change color of a specific div element to light green on focus
+        function changeFocus() {
+            const divToHighlight = document.getElementById('section2');
+            if (divToHighlight) {
+                divToHighlight.style.backgroundColor = 'lightgreen';
+            }
+        }
+    </script>
+</body>
+
+</html>

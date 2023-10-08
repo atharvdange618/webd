@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp4 String Matching</title>
+</head>
+
+<body>
+    <!-- //Name: Atharv Dange
+    //Roll No: 404A038
+    //A3 batch -->
+    <label for="userText">Enter Text:</label>
+    <input type="text" id="userText"><br>
+
+    <label for="userPattern">Enter Pattern:</label>
+    <input type="text" id="userPattern"><br><br>
+
+    <button onclick="mathops()">Run mathematical operator match</button><br>
+    <button onclick="matchFunction()">Run match()</button><br>
+    <button onclick="matchAllFunction()">Run matchAll()</button><br>
+    <button onclick="checkStrictEquality()">Check Strict Equality</button><br>
+    <button onclick="compareWithLocale()">Compare with Locale</button><br>
+
+    <div id="output"></div>
+
+
+    <script>
+        function getInputValues() {
+            const text = document.getElementById('userText').value;
+            const pattern = document.getElementById('userPattern').value;
+            return { text, pattern };
+        }
+
+        function mathops() {
+            const { text, pattern } = getInputValues();
+            if (text > pattern) {
+                document.getElementById('output').innerHTML = '<p>First String is greater</p>';
+            }
+            else if (text < pattern) {
+                document.getElementById('output').innerHTML = '<p>Second String is greater</p>';
+            }
+            else {
+                document.getElementById('output').innerHTML = '<p>Strings are equal</p>';
+            }
+        }
+
+        function matchFunction() {
+            const { text, pattern } = getInputValues();
+            const regex = new RegExp(pattern, 'g');
+            const result = text.match(regex);
+
+            if (result) {
+                document.getElementById('output').innerHTML = '<p>match found</p>';
+            } else {
+                document.getElementById('output').innerHTML = '<p>No matches found.</p>';
+            }
+        }
+
+        function matchAllFunction() {
+            const { text, pattern } = getInputValues();
+            const regex = new RegExp(pattern, 'g');
+            const matches = text.match(regex);
+            const outputElement = document.getElementById('output');
+
+            if (matches && matches.length > 0) {
+                const matchCount = matches.length;
+                const matchList = matches.map(match => `<li>${match}</li>`).join('');
+                outputElement.innerHTML = `<p>${matchCount} matches found:</p><ul>${matchList}</ul>`;
+            } else {
+                outputElement.innerHTML = '<p>No matches found.</p>';
+            }
+        }
+
+        function checkStrictEquality() {
+            const { text, pattern } = getInputValues();
+            let output = document.getElementById('output');
+
+            if (pattern === '') {
+                output.innerHTML = '<p>please enter a pattern</p>';
+                return;
+            }
+
+            if (text === pattern) {
+                output.textContent = 'text strictly matches the pattern';
+            } else {
+                output.textContent = 'text does not match the pattern strictly.';
+            }
+        }
+
+        function validatePattern() {
+            const { pattern } = getInputValues();
+            let output = document.getElementById('output');
+
+            if (pattern === '') {
+                output.textContent = 'please enter a pattern';
+            }
+        }
+
+
+        function compareWithLocale() {
+            const { text, pattern } = getInputValues();
+            const regex = new RegExp(pattern, 'g');
+            const matches = text.match(regex);
+            const outputElement = document.getElementById('output');
+
+            if (!matches || matches.length === 0) {
+                outputElement.innerHTML = '<p>No matches found.</p>';
+                return;
+            }
+
+            const comparisonString = pattern;
+            let comparisonResults = '';
+
+            for (const match of matches) {
+                const comparisonResult = match.localeCompare(comparisonString);
+                let comparisonText = '';
+
+                switch (comparisonResult) {
+                    case 0:
+                        comparisonText = 'is equal to';
+                        break;
+                    case -1:
+                        comparisonText = 'comes before';
+                        break;
+                    case 1:
+                        comparisonText = 'comes after';
+                        break;
+                }
+
+                comparisonResults += `<p>Matched: ${match} ${comparisonText} ${comparisonString}</p>`;
+            }
+
+            outputElement.innerHTML = comparisonResults;
+        }
+
+
+    </script>
+</body>
+
+</html>

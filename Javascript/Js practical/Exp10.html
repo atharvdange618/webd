@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Properties</title>
+</head>
+
+<body>
+    <!-- //Name: Atharv Dange
+    //Roll No: 404A038
+    //A3 batch -->
+    <h1>Display Properties</h1>
+
+    <!-- Display properties using HTML elements -->
+    <p id="browser-info"></p>
+    <p id="screen-info"></p>
+    <p id="history-info"></p>
+    <p id="paragraph-count"></p>
+    <p id="replace-text-info"></p>
+
+    <script>
+        // 1. Browser Name & Version
+        const browserName = navigator.appName;
+        const browserVersion = navigator.appVersion;
+        const browserInfoElement = document.getElementById('browser-info');
+        browserInfoElement.textContent = `1. Browser Name & Version: ${browserName} ${browserVersion}`;
+
+        // 2. Screen Details
+        const screenWidth = window.screen.width;
+        const screenHeight = window.screen.height;
+        const screenInfoElement = document.getElementById('screen-info');
+        screenInfoElement.textContent = `2. Screen Details: ${screenWidth}x${screenHeight}`;
+
+        // 3. History Stack
+        const historyLength = window.history.length;
+        const historyInfoElement = document.getElementById('history-info');
+        historyInfoElement.textContent = `3. History Stack: ${historyLength}`;
+
+        // 4. Number of paragraph tags in HTML document
+        const paragraphCount = document.querySelectorAll('p').length;
+        const paragraphCountElement = document.getElementById('paragraph-count');
+        paragraphCountElement.textContent = `4. Number of paragraph tags in HTML document: ${paragraphCount}`;
+
+        // 5. Replace text in a particular tag
+        const targetElement = document.getElementById('target-tag');
+        if (targetElement) {
+            targetElement.textContent = 'This text has been replaced.';
+            const replaceTextInfoElement = document.getElementById('replace-text-info');
+            replaceTextInfoElement.textContent = '5. Text in a particular tag has been replaced.';
+        }
+    </script>
+
+    <!-- Example paragraph tags for demonstration -->
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+
+    <!-- Element to replace text -->
+    <p id="target-tag">This is the target tag.</p>
+</body>
+
+</html>

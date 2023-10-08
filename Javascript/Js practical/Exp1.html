@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp 1</title>
+</head>
+
+<body>
+    <!--Name: Atharv Dange
+        Roll No: 404A038
+        A3 batch-->
+    <table>
+        <tr>
+            <th colspan="2">
+                <h3>Area of Rectangle</h3>
+            </th>
+        </tr>
+        <tr>
+            <td>Enter the length of Rectangle:</td>
+            <td><input type="number" name="length" id="lenR"></td>
+        </tr>
+        <tr>
+            <td>Enter the height of Rectangle:</td>
+            <td><input type="number" name="height" id="heiR"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="calculateArea()">submit</button></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h4 id="area"></h4>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <table>
+        <tr>
+            <th colspan="2">
+                <h3>Area of Triangle</h3>
+            </th>
+        </tr>
+        <tr>
+            <td>Enter the Base of Triangle:</td>
+            <td><input type="number" name="base" id="base"></td>
+        </tr>
+        <tr>
+            <td>Enter the height of Triangle:</td>
+            <td><input type="number" name="height" id="heiT"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="calculateTriangleArea()">submit</button></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h4 id="triangleArea"></h4>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <table>
+        <tr>
+            <th colspan="2">
+                <h3>Area of Circle</h3>
+            </th>
+        </tr>
+        <tr>
+            <td>Enter the radius of Circle:</td>
+            <td><input type="number" name="radius" id="rad"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="calculateCircleArea()">submit</button></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h4 id="circleArea"></h4>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        //for rectangle
+        function calculateArea() {
+            var length = parseFloat(document.getElementById("lenR").value);
+            var height = parseFloat(document.getElementById("heiR").value);
+
+            var area = length * height;
+
+            document.getElementById("area").innerHTML = "Area: " + area;
+        }
+
+        //for triangle
+        function calculateTriangleArea() {
+            var base = parseFloat(document.getElementById("base").value);
+            var height = parseFloat(document.getElementById("heiT").value);
+
+            var area = (base * height) / 2;
+
+            document.getElementById("triangleArea").innerHTML = "Area: " + area;
+        }
+
+        //for circle
+        function calculateCircleArea() {
+            var radius = parseFloat(document.getElementById("rad").value);
+
+            var area = Math.PI * radius * radius;
+
+            document.getElementById("circleArea").innerHTML = "Area: " + area;
+        }
+    </script>
+</body>
+
+</html>

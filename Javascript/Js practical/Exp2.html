@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp 2</title>
+</head>
+
+<body>
+    <!--Name: Atharv Dange
+        Roll No: 404A038
+        A3 batch -->
+    <h4>JavaScript program to generate the multiplication table of given number</h4>
+    <label for="num">Enter the number:</label>
+    <input type="number" name="number" id="num">
+    <button onclick="multiTable()">submit</button>
+
+    <p id="result"></p>
+</body>
+
+<script>
+    function multiTable() {
+        var num = document.getElementById("num").value;
+        var resultParagraph = document.getElementById("result");
+
+        resultParagraph.innerHTML = "";
+
+        for (var i = 1; i <= 10; i++) {
+            var product = num * i;
+            resultParagraph.innerHTML += num + " x " + i + " = " + product + "<br>";
+        }
+    }
+</script>
+
+</html>

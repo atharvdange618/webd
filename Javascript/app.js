@@ -48,7 +48,7 @@ else {
 
 //nested if-else statements
 
-let marks = 32;
+let marks = 75;
 
 if (marks >= 33) {
     console.log("pass");
@@ -60,4 +60,30 @@ if (marks >= 33) {
 }
 else {
     console.log("better luck next time");
+}
+
+//logical operators
+if (marks >= 33 && marks >= 80) {
+    console.log("pass");
+    console.log("A+");
+}
+
+if (marks >= 33 || marks <= 80) {
+    console.log("pass");
+    console.log("A+");
+}
+
+//practice question 4
+/*
+a good string is a string that starts with a letter a and has a length > 3. write a program to find if a string starts with a letter is good or not.
+*/
+
+
+//practice question 4
+let num = 12;
+if ((num % 3 === 0) && ((num + 1 == 15) || (num - 1 == 11))) {
+    console.log("safe");
+}
+else {
+    console.log("unsafe");
 }
