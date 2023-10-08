@@ -77,7 +77,13 @@ if (marks >= 33 || marks <= 80) {
 /*
 a good string is a string that starts with a letter a and has a length > 3. write a program to find if a string starts with a letter is good or not.
 */
-
+let str = "ankle";
+if (str.length > 3 && str[0] === "a") {
+    console.log("good string");
+}
+else {
+    console.log("bad string");
+}
 
 //practice question 4
 let num = 12;
@@ -86,4 +92,40 @@ if ((num % 3 === 0) && ((num + 1 == 15) || (num - 1 == 11))) {
 }
 else {
     console.log("unsafe");
+}
+
+//truthy and falsey
+if (true) {
+    console.log("it has true value")
+} else {
+    console.log("it has false value")
+}
+
+//switch statement
+let day = 6;
+switch (day) {
+    case 1:
+        console.log("Monday");
+        break;
+    case 2:
+        console.log("Tuesday");
+        break;
+    case 3:
+        console.log("Wednesday");
+        break;
+    case 4:
+        console.log("Thursday");
+        break;
+    case 5:
+        console.log("Friday");
+        break;
+    case 6:
+        console.log("Saturday");
+        break;
+    case 7:
+        console.log("Sunday");
+        break;
+    default:
+        console.log("Invalid day")
+        break;
 }
