@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice question 1</title>
+</head>
+
+<body>
+    <h2>JavaScript Practice questions</h2>
+
+    <script>
+        //first
+        let num = 20;
+        if (num % 10 == 0) {
+            console.log("Good");
+        }
+        else {
+            console.log("Bad");
+        }
+
+        //second
+        // let name = prompt("Enter your name");
+        // let age = prompt("Enter your age");
+
+        // alert(`${name} is ${age} years old`);
+
+        //third
+        let quarter = 3;
+
+        switch (quarter) {
+            case 1:
+                console.log("Janurary, February, March");
+                break;
+            case 2:
+                console.log("April, May, June");
+                break;
+            case 3:
+                console.log("July, August, September");
+                break;
+            case 4:
+                console.log("October, November, December");
+                break;
+            default:
+                console.log("Invalid quarter");
+                break;
+        }
+
+        //Fourth
+        let str = "atharv";
+        if ((str.length > 5) && (str[0] == 'a' || str[0] == 'A')) {
+            console.log("Golden String");
+        }
+        else {
+            console.log("Not a Golden String");
+        }
+
+        //fifth
+        let a = 10;
+        let b = 12;
+        let c = 13;
+        if (a > b) {
+            if (a > c) {
+                console.log("A is the largest");
+            }
+            else {
+                console.log("C is the largest");
+            }
+        }
+        else {
+            if (b > c) {
+                console.log("B is the largest");
+            }
+            else {
+                console.log("C is the largest");
+            }
+        }
+
+        //sixth
+        let num1 = 3423;
+        let num2 = 6723;
+        if ((num1 % 10) == (num2 % 10)) {
+            console.log("numbers have same last digit which is " + num1 % 10);
+        }
+        else {
+            console.log("numbers have different last digit");
+        }
+    </script>
+</body>
+
+</html>
