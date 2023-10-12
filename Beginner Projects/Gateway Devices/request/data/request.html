@@ -197,10 +197,10 @@
         <div class="right">
             <ul class="list">
                 <li><a href="index.html">Home</a></li>
-                <li><a onclick="downloadFile()">Download</a></li>
+                <li><a href="download.html">Download</a></li>
                 <li><a href="upload.html">Upload</a></li>
                 <li><a href="request.html">Request</a></li>
-                <li><a onclick="deleteFile()">Delete</a></li>
+                <li><a href="delete.html">Delete</a></li>
                 <li><a href="directory.html">Directory</a></li>
                 <li><a id="logout">Logout</a></li>
             </ul>
@@ -212,7 +212,7 @@
         <form id="request-form" action="/file" method="GET">
             <input type="text" class="request-input" id="filename" name="filename" placeholder="Enter file name"
                 required>
-            <input type="submit" class="request-btn" value="Download">
+            <input type="submit" class="request-btn" value="Request">
         </form>
     </div>
 
@@ -222,14 +222,6 @@
             <pre id="fileContent"></pre>
         </div>
     </div>
-
-    <!-- <h1>File Download</h1>
-    <form action="/file" method="GET">
-        <label for="filename">Enter file name: </label>
-        <input type="text" id="filename" name="filename" required>
-        <input type="submit" value="Download">
-    </form>
-    <pre id="fileContent"></pre> -->
 
     <script>
         const form = document.querySelector('form');

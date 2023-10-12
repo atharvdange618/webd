@@ -151,19 +151,17 @@
             padding: 10px;
             font-size: 16px;
             margin-top: 10px;
+            border: 1px solid var(--gray);
+            border-radius: 4px;
+            outline: none;
         }
 
         #filePath::placeholder {
             color: #ccc;
         }
 
-        #filePath:focus {
-            outline: none;
-            border: 2px solid var(--primary);
-        }
-
-        #downloadButton {
-            background-color: var(--primary);
+        .download-button {
+            background-color: #007BFF;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -171,10 +169,11 @@
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
             margin-top: 10px;
+            border-radius: 4px;
         }
 
-        #downloadButton:hover {
-            background-color: #0e1621;
+        .download-button:hover {
+            background-color: #0056b3;
             transform: scale(1.05);
         }
 
@@ -196,38 +195,6 @@
             box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
             text-align: left;
             overflow-x: auto;
-        }
-
-        /* Input and Button Styles */
-        #filePath {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            margin-top: 10px;
-            border: 1px solid var(--gray);
-            border-radius: 4px;
-            outline: none;
-        }
-
-        #filePath::placeholder {
-            color: #ccc;
-        }
-
-        #downloadButton {
-            padding: 10px 20px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 4px;
-            margin-top: 10px;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        #downloadButton:hover {
-            background-color: #0e1621;
-            transform: scale(1.05);
         }
     </style>
     <script>
@@ -269,10 +236,10 @@
         <div class="right">
             <ul class="list">
                 <li><a href="index.html">Home</a></li>
-                <li><a onclick="download.html">Download</a></li>
+                <li><a href="download.html">Download</a></li>
                 <li><a href="upload.html">Upload</a></li>
                 <li><a href="request.html">Request</a></li>
-                <li><a onclick="deleteFile()">Delete</a></li>
+                <li><a href="delete.html">Delete</a></li>
                 <li><a href="directory.html">Directory</a></li>
                 <li><a id="logout">Logout</a></li>
             </ul>
@@ -283,7 +250,7 @@
 
     <h2>Download File</h2>
     <input type="text" id="filePath" placeholder="Enter file path">
-    <button onclick="downloadFile()">Download</button>
+    <button class="download-button" onclick="downloadFile()">Download</button>
 </body>
 
 </html>
