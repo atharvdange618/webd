@@ -8,32 +8,6 @@ const char *password = "babdigang"; // Replace with your Wi-Fi password
 
 WebServer server(80);
 
-void listFilesOnWeb()
-{
-    // Create a string to store the file list
-    String fileList = " ";
-    // Open the root directory of the SPIFFS filesystem
-    File root = SPIFFS.open("/");
-    // Open the first file in the root directory
-    File file = root.openNextFile();
-
-    // Loop through all the files in the root directory
-    while (file)
-    {
-        // Add the file name to the file list string
-        fileList += "\"" + String(file.name()) + "\",";
-        // Open the next file in the root directory
-        file = root.openNextFile();
-    }
-
-    // Remove the trailing comma from the file list string
-    fileList.remove(fileList.length() - 1); // Remove the trailing comma
-    // Add the closing bracket to the file list string
-    fileList += "]";
-    // Send the file list string as a response
-    server.send(200, "application/json", fileList);
-}
-
 void downloadFileOnWeb()
 {
     // Get the file path from the URL query string
