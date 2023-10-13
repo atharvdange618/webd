@@ -94,7 +94,7 @@ void setup() {
   });
 
   // Handle API requests to download files
-  server.on("/download", HTTP_GET, [](AsyncWebServerRequest * request) {
+  server.on("/download", HTTP_GET, [](AsyncWebServerRequest *request) {
     downloadFileOnWeb(request); // Pass the request object to the function
   });
 
@@ -104,7 +104,7 @@ void setup() {
     String filename = request->arg("filename");
 
     // Create the full path to the file
-    String fullPath = "/files/" + filename;
+    String fullPath = "/" + filename;
 
     // Open the file
     File file = SPIFFS.open(fullPath, "r");
