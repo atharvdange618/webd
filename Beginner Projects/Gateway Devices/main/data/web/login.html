@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Server | Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@300;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        .wrapper {
+            --input-focus: #2d8cf0;
+            --font-color: #323232;
+            --font-color-sub: #666;
+            --bg-color: #fff;
+            --bg-color-alt: #666;
+            --main-color: #323232;
+        }
+
+        .navbar {
+            background-color: black;
+            color: #fff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            line-height: 5rem;
+        }
+
+        .left h1 {
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-color);
+            gap: 20px;
+            border-radius: 5px;
+            border: 2px solid var(--main-color);
+            box-shadow: 4px 4px var(--main-color);
+        }
+
+        .flip-card__form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .title {
+            margin: 20px 0 20px 0;
+            font-size: 25px;
+            font-weight: 900;
+            text-align: center;
+            color: var(--main-color);
+        }
+
+        .flip-card__input {
+            width: 250px;
+            height: 40px;
+            border-radius: 5px;
+            border: 2px solid var(--main-color);
+            background-color: var(--bg-color);
+            box-shadow: 4px 4px var(--main-color);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--font-color);
+            padding: 5px 10px;
+            outline: none;
+        }
+
+        .flip-card__input::placeholder {
+            color: var(--font-color-sub);
+            opacity: 0.8;
+        }
+
+        .flip-card__input:focus {
+            border: 2px solid var(--input-focus);
+        }
+
+        .flip-card__btn:active,
+        .button-confirm:active {
+            box-shadow: 0px 0px var(--main-color);
+            transform: translate(3px, 3px);
+        }
+
+        .flip-card__btn {
+            margin: 20px 0 20px 0;
+            width: 120px;
+            height: 40px;
+            border-radius: 5px;
+            border: 2px solid var(--main-color);
+            background-color: var(--bg-color);
+            box-shadow: 4px 4px var(--main-color);
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--font-color);
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function authentication() {
+            // Get the values entered by the user
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Set the valid username and password
+            var validUsername = "Admin";
+            var validPassword = "Admin@123";
+
+            // Check if the username and password match the valid values
+            if (username === validUsername && password === validPassword) {
+                // If the username and password match, redirect to the index.html page
+                window.location.href = "index.html";
+            } else {
+                // If the username and password don't match, display an error message
+                var errorArea = document.getElementById("error-area");
+                errorArea.textContent = "Invalid username or password. Please try again.";
+                // Reset the form
+                document.getElementById('formId').reset();
+            }
+
+            // Return false to prevent the default action
+            return false;
+        }
+    </script>
+
+<body>
+    <nav class="navbar">
+        <div class="left">
+            <h1>File Fortress</h1>
+        </div>
+    </nav>
+    <div class="form-container wrapper">
+        <div class="logo title">
+            <h2>Login</h2>
+        </div>
+        <form class="flip-card__form " id="formId">
+            <input type="text" name="text" class="flip-card__input " placeholder="username" id="username">
+            <input type="password" name="password" class="flip-card__input" placeholder="password" id="password">
+            <button class="flip-card__btn" type="button" onclick="authentication()">Login</button>
+            <h4 id="error-area"></h4>
+        </form>
+    </div>
+
+</body>
+
+</html>

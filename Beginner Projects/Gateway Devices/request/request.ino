@@ -31,7 +31,7 @@ void setup()
   Serial.print("HTTP server started at http://");
   Serial.println(WiFi.localIP());
 
-  // Route for the default page (file_download.html)
+  // Route for the default page (request.html)
   server.on("/", HTTP_GET, []()
             {
     // Open and send the HTML file as the response
@@ -43,13 +43,14 @@ void setup()
       server.send(404, "text/plain", "File Not Found");
     } });
 
-  // Route for the file download page
+  // Route for the file request page
   server.on("/file", HTTP_GET, []()
             {
     // Get the file path from the URL
     String filePath = server.arg("filename");
-    // Call the function to download the file
-    downloadFileOnSerial(filePath); });
+
+    // Call the function to read the file
+    readFileOnSerial(filePath); });
 
   // Start the server
   server.begin();
@@ -68,23 +69,7 @@ void loop()
   }
 }
 
-void listFilesOnSerial()
-{
-  // Open the root directory
-  File root = SPIFFS.open("/");
-
-  // Iterate through the files in the root directory
-  File file = root.openNextFile();
-  while (file)
-  {
-    // Print the file name
-    Serial.println(file.name());
-    // Open the next file
-    file = root.openNextFile();
-  }
-}
-
-void downloadFileOnSerial(const String &filePath)
+void readFileOnSerial(const String &filePath)
 {
   // Create the full path to the file
   String fullPath = "/" + filePath; // Add leading slash to the file path
@@ -113,31 +98,5 @@ void downloadFileOnSerial(const String &filePath)
   {
     // Send a 404 error if the file does not exist
     server.send(404, "text/plain", "File Not Found: " + fullPath);
-  }
-}
-
-void processSerialCommand()
-{
-  // Read the serial command from the client
-  String command = Serial.readStringUntil('\n');
-  command.trim(); // Remove leading/trailing whitespace
-
-  // Check the command and call the appropriate function
-  if (command == "list")
-  {
-    // Call the function to list the files
-    listFilesOnSerial();
-  }
-  else if (command.startsWith("download "))
-  {
-    // Get the file path from the command
-    String filePath = command.substring(9); // Remove "download "
-    // Call the function to download the file
-    downloadFileOnSerial(filePath);
-  }
-  else
-  {
-    // Send an error message if the command is invalid
-    Serial.println("Invalid command. Available commands: list, download <filename>");
   }
 }

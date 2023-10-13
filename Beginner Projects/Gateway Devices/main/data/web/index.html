@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Server | Home</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@300;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        .navbar {
+            background-color: black;
+            color: #ddd;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            line-height: 5rem;
+        }
+
+        .left h1 {
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+
+        .checkBtn {
+            display: none;
+        }
+
+        .right ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .right ul li a {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 1s;
+        }
+
+        .right ul li a:hover {
+            background-color: #fff;
+            box-shadow: 0 0 6px rgb(227, 221, 221);
+            border-radius: 7px;
+            color: black;
+        }
+
+        /* Mobile menu styles */
+        @media screen and (max-width: 805px) {
+            .checkLabel {
+                color: white;
+                font-size: 30px;
+                font-weight: 700;
+                position: absolute;
+                right: 16px;
+                line-height: 60px;
+                cursor: pointer;
+                transition: all 0.3s linear;
+            }
+
+            .checkLabel span {
+                display: block;
+                width: 30px;
+                height: 3px;
+                background-color: white;
+                margin: 6px auto;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .checkBtn:checked+.checkLabel span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 5px);
+            }
+
+            .checkBtn:checked+.checkLabel span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .checkBtn:checked+.checkLabel span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -5px);
+            }
+
+            .list {
+                width: 100%;
+                height: 100vh;
+                background-color: black;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 4rem;
+                left: 100%;
+                transition: all 1s;
+            }
+
+            .checkBtn:checked+.checkLabel+.right .list {
+                left: 0%;
+            }
+
+            .checkBtn {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                z-index: 2;
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        function authentication() {
+            // Get the values entered by the user
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Set the valid username and password
+            var validUsername = "Admin";
+            var validPassword = "Admin@123";
+
+            // Check if the username and password match the valid values
+            if (username === validUsername && password === validPassword) {
+                // If the username and password match, redirect to the index.html page
+                window.location.href = "index.html";
+            } else {
+                // If the username and password don't match, display an error message
+                var errorArea = document.getElementById("error-area");
+                errorArea.textContent = "Invalid username or password. Please try again.";
+                // Reset the form
+                document.getElementById('formId').reset();
+            }
+
+            // Return false to prevent the default action
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="left">
+            <h1>File Fortress</h1>
+        </div>
+        <input type="checkbox" class="checkBtn" id="check">
+        <label for="check" class="checkLabel">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="right">
+            <ul class="list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="download.html">Download</a></li>
+                <li><a href="upload.html">Upload</a></li>
+                <li><a href="request.html">Request</a></li>
+                <li><a href="delete.html">Delete</a></li>
+                <li><a href="directory.html">Directory</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+</body>
+
+</html>

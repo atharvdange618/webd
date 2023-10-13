@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Deletion</title>
+</head>
+<body>
+    <h1>Files in SPIFFS</h1>
+    <ul id="fileList"></ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fileList = document.getElementById('fileList');
+
+            function listFiles() {
+    fetch('/list')
+        .then(response => response.json())
+        .then(data => {
+                        fileList.innerHTML = '';
+                        data.forEach(fileName => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = fileName + ' ';
+                            listItem.addEventListener('click', function () {
+                                deleteFile(fileName);
+                            });
+                            fileList.appendChild(listItem);
+                        });
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            function deleteFile(fileName) {
+                fetch('/delete?file=' + fileName)
+                    .then(response => response.text())
+                    .then(data => {
+                        console.log(data);
+                        listFiles();
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            listFiles();
+        });
+    </script>
+</body>
+</html>
