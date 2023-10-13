@@ -8,10 +8,6 @@ const char *password = "babdigang"; // Replace with your Wi-Fi password
 
 WebServer server(80);
 
-void listFilesOnSerial();
-void downloadFileOnSerial(const String &filePath);
-void processSerialCommand();
-
 void setup()
 {
   // Initialize the serial port
@@ -58,15 +54,7 @@ void setup()
 
 void loop()
 {
-  // Handle any incoming client connections
-  server.handleClient();
-
-  // Check for serial commands
-  if (Serial.available() > 0)
-  {
-    // Call the function to process the serial commands
-    processSerialCommand();
-  }
+// code
 }
 
 void readFileOnSerial(const String &filePath)
