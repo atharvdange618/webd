@@ -8,6 +8,9 @@ const char* ssid = "BangBros";
 const char* password = "babdigang";
 
 AsyncWebServer server(80);
+File uploadFile;
+static const size_t bufferSize = 1024; // Adjust the buffer size as needed
+static uint8_t buffer[bufferSize];
 
 void setup() {
   // Initialize the serial port
@@ -29,7 +32,7 @@ void setup() {
 
   // Serve HTML pages
   server.on("/", HTTP_GET, [](AsyncWebServerRequest * request) {
-    servePage(request, "/web/index.html");
+    servePage(request, "/web/login.html");
   });
 
   server.on("/index.html", HTTP_GET, [](AsyncWebServerRequest * request) {
@@ -94,11 +97,11 @@ void setup() {
   });
 
   // Handle API requests to download files
-  server.on("/download", HTTP_GET, [](AsyncWebServerRequest *request) {
+  server.on("/download", HTTP_GET, [](AsyncWebServerRequest * request) {
     downloadFileOnWeb(request); // Pass the request object to the function
   });
 
-  //Handler for the /file endpoint
+  //Handler for the /file endpoint to read files
   server.on("/file", HTTP_GET, [](AsyncWebServerRequest * request) {
     // Get the filename from the query parameter
     String filename = request->arg("filename");
@@ -122,6 +125,33 @@ void setup() {
       request->send(404, "text/plain", "File Not Found: " + filename);
     }
   });
+
+  // Handle API requests to delete files
+  server.on("/delete", HTTP_GET, [](AsyncWebServerRequest * request) {
+    String filename = request->arg("filename");
+    if (SPIFFS.remove("/" + filename)) {
+      request->send(200, "text/plain", "File Deleted: " + filename);
+    } else {
+      request->send(404, "text/plain", "File Not Found: " + filename);
+    }
+  });
+
+  server.on("/upload", HTTP_POST, [](AsyncWebServerRequest * request) {
+    // Check if the request has a file attached
+    if (request->hasParam("file", true, true)) {
+      AsyncWebParameter* file = request->getParam("file", true, true);
+      String filename = "/" + file->value();
+      // Handle file upload
+      if (handleFileUpload(request, filename, 0, buffer, file->size(), true)) {
+        request->send(200, "text/plain", "File uploaded successfully");
+      } else {
+        request->send(500, "text/plain", "Failed to upload file");
+      }
+    } else {
+      request->send(400, "text/plain", "No file attached to the request");
+    }
+  });
+
 
   // Start the web server
   server.begin();
@@ -167,6 +197,35 @@ void downloadFileOnWeb(AsyncWebServerRequest *request)
     // Send a 404 response
     request->send(404, "text/plain", "File Not Found: " + filePath);
   }
+}
+
+bool handleFileUpload(AsyncWebServerRequest *request, String filename, size_t index, const uint8_t *data, size_t len, bool final) {
+  static File uploadFile;
+
+  // Check if this is the first chunk of the upload
+  if (index == 0) {
+    // Open a new file with the specified filename for writing
+    uploadFile = SPIFFS.open(filename, "w");
+    if (!uploadFile) {
+      // Failed to open the file
+      return false;
+    }
+  }
+
+  // Write the current chunk of data to the file
+  if (uploadFile.write(data, len) != len) {
+    // Failed to write data to the file
+    return false;
+  }
+
+  // Check if this is the final chunk of the upload
+  if (final) {
+    // Close the file
+    uploadFile.close();
+    return true; // Upload completed successfully
+  }
+
+  return true; // Continue uploading
 }
 
 void loop() {

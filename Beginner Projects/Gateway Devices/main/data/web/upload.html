@@ -157,7 +157,7 @@
             background-color: #0056b3;
         }
 
-        #upload-status {
+        #uploadMessage {
             font-size: 18px;
             color: #4CAF50;
             margin-top: 20px;
@@ -191,14 +191,38 @@
 
     <div class="upload-container">
         <h2 class="upload-title">Upload Files</h2>
-        <form id="upload-form" enctype="multipart/form-data">
+        <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
             <input type="file" class="upload-input" name="file" id="file" required>
             <button type="submit" class="upload-btn">Upload</button>
         </form>
-        <p id="upload-status"></p>
+        <p id="uploadMessage"></p>
     </div>
 
-    <script src="upload.js"></script>
+    <script>
+        const uploadForm = document.getElementById('upload-form');
+        const uploadMessage = document.getElementById('uploadMessage');
+
+        uploadForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(uploadForm);
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const data = await response.text();
+                    uploadMessage.textContent = data;
+                } else {
+                    uploadMessage.textContent = `Error: ${response.status} - ${response.statusText}`;
+                }
+            } catch (error) {
+                uploadMessage.textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
 </body>
 
 </html>
