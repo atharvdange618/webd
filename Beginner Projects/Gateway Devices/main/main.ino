@@ -3,20 +3,32 @@
 #include <SPIFFS.h>
 #include <ArduinoJson.h>
 #include <Arduino.h>
+#include <ESPmDNS.h> // Include the mDNS library
 
 const char* ssid = "BangBros";
 const char* password = "babdigang";
 
 AsyncWebServer server(80);
 File uploadFile;
-static const size_t bufferSize = 1024; // Adjust the buffer size as needed
+static const size_t bufferSize = 1024;
 static uint8_t buffer[bufferSize];
 
 void setup() {
-  // Initialize the serial port
   Serial.begin(115200);
 
-  // Connect to Wi-Fi
+  // Configure mDNS with a specific hostname
+  if (!MDNS.begin("babdigangserver")) {
+    Serial.println("Error setting up mDNS");
+  }
+  Serial.println("mDNS responder started");
+
+  // Set the fixed IP address
+  IPAddress staticIP(192, 168, 1, 100); // Your desired IP address
+  IPAddress gateway(192, 168, 1, 1);    // Your router's IP address
+  IPAddress subnet(255, 255, 255, 0);   // Subnet mask
+
+  WiFi.config(staticIP, gateway, subnet);
+
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
@@ -63,31 +75,32 @@ void setup() {
     servePage(request, "/web/login.html");
   });
 
-  //Handler for the /fetchFiles endpoint
+  // Handler for the /fetchFiles endpoint
   server.on("/fetchFiles", HTTP_GET, [](AsyncWebServerRequest * request) {
-    // Open the root directory
-    File root = SPIFFS.open("/");
-    if (!root) {
-      request->send(500, "text/plain", "Failed to open directory");
+    // Open the specific folder (files)
+    File folder = SPIFFS.open("/files");
+    if (!folder) {
+      request->send(500, "text/plain", "Failed to open the folder");
       return;
     }
 
     // Create a JSON array to store file information
-    DynamicJsonDocument serverResponse(4096); // Adjust the size as per your needs
+    DynamicJsonDocument serverResponse(4096); // Adjust the size as needed
     JsonArray fileArray = serverResponse.createNestedArray("files");
 
-    // Read each file in the directory
-    File file = root.openNextFile();
+    // Read each file in the folder
+    File file = folder.openNextFile();
     while (file) {
       // Encode the file name to prevent JSON parsing issues
       String encodedName = file.name();
       encodedName.replace("\"", "\\\"");
+
       // Create a JSON object for each file
       JsonObject fileObject = fileArray.createNestedObject();
       fileObject["name"] = encodedName;
       fileObject["size"] = file.size();
 
-      file = root.openNextFile();
+      file = folder.openNextFile();
     }
 
     // Send the JSON response
@@ -101,25 +114,23 @@ void setup() {
     downloadFileOnWeb(request); // Pass the request object to the function
   });
 
-  //Handler for the /file endpoint to read files
+  // Handler for the /file endpoint to read files
   server.on("/file", HTTP_GET, [](AsyncWebServerRequest * request) {
     // Get the filename from the query parameter
     String filename = request->arg("filename");
 
-    // Create the full path to the file
-    String fullPath = "/" + filename;
+    // Create the full path to the file inside the "files" folder
+    String fullPath = "/files/" + filename;
 
     // Open the file
     File file = SPIFFS.open(fullPath, "r");
 
     // Check if the file exists
     if (file) {
-      // Read the file content
-      String fileContent = file.readString();
-      // Close the file
-      file.close();
-      // Send the file content as the response
-      request->send(200, "text/plain", fileContent);
+      // Create a response with the file content
+      AsyncWebServerResponse *response = request->beginResponse(SPIFFS, fullPath, "application/octet-stream");
+      // Send the response
+      request->send(response);
     } else {
       // Send a 404 error if the file does not exist
       request->send(404, "text/plain", "File Not Found: " + filename);
@@ -129,28 +140,21 @@ void setup() {
   // Handle API requests to delete files
   server.on("/delete", HTTP_GET, [](AsyncWebServerRequest * request) {
     String filename = request->arg("filename");
-    if (SPIFFS.remove("/" + filename)) {
+    if (SPIFFS.remove("/files/" + filename)) {
       request->send(200, "text/plain", "File Deleted: " + filename);
     } else {
       request->send(404, "text/plain", "File Not Found: " + filename);
     }
   });
 
-  server.on("/upload", HTTP_POST, [](AsyncWebServerRequest * request) {
-    // Check if the request has a file attached
-    if (request->hasParam("file", true, true)) {
-      AsyncWebParameter* file = request->getParam("file", true, true);
-      String filename = "/" + file->value();
-      // Handle file upload
-      if (handleFileUpload(request, filename, 0, buffer, file->size(), true)) {
-        request->send(200, "text/plain", "File uploaded successfully");
-      } else {
-        request->send(500, "text/plain", "Failed to upload file");
-      }
-    } else {
-      request->send(400, "text/plain", "No file attached to the request");
-    }
+  // Handle API requests to upload files
+  server.on("/upload.html", HTTP_GET, [](AsyncWebServerRequest * request) {
+    request->send(SPIFFS, "/upload.html");
   });
+
+  server.on("/fupload", HTTP_POST, [](AsyncWebServerRequest * request) {
+    request->send(200);
+  }, handleUpload);
 
 
   // Start the web server
@@ -178,7 +182,7 @@ void servePage(AsyncWebServerRequest *request, String path) {
 void downloadFileOnWeb(AsyncWebServerRequest *request)
 {
   // Get the file path from the URL query string
-  String filePath = "/" + request->arg("filepath");
+  String filePath = "/files/" + request->arg("filepath");
 
   // Open the file for reading
   File file = SPIFFS.open(filePath, "r");
@@ -199,33 +203,48 @@ void downloadFileOnWeb(AsyncWebServerRequest *request)
   }
 }
 
-bool handleFileUpload(AsyncWebServerRequest *request, String filename, size_t index, const uint8_t *data, size_t len, bool final) {
-  static File uploadFile;
-
-  // Check if this is the first chunk of the upload
-  if (index == 0) {
-    // Open a new file with the specified filename for writing
-    uploadFile = SPIFFS.open(filename, "w");
-    if (!uploadFile) {
-      // Failed to open the file
-      return false;
-    }
+// Define the custom function to handle file uploads
+void handleUpload(AsyncWebServerRequest *request, String filename, size_t index, uint8_t *data, size_t len, bool final) {
+  File f;
+  if (!index) {
+    Serial.println("Received file:");
+    Serial.println(filename);
+    f = SPIFFS.open("/files/" + filename, FILE_WRITE); // Save the file to the "files" folder
   }
 
-  // Write the current chunk of data to the file
-  if (uploadFile.write(data, len) != len) {
-    // Failed to write data to the file
-    return false;
+  if (!f) {
+    f = SPIFFS.open("/files/" + filename, FILE_APPEND); // Append to the file in the "files" folder
   }
 
-  // Check if this is the final chunk of the upload
+  if (!f) {
+    Serial.println("Failed to create file");
+    return;
+  }
+
+  for (size_t i = 0; i < len; i++) {
+    f.write(data[i]);
+  }
+
   if (final) {
-    // Close the file
-    uploadFile.close();
-    return true; // Upload completed successfully
-  }
+    int bytes = f.size();
 
-  return true; // Continue uploading
+    String fsize = "";
+    if (bytes < 1024)
+      fsize = String(bytes) + " B";
+    else if (bytes < (1024 * 1024))
+      fsize = String(bytes / 1024.0, 3) + " KB";
+    else if (bytes < (1024 * 1024 * 1024))
+      fsize = String(bytes / 1024.0 / 1024.0, 3) + " MB";
+    else
+      fsize = String(bytes / 1024.0 / 1024.0 / 1024.0, 3) + " GB";
+
+    Serial.println((String)filename + " uploaded of size " + fsize);
+
+    request->send(200, "text/plain", "File uploaded successfully");
+
+    request->redirect("/directory.html");
+  }
+  f.close();
 }
 
 void loop() {

@@ -289,16 +289,13 @@
         </div>
     </nav>
 
-    <h2>File Directory</h2>
+<h2>File Directory</h2>
     <div class="table-widget">
         <table>
             <caption>
                 Files
                 <span class="table-row-count"></span><br><br>
                 <input type="text" id="file-search" placeholder="Search Files">
-                <button id="search-button">Search</button>
-                <!-- Moved the "List Files" button inside the caption -->
-                <button id="listFilesButton">List Files</button>
             </caption>
             <thead>
                 <!-- Table header content -->
@@ -309,112 +306,77 @@
         </table>
     </div>
     <script>
-        function authentication() {
-            // Get the values entered by the user
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-
-            var validUsername = "Admin";
-            var validPassword = "Admin@123";
-
-            if (username === validUsername && password === validPassword) {
-                window.location.href = "index.html";
-            } else {
-                var errorArea = document.getElementById("error-area");
-                errorArea.textContent = "Invalid username or password. Please try again.";
-                document.getElementById('formId').reset();
-            }
-
-            return false;
-        }
-
         document.addEventListener("DOMContentLoaded", function () {
-            const logoutLink = document.getElementById("logout");
+    // Function to update row count
+    function updateRowCount() {
+        const rowCountSpan = document.querySelector(".table-row-count");
+        const visibleRows = document.querySelectorAll("#file-rows tr:not([style='display: none;'])").length;
+        const totalRows = document.querySelectorAll("#file-rows tr").length;
+        rowCountSpan.textContent = `${visibleRows} of ${totalRows} files shown`;
+    }
 
-            logoutLink.addEventListener("click", function (e) {
-                e.preventDefault();
-
-                window.location.href = "login.html";
-            });
+    // Function to filter files based on search input
+    function filterFiles(searchText) {
+        const files = document.querySelectorAll('#file-rows tr');
+        files.forEach(function (file) {
+            const name = file.querySelector('td:first-child').textContent.toLowerCase();
+            if (name.includes(searchText.toLowerCase())) {
+                file.style.display = ''; // Show matching file
+            } else {
+                file.style.display = 'none'; // Hide non-matching file
+            }
         });
+        updateRowCount(); // Update the row count when filtering
+    }
 
-        // Function to update row count
-        function updateRowCount() {
-            const rowCountSpan = document.querySelector(".table-row-count");
-            const visibleRows = document.querySelectorAll("#file-rows tr:not([style='display: none;'])").length;
-            const totalRows = document.querySelectorAll("#file-rows tr").length;
-            rowCountSpan.textContent = `${visibleRows} of ${totalRows} files shown`;
-        }
+    // Event listener for search button
+    document.getElementById('file-search').addEventListener('input', function () {
+        const searchText = this.value;
+        filterFiles(searchText);
+    });
 
-        // Function to filter files based on search input
-        function filterFiles(searchText) {
+    // Event listener for clearing the search field
+    document.getElementById('file-search').addEventListener('input', function () {
+        if (this.value === '') {
+            // If the search input is empty, show all files
             const files = document.querySelectorAll('#file-rows tr');
             files.forEach(function (file) {
-                const name = file.querySelector('td:first-child').textContent.toLowerCase();
-                if (name.includes(searchText.toLowerCase())) {
-                    file.style.display = ''; // Show matching file
-                } else {
-                    file.style.display = 'none'; // Hide non-matching file
-                }
+                file.style.display = '';
             });
-            updateRowCount(); // Update the row count when filtering
+            updateRowCount(); // Update the row count when clearing search
         }
+    });
 
-        // Event listener for search button
-        document.getElementById('search-button').addEventListener('click', function () {
-            const searchText = document.getElementById('file-search').value;
-            filterFiles(searchText);
-        });
+    // Function to list files
+    function listFiles() {
+        fetch("/fetchFiles")
+            .then((response) => response.json())
+            .then((data) => {
+                const tbody = document.getElementById("file-rows");
+                tbody.innerHTML = ""; // Clear previous table content
 
-        // Event listener for input field on Enter key press
-        document.getElementById('file-search').addEventListener('keyup', function (event) {
-            if (event.key === 'Enter') {
-                const searchText = this.value;
-                filterFiles(searchText);
-            }
-        });
+                // Process the JSON data
+                data.files.forEach(function (file) {
+                    const row = tbody.insertRow();
+                    const nameCell = row.insertCell(0);
+                    const sizeCell = row.insertCell(1);
 
-        // Event listener for clearing the search field
-        document.getElementById('file-search').addEventListener('input', function () {
-            if (this.value === '') {
-                // If the search input is empty, show all files
-                const files = document.querySelectorAll('#file-rows tr');
-                files.forEach(function (file) {
-                    file.style.display = '';
+                    // Set the text content of the cells
+                    nameCell.textContent = file.name;
+                    sizeCell.textContent = file.size + " bytes";
                 });
-                updateRowCount(); // Update the row count when clearing search
-            }
-        });
 
-        // Event listener for "List Files" button
-        document.getElementById("listFilesButton").addEventListener("click", function () {
-            fetch("/fetchFiles")
-                .then((response) => response.json()) // Parse JSON response
-                .then((data) => {
-                    const tbody = document.getElementById("file-rows");
-                    tbody.innerHTML = ""; // Clear previous table content
+                updateRowCount(); // Update the row count after listing files
+            })
+            .catch((error) => {
+                console.error("Error fetching files:", error);
+                document.getElementById("file-rows").innerHTML = "Error fetching files.";
+            });
+    }
 
-                    // Process the JSON data
-                    data.files.forEach(function (file) {
-                        const row = tbody.insertRow();
-                        const nameCell = row.insertCell(0);
-                        const sizeCell = row.insertCell(1);
-
-                        // Set the text content of the cells
-                        nameCell.textContent = file.name;
-                        sizeCell.textContent = file.size + " bytes";
-                    });
-
-                    updateRowCount(); // Update the row count after listing files
-                })
-                .catch((error) => {
-                    console.error("Error fetching files:", error);
-                    document.getElementById("file-rows").innerHTML = "Error fetching files.";
-                });
-        });
-
-        // Initial row count update
-        updateRowCount();
+    // List files when the page loads
+    listFiles();
+});
     </script>
 
 

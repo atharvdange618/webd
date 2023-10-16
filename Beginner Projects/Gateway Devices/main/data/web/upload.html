@@ -199,7 +199,7 @@
     </div>
 
     <script>
-        const uploadForm = document.getElementById('upload-form');
+          const uploadForm = document.getElementById('upload-form');
         const uploadMessage = document.getElementById('uploadMessage');
 
         uploadForm.addEventListener('submit', async (event) => {
@@ -207,7 +207,7 @@
 
             const formData = new FormData(uploadForm);
             try {
-                const response = await fetch('/upload', {
+                const response = await fetch('/fupload', {
                     method: 'POST',
                     body: formData
                 });
@@ -222,6 +222,8 @@
                 uploadMessage.textContent = `Error: ${error.message}`;
             }
         });
+     
+
     </script>
 </body>
 
