@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+</head>
+
+<body>
+    <h3 id="task" class="heading">Task Manager</h3>
+    <input type="text" name="task" id="task-name">
+    <button type="submit" class="add-task">add</button>
+    <button class="clear">clear</button>
+    <div class="all-tasks"></div>
+</body>
+<script>
+    const input = document.querySelector('#task-name');
+    const button = document.querySelector('.add-task');
+    const allTasks = document.querySelector('.all-tasks');
+    const clearButton = document.querySelector('.clear');
+
+    button.addEventListener('click', function () {
+        console.log(input.value);
+        allTasks.innerHTML += '<h3>' + input.value + '</h3>';
+        input.value = '';
+    });
+
+    clearButton.addEventListener('click', function () {
+        allTasks.innerHTML = '';
+    });
+
+</script>
+
+</html>
