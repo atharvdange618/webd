@@ -48,6 +48,117 @@ the list given below : -->
         Copyright entity name : &copy;
         Trademark entity name : &reg;
     </pre>
+
+    <h2>level 3</h2>
+    <!-- Qs1. Recreate the following table using HTML : -->
+
+    <table border="black">
+
+        <caption>Student Information</caption>
+        <tr>
+            <th rowspan="6">Info</th>
+            <th rowspan="2">Name</th>
+            <th colspan="2">Address</th>
+        </tr>
+
+        <tr>
+            <th>City</th>
+            <th>House</th>
+        </tr>
+
+        <tr>
+            <td>A</td>
+            <td>Delhi</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>Mumbai</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>Kolkata</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>D</td>
+            <td>Pune</td>
+            <td>4</td>
+        </tr>
+    </table>
+
+    <br><br>
+    <!-- Qs2. Recreate the following form using HTML : -->
+    <form>
+        <label for="name">Name</label>
+        <input type="text" name="Name" id="name">
+
+        <br><br>
+
+        <label for="Sex">Sex:</label>
+        <input type="radio" name="male" id="male" value="male">
+        <label for="male">Male</label>
+        <input type="radio" name="female" id="female" value="female">
+        <label for="female">Female</label>
+
+        <br><br>
+
+        <label for="country">Country: </label>
+        <select name="country" id="country">
+            <option>Select an option</option>
+            <option value="india">India</option>
+            <option value="usa">USA</option>
+            <option value="nepal">Nepal</option>
+            <option value="canada">Canada</option>
+        </select>
+
+        <br><br>
+
+        <label for="message">Message</label><br>
+        <textarea name="message" id="message" cols="30" rows="4"></textarea>
+
+        <br><br>
+
+        <input type="checkbox" name="subscription" id="subscription">
+        <label for="subscription">Subscribe?</label>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Feedback form -->
+    <h2>Feedback Form</h2>
+    <form action="/contact">
+        <label for="name">Name: </label>
+        <input type="text" placeholder="Write your name" id="name" />
+
+        <br /><br />
+
+        <label for="email">Email: </label>
+        <input type="email" placeholder="Write your email" id="email" />
+
+        <br /><br />
+
+        <label for="message">Message: </label><br />
+        <textarea name="message" id="message" cols="30" rows="4"></textarea>
+
+        <br /><br />
+
+        <label for="rating">Rate us our of 5:</label><br />
+        <input type="radio" name="rating" id="one" value="one" />
+        <label for="one">1</label><br />
+        <input type="radio" name="rating" id="two" value="two" />
+        <label for="two">2</label><br />
+        <input type="radio" name="rating" id="three" value="three" />
+        <label for="three">3</label><br />
+        <input type="radio" name="rating" id="four" value="four" />
+        <label for="four">4</label><br />
+        <input type="radio" name="rating" id="five" value="five" />
+        <label for="five">5</label><br />
+
+        <br /><br />
+
+        <button>Send your message!</button>
 </body>
 
 </html>
