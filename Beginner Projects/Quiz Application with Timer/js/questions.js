@@ -58,13 +58,61 @@ let questions = [
 
     {
         numb: 6,
-        question: "Your Question is Here",
-        answer: "Correct answer of the question is here",
+        question: "What is the largest planet in our solar system?",
+        answer: "Jupiter",
         options: [
-            "Option 1",
-            "option 2",
-            "option 3",
-            "option 4"
+            "Earth",
+            "Mars",
+            "Jupiter",
+            "Saturn"
         ]
     },
+
+    {
+        numb: 7,
+        question: "What does JavaScript stand for?",
+        answer: "JavaScript",
+        options: [
+            "Just Another Scripting Language",
+            "Java Servlet",
+            "JavaScript",
+            "Jolly Simple Scripting Language"
+        ]
+    },
+
+    {
+        numb: 8,
+        question: "What is the capital of France?",
+        answer: "Paris",
+        options: [
+            "Berlin",
+            "Madrid",
+            "Rome",
+            "Paris"
+        ]
+    },
+
+    {
+        numb: 9,
+        question: "Which planet is known as the Red Planet?",
+        answer: "Mars",
+        options: [
+            "Jupiter",
+            "Venus",
+            "Mars",
+            "Saturn"
+        ]
+    },
+    
+    {
+        numb: 10,
+        question: "Who wrote the play 'Romeo and Juliet'?",
+        answer: "William Shakespeare",
+        options: [
+            "Charles Dickens",
+            "Leo Tolstoy",
+            "Jane Austen",
+            "William Shakespeare"
+        ]
+    }
 ];
