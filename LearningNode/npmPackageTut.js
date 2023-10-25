@@ -4,7 +4,7 @@ var oneLinerJoke = require('one-liner-joke');
 
 var figlet = require("figlet");
 
-figlet("fuck me thami !!", function (err, data) {
+figlet("Hello World !!", function (err, data) {
     if (err) {
         console.log("Something went wrong...");
         console.dir(err);
