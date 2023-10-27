@@ -4,8 +4,19 @@ const userModel = require("./users");
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  req.session.ban = true; // Change "res.session" to "req.session"
+  req.session.ban = true;
+  res.cookie("age", 25);
   res.render('index', { title: 'Express' });
+});
+
+router.get('/read', function (req, res) {
+  console.log(req.cookies.age);
+  res.send("check your cookies");
+});
+
+router.get('/deletecookies', function (req, res) {
+  res.clearCookie("age");
+  res.send("cookies deleted");
 });
 
 router.get('/create', async function (req, res) {
@@ -39,11 +50,13 @@ router.get('/delete', async function (req, res) {
 router.get('/checkban', function (req, res) {
   if (req.session.ban === true) { // Change "res.session" to "req.session"
     res.send("You are banned");
+  } else {
+    res.send("You are not banned");
   }
 });
 
 router.get('/removeban', function (req, res) {
-  req.session.destroy(function(err){
+  req.session.destroy(function (err) {
     console.log(err);
     res.send("You are unbanned");
   });
