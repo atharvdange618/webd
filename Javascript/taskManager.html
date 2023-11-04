@@ -4,32 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
+    <title>task manager</title>
+    <style>
+        .container {
+            width: 300px;
+            height: 100%;
+            background-color: lightgoldenrodyellow;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        input {
+            border: none;
+            font-size: 14px;
+            padding: 5px 8px;
+            outline: none;
+        }
+
+        button {
+            border: none;
+            font-size: 14px;
+            padding: 5px 8px;
+            border-radius: 5px;
+        }
+
+        .add-task {
+            color: green;
+            background-color: #eaffea;
+        }
+
+        .add-task:hover {
+            transform: scale(1.1);
+            background-color: #abf8ab;
+        }
+
+        .clear:hover {
+            transform: scale(1.1);
+            background-color: #fdb0b4;
+        }
+
+        .clear {
+            color: red;
+            background-color: #ffeaeb;
+        }
+
+        h4{
+            color: plum;
+            font-size: 18px;
+        }
+    </style>
 </head>
 
 <body>
-    <h3 id="task" class="heading">Task Manager</h3>
-    <input type="text" name="task" id="task-name">
-    <button type="submit" class="add-task">add</button>
-    <button class="clear">clear</button>
-    <div class="all-tasks"></div>
+    <div class="container">
+        <h3 id="task" class="heading">Task Manager</h3>
+        <input type="text" name="task" id="task-name">
+        <button type="submit" class="add-task">add</button>
+        <button class="clear">clear</button>
+        <div class="all-tasks"></div>
+    </div>
 </body>
 <script>
     const input = document.querySelector('#task-name');
-    const button = document.querySelector('.add-task');
+    const addbtn = document.querySelector('.add-task');
     const allTasks = document.querySelector('.all-tasks');
-    const clearButton = document.querySelector('.clear');
+    const clearbtn = document.querySelector('.clear');
 
-    button.addEventListener('click', function () {
-        console.log(input.value);
-        allTasks.innerHTML += '<h3>' + input.value + '</h3>';
-        input.value = '';
+    addbtn.addEventListener('click', () => {
+        allTasks.innerHTML += "<h4>" + input.value + "</h4>";
+        input.value = "";
+
     });
 
-    clearButton.addEventListener('click', function () {
-        allTasks.innerHTML = '';
-    });
-
+    clearbtn.addEventListener('click', () => {
+        allTasks.innerHTML = "";
+    })
 </script>
 
 </html>
