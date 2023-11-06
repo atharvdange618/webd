@@ -10,14 +10,6 @@ function reverseStringInbuilt() {
     reversedStringElement.textContent = reversedStr;
 }
 
-function reverseRecursive(str) {
-    if (str === "") {
-        return "";
-    } else {
-        return reverseRecursive(str.substr(1)) + str[0];
-    }
-}
-
 //for replacing string 
 function performReplacement() {
     const originalString = document.getElementById('originalString').value;

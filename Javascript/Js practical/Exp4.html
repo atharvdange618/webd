@@ -8,9 +8,6 @@
 </head>
 
 <body>
-    <!-- //Name: Atharv Dange
-    //Roll No: 404A038
-    //A3 batch -->
     <label for="userText">Enter Text:</label>
     <input type="text" id="userText"><br>
 
@@ -21,7 +18,6 @@
     <button onclick="matchFunction()">Run match()</button><br>
     <button onclick="matchAllFunction()">Run matchAll()</button><br>
     <button onclick="checkStrictEquality()">Check Strict Equality</button><br>
-    <button onclick="compareWithLocale()">Compare with Locale</button><br>
 
     <div id="output"></div>
 
@@ -97,44 +93,6 @@
                 output.textContent = 'please enter a pattern';
             }
         }
-
-
-        function compareWithLocale() {
-            const { text, pattern } = getInputValues();
-            const regex = new RegExp(pattern, 'g');
-            const matches = text.match(regex);
-            const outputElement = document.getElementById('output');
-
-            if (!matches || matches.length === 0) {
-                outputElement.innerHTML = '<p>No matches found.</p>';
-                return;
-            }
-
-            const comparisonString = pattern;
-            let comparisonResults = '';
-
-            for (const match of matches) {
-                const comparisonResult = match.localeCompare(comparisonString);
-                let comparisonText = '';
-
-                switch (comparisonResult) {
-                    case 0:
-                        comparisonText = 'is equal to';
-                        break;
-                    case -1:
-                        comparisonText = 'comes before';
-                        break;
-                    case 1:
-                        comparisonText = 'comes after';
-                        break;
-                }
-
-                comparisonResults += `<p>Matched: ${match} ${comparisonText} ${comparisonString}</p>`;
-            }
-
-            outputElement.innerHTML = comparisonResults;
-        }
-
 
     </script>
 </body>
