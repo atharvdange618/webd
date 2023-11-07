@@ -23,7 +23,7 @@
     <button onclick="removeArrayElement()">Remove Element</button>
 
     <h2>Check If an Array Contains a Specified Value</h2>
-    <label for="elementToCheck">Element to Check:</label>
+    <label for "elementToCheck">Element to Check:</label>
     <input type="text" id="elementToCheck">
     <br>
     <button onclick="checkArrayElement()">Check Element</button>
@@ -35,55 +35,56 @@
 
     <script>
         let array = [];
+        const resultElement = document.getElementById('result');
+        const arrayOutputElement = document.getElementById('arrayOutput');
 
         function readArray() {
             const arrayInput = document.getElementById('arrayInput').value;
             array = arrayInput.split(',').map(element => element.trim());
-            document.getElementById('result').textContent = 'Array submitted.';
-            document.getElementById('arrayOutput').textContent = `Current Array: [${array.join(', ')}]`;
+            updateArrayOutput();
+            setResult('Array submitted.');
         }
 
         function removeArrayElement() {
             const elementToRemove = document.getElementById('elementToRemove').value;
+            const index = array.indexOf(elementToRemove);
 
             if (array.length === 0) {
-                document.getElementById('result').textContent = 'Please enter an array first.';
+                setResult('Please enter an array first.');
+            } else if (index !== -1) {
+                array.splice(index, 1);
+                updateArrayOutput();
+                setResult(`Element '${elementToRemove}' removed.`);
             } else {
-                const index = array.indexOf(elementToRemove);
-
-                if (index !== -1) {
-                    array.splice(index, 1);
-                    document.getElementById('result').textContent = `Element '${elementToRemove}' removed.`;
-                } else {
-                    document.getElementById('result').textContent = `Element '${elementToRemove}' not found in the array.`;
-                }
-
-                document.getElementById('arrayOutput').textContent = `Updated Array: [${array.join(', ')}]`;
+                setResult(`Element '${elementToRemove}' not found in the array.`);
             }
         }
 
         function checkArrayElement() {
             const elementToCheck = document.getElementById('elementToCheck').value;
+            const index = array.indexOf(elementToCheck);
 
             if (array.length === 0) {
-                document.getElementById('result').textContent = 'Please enter an array first.';
+                setResult('Please enter an array first.');
+            } else if (index !== -1) {
+                setResult(`Element '${elementToCheck}' found at index ${index} in the array.`);
             } else {
-                const index = array.indexOf(elementToCheck);
-
-                if (index !== -1) {
-                    document.getElementById('result').textContent = `Element '${elementToCheck}' found at index ${index} in the array.`;
-                } else {
-                    document.getElementById('result').textContent = `Element '${elementToCheck}' not found in the array.`;
-                }
-
-                document.getElementById('arrayOutput').textContent = `Current Array: [${array.join(', ')}]`;
+                setResult(`Element '${elementToCheck}' not found in the array.`);
             }
         }
 
         function emptyArrayElements() {
             array = [];
-            document.getElementById('result').textContent = 'Array emptied.';
-            document.getElementById('arrayOutput').textContent = 'Current Array: []';
+            updateArrayOutput();
+            setResult('Array emptied.');
+        }
+
+        function setResult(message) {
+            resultElement.textContent = message;
+        }
+
+        function updateArrayOutput() {
+            arrayOutputElement.textContent = `Current Array: [${array.join(', ')}]`;
         }
     </script>
 </body>
