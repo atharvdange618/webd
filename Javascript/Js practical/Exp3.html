@@ -4,45 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exp 3</title>
-    <script src="index.js"></script>
+    <title>String Operations</title>
 </head>
 
 <body>
-    <h3>Exp 3 String Operations</h3>
+    <h3>String reverse</h3>
+    <label for="str">Enter a string:</label>
+    <input type="text" id="str">
+    <button onclick="strRev()">Reverse</button>
+    <h4 id="revstr"></h4>
 
-    <div>
-        <h3>String Reversal</h3>
-        <label for="String">Enter a String:</label>
-        <input type="text" name="String" id="String">
-        <button onclick="reverseStringInbuilt()">Reverse</button>
-        <p>Reversed String: <span id="reversedString"></span></p>
-    </div>
 
-    <br>
+    <h3>String Replacement</h3>
+    <label>Enter a String:</label>
+    <input type="text" id="originalString"><br>
+    <label>String to be replaced:</label>
+    <input type="text" id="replaceString"><br>
+    <label>Enter Replacement:</label>
+    <input type="text" id="replacementString"><br>
+    <button onclick="strReplace()">Replace</button>
+    <button onclick="strReplaceAll()">ReplaceAll</button>
+    <p id="replacedString"></p>
 
-    <div>
-        <h3>String Replacement</h3>
-        <label>Enter a String:</label>
-        <input type="text" id="originalString">
-        <label>String to be replaced:</label>
-        <input type="text" id="replaceString">
-        <label>Enter Replacement:</label>
-        <input type="text" id="replacementString">
-        <button onclick="performReplacement()">Replace</button>
-        <button onclick="performReplaceAll()">ReplaceAll</button>
-        <p>Replaced String: <span id="replacedString"></span></p>
-    </div>
+    <h3>Pallindrome Checker</h3>
+    <label>Enter a String:</label>
+    <input type="text" id="palstr"><br>
+    <button onclick="palChecker()">Check</button>
+    <p id="pallindrome"></p>
 
-    <br>
 
-    <div>
-        <h3>Palindrome Checker</h3>
-        <label>Enter a String:</label>
-        <input type="text" id="inputString">
-        <button onclick="checkPalindrome()">Check Palindrome</button>
-        <p>Result: <span id="palindromeResult"></span></p>
-    </div>
+    <script>
+        function strRev() {
+            const string = document.getElementById("str");
+            const revstr = document.getElementById("revstr");
+
+            const str = string.value;
+            const reversedstr = str.split("").reverse().join("");
+
+            revstr.textContent = reversedstr;
+        }
+
+        function strReplace() {
+            const originalString = document.getElementById("originalString").value;
+            const replaceString = document.getElementById("replaceString").value;
+            const replacementString = document.getElementById("replacementString").value;
+
+            const replacedString = originalString.replace(replaceString, replacementString);
+            document.getElementById("replacedString").textContent = replacedString;
+        }
+
+        function strReplaceAll() {
+            const originalString = document.getElementById("originalString").value;
+            const replaceString = document.getElementById("replaceString").value;
+            const replacementString = document.getElementById("replacementString").value;
+
+            const replacedString = originalString.replaceAll(replaceString, replacementString);
+            document.getElementById("replacedString").textContent = replacedString;
+        }
+
+        function palChecker() {
+            const palstr = document.getElementById("palstr").value;
+            const pallindrome = document.getElementById("pallindrome");
+
+            const pallin = palstr.split("").reverse().join("");
+
+            if (palstr == pallin) {
+                pallindrome.innerHTML = "Yes, it is a pallindrome";
+            } else {
+                pallindrome.innerHTML = "No, it is not a pallindrome";
+            }
+        }
+
+    </script>
 </body>
 
 </html>

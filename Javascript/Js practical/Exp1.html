@@ -4,68 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Area Calculator</title>
+    <title>Exp 1</title>
 </head>
 
 <body>
-    <div>
-        <h3>Area of Rectangle</h3>
-        <label for="lenR">Length:</label>
-        <input type="number" id="lenR">
-        <label for="heiR">Height:</label>
-        <input type="number" id="heiR">
-        <button onclick="calculateArea()">Calculate</button>
-        <h4 id="area"></h4>
-    </div>
+    <h3>Area of Rectangle</h3>
+    <label for="len">Length:</label>
+    <input type="number" id="len"><br>
+    <label for="wid">Width:</label>
+    <input type="number" id="wid"><br>
+    <button onclick="recArea()">Calculate</button>
 
-    <hr>
+    <h3>Area of Triangle</h3>
+    <label for="length">Length:</label>
+    <input type="number" id="length"><br>
+    <label for="brd">Breadth:</label>
+    <input type="number" id="brd"><br>
+    <button onclick="triArea()">Calculate</button>
 
-    <div>
-        <h3>Area of Triangle</h3>
-        <label for="base">Base:</label>
-        <input type="number" id="base">
-        <label for="heiT">Height:</label>
-        <input type="number" id="heiT">
-        <button onclick="calculateTriangleArea()">Calculate</button>
-        <h4 id="triangleArea"></h4>
-    </div>
-
-    <hr>
-
-    <div>
-        <h3>Area of Circle</h3>
-        <label for="rad">Radius:</label>
-        <input type="number" id="rad">
-        <button onclick="calculateCircleArea()">Calculate</button>
-        <h4 id="circleArea"></h4>
-    </div>
+    <h3>Area of Circle</h3>
+    <label for="rad">Radius:</label>
+    <input type="number" id="rad"><br>
+    <button onclick="cirArea()">Calculate</button><br>
+    <h4 id="Area"></h4>
 
     <script>
-        // Keep the original JavaScript code here
-        function calculateArea() {
-            var length = parseFloat(document.getElementById("lenR").value);
-            var height = parseFloat(document.getElementById("heiR").value);
-
-            var area = length * height;
-
-            document.getElementById("area").innerHTML = "Area: " + area;
+        function recArea() {
+            var len = parseFloat(document.getElementById("len").value);
+            var wid = parseFloat(document.getElementById("wid").value);
+            var area = document.getElementById("Area");
+            area.innerHTML = "Area of Rectangle is " + (len * wid);
         }
-
-        function calculateTriangleArea() {
-            var base = parseFloat(document.getElementById("base").value);
-            var height = parseFloat(document.getElementById("heiT").value);
-
-            var area = (base * height) / 2;
-
-            document.getElementById("triangleArea").innerHTML = "Area: " + area;
+        function triArea() {
+            var length = parseFloat(document.getElementById("length").value);
+            var brd = parseFloat(document.getElementById("brd").value);
+            var area = document.getElementById("Area");
+            area.innerHTML = "Area of Triangle is " + ((length * brd) / 2);
         }
-
-        function calculateCircleArea() {
-            var radius = parseFloat(document.getElementById("rad").value);
-
-            var area = Math.PI * radius * radius;
-
-            document.getElementById("circleArea").innerHTML = "Area: " + area;
+        function cirArea() {
+            var rad = parseFloat(document.getElementById("rad").value);
+            var area = document.getElementById("Area");
+            area.innerHTML = "Area of Circle is " + Math.PI * rad * rad;
         }
     </script>
 </body>
