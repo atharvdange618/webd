@@ -129,3 +129,49 @@ switch (day) {
         console.log("Invalid day")
         break;
 }
+
+// array
+let students = ['atharv', 'kamlesh', 'ishwar'];
+
+let mark = [60, 78, 98];
+
+let info = ["atharv", 21, 8.31];
+
+console.log(students[0].length);
+
+students[2] = 'suraj';
+students[10] = 'narlawar'
+console.log(students);
+console.log(students.length);
+
+//array methods
+
+let cars = ['audi', 'bmw', 'koneigsegg', 'mclaren'];
+
+cars.push("toyota");
+
+console.log(cars);
+
+cars.pop();
+
+console.log(cars);
+
+cars.unshift('toyota');
+
+console.log(cars);
+
+let followers = ['suraj', 'anushree', 'parnal'];
+
+let blocked = followers.shift();
+
+console.log(blocked);
+
+//practice ques
+let months = ['january', 'july', 'march', 'august'];
+
+months.shift();
+months.shift();
+months.unshift("june");
+months.unshift("july");
+
+console.log(months);
