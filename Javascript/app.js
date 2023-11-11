@@ -175,3 +175,88 @@ months.unshift("june");
 months.unshift("july");
 
 console.log(months);
+
+//indexOf and includes
+cars
+//(5) ['toyota', 'audi', 'bmw', 'koneigsegg', 'mclaren']
+cars.indexOf('bmw');
+//2
+cars.indexOf('xuv');
+//-1
+mark
+//(3) [60, 78, 98]
+mark.indexOf(98);
+//2
+cars.includes('xuv')
+//false
+
+//concat, reverse and slice
+let primary = ['red','blue','green'];
+
+let secondary = ['yellow','orange','violet'];
+
+primary.concat(secondary);
+//(6) ['red', 'blue', 'green', 'yellow', 'orange', 'violet']
+
+primary
+//(3) ['red', 'blue', 'green']
+
+secondary
+//(3) ['yellow', 'orange', 'violet']
+
+let allColors = primary.concat(secondary);
+
+allColors
+//(6) ['red', 'blue', 'green', 'yellow', 'orange', 'violet']
+
+cars
+//(5) ['toyota', 'audi', 'bmw', 'koneigsegg', 'mclaren']
+
+cars.reverse();
+//(5) ['mclaren', 'koneigsegg', 'bmw', 'audi', 'toyota']
+
+cars
+//(5) ['mclaren', 'koneigsegg', 'bmw', 'audi', 'toyota']
+
+cars.slice();
+//(5) ['mclaren', 'koneigsegg', 'bmw', 'audi', 'toyota']
+
+cars.slice(2,3);
+//['bmw']
+
+cars.slice(3);
+//(2) ['audi', 'toyota']
+
+cars.slice(-3);
+//(3) ['bmw', 'audi', 'toyota']
+
+//splice method
+allColors
+//(6) ['red', 'blue', 'green', 'yellow', 'orange', 'violet']
+
+allColors.splice(4);
+//(2) ['orange', 'violet']
+
+allColors
+//(4) ['red', 'blue', 'green', 'yellow']
+
+allColors.splice(0,1);
+//['red']
+
+allColors
+//(3) ['blue', 'green', 'yellow']
+
+allColors.splice(0,1, 'black','gray');
+//['blue']
+
+allColors
+//(4) ['black', 'gray', 'green', 'yellow']
+
+allColors.push('red');
+//5
+
+allColors.push('blue');
+//6
+
+allColors
+//(6) ['black', 'gray', 'green', 'yellow', 'red', 'blue']
