@@ -321,13 +321,13 @@ months.splice(0, 1, 'july')
 months
 //(4)['july', 'june', 'march', 'august']
 
-let lang = ['c','c++','html','javascript','python','java','c#','sql'];
+let lang = ['c', 'c++', 'html', 'javascript', 'python', 'java', 'c#', 'sql'];
 
 lang.reverse().indexOf('javascript');
 //4
 
 //array references
-let arr = ['a','b'];
+let arr = ['a', 'b'];
 
 let arrCopy = arr;
 
@@ -347,3 +347,96 @@ arr === arrCopy
 //true
 
 //const arrays
+const arr1 = [1, 2, 3];
+
+arr1
+//(3) [1, 2, 3]
+
+arr1.push(4)
+//4
+
+arr1
+//(4) [1, 2, 3, 4]
+
+arr1.pop()
+//4
+arr1
+//(3) [1, 2, 3]
+
+//arr1 = [1, 2, 3];
+//TypeError: Assignment to constant variable.
+
+//nested/multidimensional arrays
+let nums = [[1, 2], [3, 4], [5, 6]];
+
+nums
+//(3) [Array(2), Array(2), Array(2)]
+nums.length
+//3
+
+nums[0]
+//(2) [1, 2]
+
+nums[0].length
+//2
+
+nums[0][0]
+//1
+
+//tic tac toe game state in array
+let tic_tac_toe = [[1, null, 0], [null, 1, null], [0, null, 1]];
+console.log(tic_tac_toe);
+
+//practice question
+let exp = [7, 9, 0, -2];
+undefined
+
+exp.slice(0, 3)
+//    (3)[7, 9, 0]
+
+let n = 3;
+//undefined
+
+exp.slice(0, n);
+//(3)[7, 9, 0]
+
+n = 4;
+//undefined
+
+exp.slice(0, n);
+//(4)[7, 9, 0, -2]
+
+exp.slice(exp.length - n);
+//(4)[7, 9, 0, -2]
+
+n = 3;
+//undefined
+
+exp.slice(exp.length - n);
+//(3)[9, 0, -2]
+
+
+//let string = prompt("please enter a string");
+// if (string == '') { //or str.length == 0
+//     console.log('string is blank');
+// } else {
+//     console.log('string is not blank');
+// }
+
+str = 'ApNaCoLlEgE';
+let idx = 2;
+if (str[idx] == str[idx].toLowerCase()) {
+    console.log('character is lowercase');
+} else {
+    console.log('character is not lowercase');
+}
+
+// console.log(string.trim());
+
+let item = 'c';
+if (arr.indexOf(item) != -1) {
+    console.log('element exists');
+}
+else {
+    console.log('element does not exist');
+}
