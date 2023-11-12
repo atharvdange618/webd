@@ -440,3 +440,8 @@ if (arr.indexOf(item) != -1) {
 else {
     console.log('element does not exist');
 }
+
+//practice loops
+for (let i = 1; i <= 15; i = i + 2) {
+    console.log(i);
+}
