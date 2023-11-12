@@ -191,9 +191,9 @@ cars.includes('xuv')
 //false
 
 //concat, reverse and slice
-let primary = ['red','blue','green'];
+let primary = ['red', 'blue', 'green'];
 
-let secondary = ['yellow','orange','violet'];
+let secondary = ['yellow', 'orange', 'violet'];
 
 primary.concat(secondary);
 //(6) ['red', 'blue', 'green', 'yellow', 'orange', 'violet']
@@ -221,7 +221,7 @@ cars
 cars.slice();
 //(5) ['mclaren', 'koneigsegg', 'bmw', 'audi', 'toyota']
 
-cars.slice(2,3);
+cars.slice(2, 3);
 //['bmw']
 
 cars.slice(3);
@@ -240,13 +240,13 @@ allColors.splice(4);
 allColors
 //(4) ['red', 'blue', 'green', 'yellow']
 
-allColors.splice(0,1);
+allColors.splice(0, 1);
 //['red']
 
 allColors
 //(3) ['blue', 'green', 'yellow']
 
-allColors.splice(0,1, 'black','gray');
+allColors.splice(0, 1, 'black', 'gray');
 //['blue']
 
 allColors
@@ -260,3 +260,90 @@ allColors.push('blue');
 
 allColors
 //(6) ['black', 'gray', 'green', 'yellow', 'red', 'blue']
+
+cars
+//(5) ['mclaren', 'koneigsegg', 'bmw', 'audi', 'toyota']
+
+cars.splice(0, 0, 'xuv', 'maruti');
+//[]
+
+cars
+//(7) ['xuv', 'maruti', 'mclaren', 'koneigsegg', 'bmw', 'audi', 'toyota']
+
+cars.splice(1, 0, 'mercedes');
+//[]
+
+cars
+//(8) ['xuv', 'mercedes', 'maruti', 'mclaren', 'koneigsegg', 'bmw', 'audi', 'toyota']
+
+cars.splice(1, 1, 'gwagon');
+//['mercedes']
+
+cars
+//(8) ['xuv', 'gwagon', 'maruti', 'mclaren', 'koneigsegg', 'bmw', 'audi', 'toyota']
+
+//sort method
+
+cars.sort();
+//(8) ['audi', 'bmw', 'gwagon', 'koneigsegg', 'maruti', 'mclaren', 'toyota', 'xuv']0: "audi"1: "bmw"2: "gwagon"3: "koneigsegg"4: "maruti"5: "mclaren"6: "toyota"7: "xuv"length: 8[[Prototype]]: Array(0)
+
+mark
+//(3) [60, 78, 98]
+
+mark.push(108)
+//4
+
+mark
+//(4) [60, 78, 98, 108]
+
+mark.unshift(111)
+//5
+
+mark
+//(5)[111, 60, 78, 98, 108]
+
+mark.sort()
+//(5)[108, 111, 60, 78, 98]
+
+//practice question
+months
+//(4)['july', 'june', 'march', 'august']
+
+months = ['january', 'july', 'march', 'august'];
+//(4)['january', 'july', 'march', 'august']
+
+months.splice(1, 1, 'june')
+//['july']
+
+months.splice(0, 1, 'july')
+//['january']
+
+months
+//(4)['july', 'june', 'march', 'august']
+
+let lang = ['c','c++','html','javascript','python','java','c#','sql'];
+
+lang.reverse().indexOf('javascript');
+//4
+
+//array references
+let arr = ['a','b'];
+
+let arrCopy = arr;
+
+arrCopy
+//(2) ['a', 'b']
+
+arrCopy.push('c');
+//3
+
+arr
+//(3) ['a', 'b', 'c']
+
+arr == arrCopy
+//true
+
+arr === arrCopy
+//true
+
+//const arrays
