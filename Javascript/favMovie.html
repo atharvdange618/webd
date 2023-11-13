@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fav Movie guessing game</title>
+</head>
+
+<body>
+    <h3>Fav Movie guessing game</h3>
+    <div class="result"></div>
+    <script>
+        let result = document.querySelector('.result');
+        let guess = prompt("Guess my fav movie");
+        let favMovie = 'Deadpool';
+
+        while (true) {
+            if (guess == 'quit') {
+                result.innerHTML = "You have ended the game";
+                console.log('Quit said by the user');
+                break;
+            } else if (guess == favMovie) {
+                result.innerHTML = "Congratulations! You have successfully guessed my fav movie!";
+                console.log('Guessed correctly');
+                break;
+            } else {
+                result.innerHTML = "Wrong guess!";
+                guess = prompt("Try again");
+            }
+        }
+    </script>
+</body>
+
+</html>

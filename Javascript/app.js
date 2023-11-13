@@ -467,3 +467,20 @@ for (let i = 1; i <= 3; i++) {
         console.log(j);
     }
 }
+
+//while loop
+let x = 0;
+// while (x <= 10) {
+//     console.log(x)
+//     x++;
+// }
+
+//break keyword
+while (x <= 5) {
+    if (x == 3) {
+        break;
+    }
+    console.log(x)
+    x++;
+}
+console.log("we used break at 3");
