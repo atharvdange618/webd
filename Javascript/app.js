@@ -445,3 +445,25 @@ else {
 for (let i = 1; i <= 15; i = i + 2) {
     console.log(i);
 }
+
+for (let i = 2; i <= 20; i = i + 2) {
+    console.log(i);
+}
+
+for (let i = 5; i <= 50; i = i + 5) {
+    console.log(i);
+}
+
+// let num1 = prompt("write your number");
+// num1 = parseInt(num1);
+// for (let i = num1; i <= num1 * 10; i = i + num1) {
+//     console.log(i);
+// }
+
+//nested for loop
+for (let i = 1; i <= 3; i++) {
+    console.log(`outer loop ${i}`)
+    for (let j = 1; j <= 3; j++) {
+        console.log(j);
+    }
+}
