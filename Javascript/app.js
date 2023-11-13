@@ -484,3 +484,44 @@ while (x <= 5) {
     x++;
 }
 console.log("we used break at 3");
+
+//loops with arrays
+let fruits = ['apple', 'orange', 'kiwi', 'banana', 'litchi'];
+fruits.unshift("mosambi");
+fruits.push('pineapple');
+for (let index = 0; index < fruits.length; index++) {
+    console.log(index, fruits[index]);
+}
+
+//nested loops in arrays
+let heroes = [['ironman', 'spiderman', 'thor'], ['superman', 'wonder woman', 'flash']];
+
+for (let i = 0; i < heroes.length; i++) {
+    console.log(`List ${i}`);
+    for (let j = 0; j < heroes[i].length; j++) {
+        console.log(heroes[i][j]);
+    }
+}
+
+let student = [['Atharv', 98], ['Tanu', 96], ['Kamlesh', 93]];
+for (let i = 0; i < student.length; i++) {
+    console.log(`Info of student #${i}`);
+    for (let j = 0; j < student[i].length; j++) {
+        console.log(student[i][j]);
+    }
+}
+
+//for of loop
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+
+for (let char of "Atharv Dange") {
+    console.log(char)
+}
+
+for (let list of heroes) {
+    for (let name of list) {
+        console.log(name);
+    }
+}
