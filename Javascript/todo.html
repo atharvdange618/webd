@@ -5,51 +5,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo app</title>
+    <style>
+        .container {
+            width: 400px;
+            height: 100%;
+            background-color: lightgoldenrodyellow;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        input {
+            border: none;
+            font-size: 14px;
+            padding: 5px 8px;
+            outline: none;
+        }
+
+        button {
+            border: none;
+            font-size: 14px;
+            padding: 5px 8px;
+            border-radius: 5px;
+        }
+
+        .add {
+            color: green;
+            background-color: #eaffea;
+        }
+
+        .add:hover {
+            transform: scale(1.1);
+            background-color: #abf8ab;
+        }
+
+        .list {
+            color: blue;
+            background-color: #e5e8ef
+        }
+
+        .list:hover {
+            transform: scale(1.1);
+            background-color: #abd4f8;
+        }
+
+        .delete:hover {
+            transform: scale(1.1);
+            background-color: #fdb0b4;
+        }
+
+        .delete {
+            color: red;
+            background-color: #ffeaeb;
+        }
+
+        h3 {
+            color: plum;
+            font-size: 18px;
+        }
+
+        h4 {
+            color: purple;
+            font-size: 18px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>To Do App</h1>
-    <h3>Enter "list" to see tasks</h3>
-    <h3>Enter "add" to add a task</h3>
-    <h3>Enter "delete" to delete a task</h3>
-    <h3>Enter "quit" to exit the app</h3>
+    <div class="container">
+        <h1>To Do App</h1>
+        <h3>List to see tasks</h3>
+        <h3>Add to add a task</h3>
+        <h3>Delete to delete a task</h3>
 
-    <div id="tasks"></div>
+        <input type="text" id="inputfield" class="inputfield">
+        <button class="list">List</button>
+        <button class="add">Add</button>
+        <button class="delete">Delete</button>
+        <div class="all-tasks"></div>
+    </div>
 
     <script>
+        const input = document.querySelector(".inputfield");
+        const listbtn = document.querySelector(".list");
+        const addbtn = document.querySelector(".add");
+        const deletebtn = document.querySelector(".delete");
+        const allTasks = document.querySelector('.all-tasks');
         let todo = [];
-        let tasks = document.getElementById("tasks");
-        let req = prompt('please enter your request');
 
-        while (true) {
-            if (req == "quit") {
-                console.log("quitting app");
-                break;
+        listbtn.addEventListener('click', () => {
+            allTasks.innerHTML = "";
+            for (let task of todo) {
+                allTasks.innerHTML += `<h3>${task}</h3>`;
             }
+        });
 
-            if (req == "list") {
-                console.log("-------------------");
-                console.log("tasks:");
-                for (let i = 0; i < todo.length; i++) {
-                    console.log(i, todo[i]);
-                }
-                console.log("-------------------");
-
-            } else if (req == "add") {
-                let newTask = prompt("Enter the task you want to add");
+        addbtn.addEventListener('click', () => {
+            let newTask = input.value.trim();
+            if (newTask !== "") {
                 todo.push(newTask);
-                console.log("task added");
+                allTasks.innerHTML = "<h4>Task added</h4>";
+                input.value = "";
+            }
+        });
 
-            } else if (req == "delete") {
-                let idx = prompt("Enter the task index you want to delete");
-                todo.splice(idx, 1);
-                console.log("task deleted");
+        deletebtn.addEventListener('click', () => {
+            let taskToDelete = input.value.trim();
+            let taskIdx = todo.indexOf(taskToDelete);
+            if (taskIdx !== -1) {
+                todo.splice(taskIdx, 1);
+                allTasks.innerHTML = "<h4>Task deleted</h4>";
+            } else {
+                allTasks.innerHTML = "<h4>Task not found</h4>";
             }
-            else {
-                console.log("wrong request");
-            }
-            req = prompt('please enter your request');
-        }
+            input.value = "";
+        });
     </script>
 </body>
 
