@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="p1">Paragraph <em>text</em> is just an example</p>
+    <script>
+        var currentElement = document.getElementById('p1');
+        var msg = "node_name: " + currentElement.nodeName + "\n";
+        msg += "node type: " + currentElement.nodeType + "\n";
+        msg += "node value: " + currentElement.nodeValue + "\n";
+        alert(msg);
+        // window.document.write("<strong>hello world</strong>");
+        // window.alert("fuck you nigga");
+    </script>
+</body>
+
+</html>
