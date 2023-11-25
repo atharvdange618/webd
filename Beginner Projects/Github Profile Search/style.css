@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: aliceblue;
+    font-size: 'Space Mono', monospace;
+}
+
+.container {
+    padding: 20px;
+    width: 340px;
+    background: white;
+    border-radius: 7px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container .search-box input {
+    all: unset;
+    height: 30px;
+    width: 180px;
+    background-color: aliceblue;
+    padding: 5px;
+    padding-left: 15px;
+    border-radius: 3px;
+}
+
+.container .search-box button {
+    all: unset;
+    height: 35px;
+    width: 90px;
+    background-color: #025BBF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 20px;
+    margin-top: -38px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.check-btn {
+    all: unset;
+    height: 28px;
+    width: 100px;
+    background-color: lightblue;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 6px;
+    text-align: center;
+}
+
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.container .user-details {
+    margin-top: 22px;
+}
+
+.container .user-details .img-box {
+    height: 95px;
+    width: 95px;
+    background: red;
+    border-radius: 100%;
+}
+
+.container .user-details .img-box img {
+    height: 95px;
+    width: 95px;
+    border-radius: 100%;
+}
+
+.container .user-details .details {
+    width: 190px;
+    float: right;
+    margin-top: -90px;
+    color: #000;
+    position: relative;
+}
+
+.container .user-details .details h3 {
+    font-weight: 400;
+}
+
+.container .user-details .details .name {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.container .user-details .details .username {
+    font-style: 12px;
+    margin-top: 1px;
+    color: #025BBF;
+}
+
+.container .user-details .details .join-date {
+    font-size: 13px;
+    position: relative;
+    top: 3px;
+}
+
+.container .bio {
+    font-size: 16px;
+    margin-top: 13px;
+    margin-left: 4px;
+}
+
+.container .user-profile {
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 4px;
+    height: 95px;
+    margin-top: 17px;
+}
+
+.bio {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.container .user-profile div {
+    height: 75px;
+    width: 90px;
+    float: left;
+    text-align: center;
+    margin-left: 2px;
+}
+
+.container .user-profile div span {
+    font-size: 13px;
+    position: relative;
+    top: 1px;
+    color: grey;
+}
+
+.container .user-profile div h2 {
+    font-size: 30px;
+    margin-top: 2px;
+}
+
+.user-other-details {
+    margin-top: 15px;
+}
+
+.user-other-details>p {
+    margin-top: 8px;
+    color: grey;
+    font-size: 14px;
+}
+
+.fa-solid,
+.fa-brands {
+    color: #596283;
+}
+
+.message {
+    margin-left: 70px;
+    margin-top: 5px;
+}
+
+::selection {
+    background: rgba(100, 149, 237, 0.8);
+    color: white;
+}
