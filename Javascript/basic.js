@@ -209,3 +209,66 @@ emptyString.length
 0
 
 */
+
+let square = (a) => {
+    return a * a;
+}
+
+let sum_of_squares = () => {
+    let z = square(4) + square(5);
+    console.log(z);
+}
+
+sum_of_squares();
+
+
+// Function to add two objects and display the result
+function addObjects(obj1, obj2) {
+    let result = {};
+
+    for (let key in obj1) {
+        if (typeof obj1[key] === 'number' && typeof obj2[key] === 'number') {
+            result[key] = obj1[key] + obj2[key];
+        } else {
+            result[key] = obj1[key];
+        }
+    }
+
+    for (let key in obj2) {
+        if (!obj1.hasOwnProperty(key)) {
+            result[key] = obj2[key];
+        }
+    }
+
+    console.log(result);
+}
+
+// Example objects
+let objA = { a: 5 };
+let objB = { a: 15 };
+
+// Call addObjects function to perform addition of objects
+addObjects(objA, objB);
+
+// Function that receives parameters and returns a value
+function add(a, b) {
+    return a + b;
+}
+
+// Function that calls another function and uses its returned value
+function performAddition() {
+    let x = 5;
+    let y = 10;
+
+    // Call the 'add' function and pass 'x' and 'y' as arguments
+    let result = add(x, y);
+
+    // Return the result from 'add' function
+    return result;
+}
+
+// Call the 'performAddition' function and get the result
+let sum = performAddition();
+
+// Display the result obtained from 'add' function
+console.log("Sum:", sum); // Output: Sum: 15
