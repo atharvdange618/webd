@@ -1,0 +1,147 @@
+/*Javascriptpro_*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'poppins', sans-serif;
+    background: #00A292;
+}
+
+.container {
+    padding: 20px;
+    width: 355px;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.container .search-box {
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.container .search-box i {
+    color: grey;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.container .search-box input {
+    all: unset;
+    height: 45px;
+    width: 260px;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.container .display-msg {
+    color: grey;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.container .cocktail-img {
+    height: 150px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 30px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+
+.container .cocktail-img img {
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+}
+
+.container .info-box .cocktail-name {
+    height: 35px;
+    background: #00A292;
+    color: white;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    margin-top: -5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    white-space: nowrap;
+}
+
+.container .info-box .cocktail-name i {
+    padding-right: 3px;
+}
+
+.container .ingredients-box,
+.container .instructions-box {
+    width: 100%;
+    margin-top: 40px;
+    padding: 5px;
+}
+
+.container .ingredients-box h3,
+.container .instructions-box h3 {
+    font-size: 14px;
+    position: relative;
+    top: 5px;
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+.container .ingredients-box .ingredients ul {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.8em 1.1em;
+    padding: 1.2em 0 0 1.2em;
+    font-size: 1em;
+}
+
+.container .ingredients-box .ingredients li {
+    font-size: 12px;
+    margin-top: -3px;
+}
+
+.container .instructions-box {
+    margin-top: 10px;
+}
+
+.container .instructions-box h3 {
+    margin-left: 0px;
+    padding-bottom: 8px;
+    margin-top: -1px;
+}
+
+.container .instructions-box .instruction {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.container .info-box {
+    display: none;
+}
+
+::selection {
+    background: rgb(100, 149, 237, 0.8);
+    color: white;
+}
