@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #161616;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.dycalendar {
+    height: 100%;
+    width: 100%;
+    background: white;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 15px;
+}
+
+.dycalendar table {
+    margin: 50px 30px 40px 30px;
+}
+
+.dycalendar table tr:first-child td {
+    color: #4A359C;
+    font-size: 24px;
+}
+
+.dycalendar table tr:first-child td:hover {
+    background: #f5f5f5;
+    color: black;
+}
+
+.dycalendar table td {
+    height: 55px;
+    width: 55px;
+    border-radius: 5px;
+    font-size: 24px;
+    cursor: pointer;
+    position: relative;
+    top: 10px;
+    font-family: 'poppins', sans-serif;
+}
+
+
+.dycalendar table td:hover {
+    background: #f5f5f5;
+    transition: all 0.2s ease;
+}
+
+table {
+    border-spacing: 15px;
+}
+
+.dycalendar-month-container {
+    font-size: 26px;
+}
+
+.dycalendar-prev-next-btn.next-btn,
+.prev-btn {
+    padding: 10px 25px;
+    background: white;
+    color: #4A359C;
+    border-radius: 10px;
+    margin-top: -15px;
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 33px;
+    user-select: none;
+}
+
+.dycalendar .next-btn {
+    margin-right: 20px;
+}
+
+.dycalendar-prev-next-btn.next-btn:hover {
+    background: #f5f5f5;
+    color: #000;
+    transition: all 0.2s ease;
+}
+
+.dycalendar-prev-next-btn.prev-btn:hover {
+    background: #f5f5f5;
+    color: #000;
+    transition: all 0.2s ease;
+}
+
+.dycalendar .dycalendar-today-date {
+    background: #4A359C;
+    color: white;
+    border-radius: 10px;
+}
+
+.dycalendar .dycalendar-today-date:hover {
+    border: 2px solid #4A359C;
+    color: #4A359C;
+}
+
+.dycalendar-header {
+    position: relative;
+    top: 33px;
+    font-family: 'poppins', sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+::selection {
+    background: rgba(100, 149, 237, 0.8);
+    color: white;
+}
