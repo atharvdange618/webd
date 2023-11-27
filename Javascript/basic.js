@@ -272,3 +272,24 @@ let sum = performAddition();
 
 // Display the result obtained from 'add' function
 console.log("Sum:", sum); // Output: Sum: 15
+
+// Function to append an object to an array
+function appendToObjectArray(obj, arr) {
+    arr.push(obj);
+}
+
+// Function to check if an object is an array
+function checkIfArray(obj) {
+    return Array.isArray(obj);
+}
+
+// Example object and array
+let myObject = { name: 'John', age: 25 };
+let myArray = [1, 2, 3];
+
+// Appending an object to the array
+appendToObjectArray(myObject, myArray);
+
+// Checking if objects are arrays
+console.log("Is myObject an array?", checkIfArray(myObject)); // Output: Is myObject an array? false
+console.log("Is myArray an array?", checkIfArray(myArray));   // Output: Is myArray an array? true
