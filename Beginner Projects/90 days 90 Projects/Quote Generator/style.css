@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Poppins&family=Roboto:wght@300&display=swap');
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #4285F4;
+    font-family: 'poppins', sans-serif;
+}
+
+.container {
+    padding: 20px 20px 30px 20px;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 7px;
+    width: 350px;
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 22px;
+}
+
+.container .fa-quote-left {
+    font-size: 30px;
+    margin-top: 25px;
+}
+
+.container .quote {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.container .author {
+    float: right;
+    margin-top: 40px;
+    font-weight: 300;
+    font-style: italic;
+    position: relative;
+    left: 20px;
+}
+
+.container .fa-quote-right {
+    font-size: 30px;
+    float: right;
+    margin-top: 5px;
+}
+
+.container .new-quote-btn {
+    all: unset;
+    height: 45px;
+    width: 310px;
+    color: white;
+    background: #4285F4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    cursor: pointer;
+    position: relative;
+    top: 10px;
+}
+
+.container .speak,
+.container .copy,
+.container .twitter {
+    all: unset;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    float: left;
+    margin-left: 35px;
+    margin-top: 30px;
+    transition: all .3s;
+}
+
+
+.container .speak:hover,
+.container .copy:hover,
+.container .twitter:hover {
+    background: #4285F4;
+    color: white;
+    border-color: #4285F4;
+}
+
+.new-quote-btn.click-animation {
+    transform: scale(1.05);
+    transition: all .2s;
+}
+
+.copy span {
+    position: absolute;
+    font-size: 9px;
+    font-style: italic;
+    display: none;
+}
+
+::selection {
+    background: rgb(100, 149, 237, 0.8);
+    color: white;
+}
