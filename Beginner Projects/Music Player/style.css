@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Poppins&family=Roboto:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: palegoldenrod;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 7px;
+    padding: 30px 20px 30px 20px;
+    width: 340px;
+}
+
+.container .music-img {
+    height: 250px;
+    width: 250px;
+    margin: auto;
+    border-radius: 100%;
+    margin-top: 25px;
+}
+
+.container .music-title {
+    text-align: center;
+}
+
+.container .artist-name {
+    text-align: center;
+    color: grey;
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.container .music-img img {
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.container .buttons {
+    height: 60px;
+    width: 100%;
+    margin-top: 45px;
+}
+
+.container .buttons div {
+    height: 55px;
+    width: 55px;
+    color: white;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    font-size: 27px;
+    margin-left: 35px;
+    color: black;
+    cursor: pointer;
+}
+
+.container .buttons .play-pause-btn {
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+
+.container .buttons .play-pause-btn i {
+    position: absolute;
+    font-size: 18px;
+}
+
+.container .buttons .play-pause-btn .fa-pause {
+    display: none;
+}
+
+audio {
+    display: none;
+}
+
+.rotate-img {
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
