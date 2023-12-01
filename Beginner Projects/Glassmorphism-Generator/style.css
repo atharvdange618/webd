@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Poppins&family=Roboto:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #131418;
+    font-family: 'poppins', sans-serif;
+}
+
+.container {
+    padding: 10px;
+    padding-bottom: 15px;
+    width: 350px;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 7px;
+}
+
+.output {
+    background: linear-gradient(30deg, #000046, #1CB5E0);
+    height: 180px;
+    width: 100%;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.output h2 {
+    color: white;
+    position: absolute;
+}
+
+.output .output-div {
+    height: 130px;
+    width: 80%;
+    border-radius: 7px;
+    backdrop-filter: blur(1px) saturate(179%);
+    background-color: rgba(255, 255, 255, 0.41);
+    border-radius: 12px;
+}
+
+.container .settings {
+    margin-top: 10px;
+    background: lightgrey;
+    border-radius: 7px;
+    width: 100%;
+    padding: 5px 10px 10px 10px;
+}
+
+.container .settings .setting-title {
+    color: black;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    position: relative;
+    top: 10px;
+}
+
+.container .settings #glass-color::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.container .settings #glass-color::-webkit-color-swatch {
+    border: none;
+    border-radius: 100%;
+}
+
+.container .settings #glass-color {
+    height: 25px;
+    width: 25px;
+    border: none;
+    outline: none;
+    border-radius: 100%;
+    float: right;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.container .blur input,
+.container .transparency input {
+    appearance: none;
+    height: 3px;
+    background: black;
+    border-radius: 30px;
+    width: 100%;
+    margin-top: 40px;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+}
+
+.container .blur input::-webkit-slider-thumb,
+.container .transparency input::-webkit-slider-thumb {
+    appearance: none;
+    height: 15px;
+    width: 15px;
+    background: black;
+    border-radius: 100%;
+    border: 3px solid white;
+    cursor: pointer;
+}
+
+.container .blur p,
+.container .transparency p {
+    font-size: 13px;
+    position: relative;
+    top: 40px;
+    font-weight: 600;
+    color: black;
+}
+
+.container .code-output {
+    background: black;
+    color: white;
+    width: 100%;
+    border-radius: 7px;
+    padding: 5px 10px 15px 10px;
+    margin-top: 23px;
+}
+
+.container .code-output h4 {
+    font-size: 11.5px;
+    margin-top: 7px;
+    font-weight: 300;
+}
+
+.container .code-output .txt5 {
+    display: none;
+}
+
+.container .settings #outline {
+    position: absolute;
+    right: 55px;
+    margin-top: 15px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+::selection {
+    background: rgb(100, 149, 237, 0.8);
+    color: white;
+}

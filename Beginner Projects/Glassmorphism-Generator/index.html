@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+        <title>Glassmorphism Generator</title>
+</head>
+
+<body>
+        <div class="container">
+                <div class="output">
+                        <h2>Glassmorphism</h2>
+                        <div class="output-div"></div>
+                </div>
+                <div class="settings">
+                        <span class="setting-title">Settings</span>
+                        <input type="color" id="glass-color" value="#FFFFFF" oninput="updateGlass()">
+                        <input type="checkbox" name="" id="outline" oninput="updateGlass()">
+
+                        <div class="blur">
+                                <p>Blur (1)</p>
+                                <input type="range" name="" class="blur-slider" min="0" max="20" step="0.5" value="1"
+                                        oninput="updateGlass()">
+                        </div>
+                        <div class="transparency">
+                                <p>Transparency (0.41)</p>
+                                <input type="range" name="" class="transparency-slider" min="0" max="1" step="0.05"
+                                        value="0.41" oninput="updateGlass()">
+                        </div>
+                        <div class="code-output">
+                                <h4 class="txt1">background: rgba( 255, 255, 255, 0.41);</h4>
+                                <h4 class="txt2">box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );</h4>
+                                <h4 class="txt3">backdrop-filter: blur( 1px );</h4>
+                                <h4 class="txt5">border:1px solid rgba( 255, 255, 255, 0.38);
+                                </h4>
+                                <h4 class="txt6">border-radius: 7px;</h4>
+                        </div>
+                </div>
+        </div>
+        <script src="script.js"></script>
+</body>
+
+</html>
