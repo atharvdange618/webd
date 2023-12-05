@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp 1</title>
+</head>
+
+<body>
+    <h3>Area of Rectangle</h3>
+    <label for="len">Length:</label>
+    <input type="number" id="len"><br>
+    <label for="wid">Width:</label>
+    <input type="number" id="wid"><br>
+    <button onclick="recArea()">Calculate</button>
+
+    <h3>Area of Triangle</h3>
+    <label for="length">Length:</label>
+    <input type="number" id="length"><br>
+    <label for="brd">Breadth:</label>
+    <input type="number" id="brd"><br>
+    <button onclick="triArea()">Calculate</button>
+
+    <h3>Area of Circle</h3>
+    <label for="rad">Radius:</label>
+    <input type="number" id="rad"><br>
+    <button onclick="cirArea()">Calculate</button><br>
+    <h4 id="Area"></h4>
+
+    <script>
+        function recArea() {
+            var len = parseFloat(document.getElementById("len").value);
+            var wid = parseFloat(document.getElementById("wid").value);
+            var area = document.getElementById("Area");
+            area.innerHTML = "Area of Rectangle is " + (len * wid);
+        }
+        function triArea() {
+            var length = parseFloat(document.getElementById("length").value);
+            var brd = parseFloat(document.getElementById("brd").value);
+            var area = document.getElementById("Area");
+            area.innerHTML = "Area of Triangle is " + ((length * brd) / 2);
+        }
+        function cirArea() {
+            var rad = parseFloat(document.getElementById("rad").value);
+            var area = document.getElementById("Area");
+            area.innerHTML = "Area of Circle is " + Math.PI * rad * rad;
+        }
+    </script>
+</body>
+
+</html>

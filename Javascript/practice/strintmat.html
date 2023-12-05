@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String matching</title>
+</head>
+
+<body>
+
+    <h3>String matching</h3>
+    <label for="str">Enter a string:</label>
+    <input type="text" id="str"><br>
+    <label for="strmat">String to be matched:</label>
+    <input type="text" id="strmat"><br>
+
+    <button onclick="mathops()">Equal operator</button>
+    <button onclick="strmatch()">Match Function</button>
+    <button onclick="strmatchall()">MatchAll Function</button>
+    <button onclick="strequal()">Strict Equality operator</button>
+
+    <h4 id="result"></h4>
+
+    <script>
+
+        function mathops() {
+
+            const str = document.getElementById("str").value;
+            const strmat = document.getElementById("strmat").value;
+            const result = document.getElementById("result");
+
+            if (str == strmat) {
+                result.innerHTML = "Yes, they are equal";
+            } else {
+                result.innerHTML = "No, they are not equal";
+            }
+        }
+
+        function strmatch() {
+            const str = document.getElementById("str").value;
+            const strmat = document.getElementById("strmat").value;
+            const result = document.getElementById("result");
+
+            var matched = str.match(strmat);
+
+            if (matched) {
+                result.innerHTML = "match found";
+            } else {
+                result.innerHTML = "match not found";
+            }
+        }
+
+        function strmatchall() {
+            const str = document.getElementById("str").value;
+            const strmat = document.getElementById("strmat").value;
+            const result = document.getElementById("result");
+
+            // Create a regular expression from the input string
+            const regex = new RegExp(strmat, 'g');
+
+            // Use matchAll to find all matches
+            const matches = Array.from(str.matchAll(regex));
+
+            if (matches.length > 1) {
+                result.innerHTML = "Match found";
+            } else {
+                result.innerHTML = "Match not found";
+            }
+        }
+
+        function strequal() {
+
+            const str = document.getElementById("str").value;
+            const strmat = document.getElementById("strmat").value;
+            const result = document.getElementById("result");
+
+            if (str === strmat) {
+                result.innerHTML = "Yes, they are strictly equal";
+            } else {
+                result.innerHTML = "No, they are strictly not equal";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

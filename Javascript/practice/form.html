@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Information Form</title>
+</head>
+
+<body>
+    <h1>Student Information Form</h1>
+
+    <form id="studentForm">
+        <input type="text" id="name" placeholder="Enter Name">
+        <br>
+        <input type="text" id="address" placeholder="Enter Address">
+        <br>
+        <input type="text" id="city" placeholder="Enter City">
+        <br>
+        <input type="text" id="state" placeholder="Enter State">
+        <br>
+        <select id="gender">
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <br>
+        <input type="tel" id="mobile" placeholder="Enter Mobile Number">
+        <br>
+        <input type="email" id="email" placeholder="Enter Email">
+        <br>
+        <span id="error" class="error"></span>
+        <br>
+        <button onclick="validateForm()">Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const state = document.getElementById('state').value.trim();
+            const gender = document.getElementById('gender').value;
+            const mobile = document.getElementById('mobile').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+            const mobileRegex = /^[0-9]{10}$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!nameRegex.test(name)) {
+                document.getElementById('error').innerText = "Invalid Name";
+                return;
+            }
+
+            if (!mobileRegex.test(mobile)) {
+                document.getElementById('error').innerText = "Invalid Mobile Number";
+                return;
+            }
+
+            if (!emailRegex.test(email)) {
+                document.getElementById('error').innerText = "Invalid Email";
+                return;
+            }
+
+            // If all validations pass, you can proceed with form submission or other actions
+            document.getElementById('error').innerText = ""; // Clear any previous error messages
+            alert("Form submitted successfully!");
+        }
+    </script>
+
+</body>
+
+</html>

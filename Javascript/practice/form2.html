@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="myForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <input type="checkbox" id="subscribe">
+        <label for="subscribe">Subscribe to newsletter</label>
+
+        <div id="additionalFields">
+            <!-- Additional fields dynamically added based on checkbox -->
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        const subscribeCheckbox = document.getElementById('subscribe');
+        const additionalFields = document.getElementById('additionalFields');
+
+        subscribeCheckbox.addEventListener('change', function () {
+            if (subscribeCheckbox.checked) {
+                // Show additional fields when checkbox is checked
+                additionalFields.innerHTML = `
+      <label for="age">Age:</label>
+      <input type="number" id="age">
+    `;
+            } else {
+                // Hide additional fields when checkbox is unchecked
+                additionalFields.innerHTML = '';
+            }
+        });
+
+        // Form submission handling with client-side validation
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age') ? document.getElementById('age').value : '';
+
+            if (!username || !email) {
+                alert('Please fill in all required fields.');
+                event.preventDefault(); // Prevent form submission
+            } else {
+                // Additional validation logic can be added
+                // Submit the form or perform other actions
+            }
+        });
+    </script>
+</body>
+
+</html>

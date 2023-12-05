@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array operations</title>
+</head>
+
+<body>
+    <h4>program to find the largest number</h4>
+    <label for="num">Enter the array: </label>
+    <input type="text" id="num" placeholder="enter comma separated values">
+    <button class="findbtn">find</button>
+
+    <br>
+
+    <h4>program to find the number of digits in a number</h4>
+    <label for="number">Enter the number: </label>
+    <input type="text" id="number">
+    <button class="digbtn">find</button>
+
+    <h4 id="result"></h4>
+    <script>
+        let findbtn = document.querySelector(".findbtn");
+        let result = document.getElementById("result");
+        let digbtn = document.querySelector(".digbtn");
+
+        findbtn.addEventListener("click", () => {
+            result.value = " ";
+            let num = document.getElementById("num").value;
+            let data = num.split(",").map(element => element.trim());
+            result.innerHTML += Math.max(...data);
+        });
+
+        digbtn.addEventListener("click", () => {
+            result.value = " ";
+            let number = document.getElementById("number").value;
+            let count = 0;
+            let copy = number;
+            while (copy > 0) {
+                count++;
+                copy = Math.floor(copy / 10);
+            }
+            result.innerHTML = `No. of digits in the number is ${count}`;
+        })
+    </script>
+</body>
+
+</html>

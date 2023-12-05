@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home Page</title>
+</head>
+
+<body onmouseout="revertColor()">
+
+    <h1>Welcome to the Home Page!</h1>
+    <p onmouseover="changeColor()">Move your mouse over this area or click on button to focus to change
+        the background color.</p>
+
+    <input type="text" onfocus="changebBackColor()">
+
+    <script>
+        function changeColor() {
+            document.body.style.backgroundColor = 'lightblue';
+        }
+
+        function changebBackColor() {
+            document.body.style.backgroundColor = 'lightyellow';
+        }
+
+        function revertColor() {
+            document.body.style.backgroundColor = '';
+        }
+    </script>
+
+</body>
+
+</html>
