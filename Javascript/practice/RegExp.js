@@ -28,3 +28,8 @@ console.log(/ab+c/.test("ac")); //false (+ means at least one or more times)
 console.log(/ab?c/.test("abbc")); //false (? means zero or one time but no more)
 console.log(/ab{5}c/.test("abbbbbc")); //true ({} means how many number of repetitions is allowed)
 console.log(/ab{5,7}c/.test("abbbbbbbbc")); //false (exceeds the max range i.e 7)
+
+//grouping
+let regex = /(ab)+/;
+console.log(regex.test("ababab")); // Output: true
+console.log(regex.test("acde")); // Output: false
