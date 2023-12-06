@@ -80,3 +80,53 @@ let pattern4 = /quick (\w+) fox/;
 let result = pattern4.exec(text2);
 
 console.log(result); // Output: ["quick brown fox", "brown"]
+
+//lookahead positive
+//Matches apple only if apple is followed by banana
+//Syntax: x(?=y)
+const text3 = 'apple orange banana';
+const regex2 = /apple(?=\sorange)/;
+console.log(text3.match(regex2)); // Output: ['apple']
+
+//lookahead negative
+//Matches apple only if apple is not followed by banana
+//Syntax: x(?!y)
+const text4 = 'apple banana orange';
+const regex3 = /apple(?!.*banana)/;
+console.log(text4.match(regex3)); // Output: null
+
+//lookbehind positive
+//Matches apple only if apple is preceded by orange
+//Syntax: (?<=y)x
+const text5 = 'orange apple banana';
+const regex4 = /(?<=orange\s)apple/;
+console.log(text5.match(regex4)); // Output: ['apple']
+
+//lookbehind positive
+//Matches orange only if orange is not preceded by apple.
+//Syntax: (?<!y)x
+const text6 = 'apple orange banana';
+const regex5 = /(?<!apple\s)orange/;
+console.log(text6.match(regex5)); // Output: null
+
+//search method
+const text7 = 'Hello World';
+const regex6 = /W/;
+console.log(text7.search(regex6)); // Output: 6
+
+//match method
+const text8 = 'The cat and the hat';
+const regex7 = /at/g;
+console.log(text8.match(regex7)); // Output: [ 'at', 'at' ]
+
+//replace
+const text9 = 'The red car and the blue car';
+const regex8 = /red|blue/g;
+const newText = text9.replace(regex8, 'green');
+console.log(newText); // Output: 'The green car and the green car'
+
+//split
+const text10 = 'apple,orange,banana';
+const regex9 = /,/;
+const newArray = text10.split(regex9);
+console.log(newArray); // Output: [ 'apple', 'orange', 'banana' ]
