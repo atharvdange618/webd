@@ -1,7 +1,7 @@
-// const text = 'Contact us at email@example.com or info@example.org for more information.';
-// const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
-// const extractedEmails = text.match(emailRegex);
-// console.log(extractedEmails);
+const text = 'Contact us at email@example.com or info@example.org for more information.';
+const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+const extractedEmails = text.match(emailRegex);
+console.log(extractedEmails);
 
 var pattern = /*RegExp("http", "i");*/ /http/i
 console.log(pattern.test("HTTP://WWW.GOOGLE.ORG")); //true
@@ -33,3 +33,50 @@ console.log(/ab{5,7}c/.test("abbbbbbbbc")); //false (exceeds the max range i.e 7
 let regex = /(ab)+/;
 console.log(regex.test("ababab")); // Output: true
 console.log(regex.test("acde")); // Output: false
+
+//character classes
+//allows to match any characters from the class ([...]), they are considered as a single units like parathesized groups
+var pat2 = /[pbm]ill/; //read as p or b or m followed by ill 
+console.log(pat2.test("pill")); //true
+console.log(pat2.test("billiards")); //true
+console.log(pat2.test("paper mill")); //true
+console.log(pat2.test("chill")); //ill not followed by p or b or m
+
+//to match a range of values you can use dash - 
+var patt3 = /[0-9]/;
+console.log(patt3.test(12341235)); //true
+
+//to match lowercase patterns
+var lowercase = /[a-z]/;
+console.log(lowercase.test("QWER")); //false
+
+//to match alphanumeric patterns we use contigious character sequence
+var alphanumeric = /[a-zA-z0-9]/;
+
+//finally we can write our phone number validation pattern using such sequences
+function isPhoneNumber(phone) {
+    let pattern = /^\d{10}$/;
+    return pattern.test(phone.toString()); // Convert to string before testing
+}
+
+console.log(isPhoneNumber(81490119560)); //false
+
+function isUsername(username) {
+    let pattern = /^[a-z][a-z0-9._-]*/i;
+    return pattern.test(username);
+}
+
+console.log(isUsername("atharvdange._")); //true
+
+
+//negative class are very useful when you want some characters to be not present
+//you can define them by placinga caret ^ at the start of the pattern
+var negative = /[^a-zA-z]/ //this pattern will match only non alphabetic patterns
+
+//exec method
+let text2 = "The quick brown fox jumps over the lazy dog";
+let pattern4 = /quick (\w+) fox/;
+
+let result = pattern4.exec(text2);
+
+console.log(result); // Output: ["quick brown fox", "brown"]
