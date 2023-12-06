@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form</title>
+</head>
+
+<body>
+
+    <h1>Student Information Form</h1>
+
+    <form id="studentForm" onsubmit="validateForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required pattern="[A-Za-z ]+"><br> <br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address"><br> <br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city"><br> <br>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state"><br> <br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select><br> <br>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}"><br> <br>
+
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" name="email" required><br> <br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+
+            // Validate name
+            const nameInput = document.getElementById('name');
+            const nameRegex = /^[A-Za-z ]+$/;
+            if (!nameRegex.test(nameInput.value)) {
+                alert('Please enter a valid name (only alphabets and spaces).');
+                return;
+            }
+
+            // Validate mobile number
+            const mobileInput = document.getElementById('mobile');
+            const mobileRegex = /^[0-9]{10}$/;
+            if (!mobileRegex.test(mobileInput.value)) {
+                alert('Please enter a valid mobile number (10 digits, no spaces or special characters).');
+                return;
+            }
+
+            // Validate email
+            const emailInput = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // If all validations pass, you can submit the form or perform further actions
+            alert('Form submitted successfully!');
+        }
+    </script>
+
+</body>
+
+</html>

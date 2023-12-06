@@ -8,44 +8,48 @@
 <body>
     <h1>Student Information Form</h1>
 
-    <form id="studentForm">
-        <input type="text" id="name" placeholder="Enter Name">
-        <br>
-        <input type="text" id="address" placeholder="Enter Address">
-        <br>
-        <input type="text" id="city" placeholder="Enter City">
-        <br>
-        <input type="text" id="state" placeholder="Enter State">
-        <br>
-        <select id="gender">
-            <option value="">Select Gender</option>
+    <form id="studentForm" onsubmit="validateForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required pattern="[A-Za-z ]+"><br><br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address"><br><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city"><br><br>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state"><br><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
-        </select>
-        <br>
-        <input type="tel" id="mobile" placeholder="Enter Mobile Number">
-        <br>
-        <input type="email" id="email" placeholder="Enter Email">
-        <br>
-        <span id="error" class="error"></span>
-        <br>
-        <button onclick="validateForm()">Submit</button>
+        </select><br><br>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}"><br><br>
+
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <button type="submit">Submit</button>
     </form>
 
+    <div id="error" style="color: red;"></div>
+
     <script>
-        function validateForm() {
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission for demonstration
+
             const name = document.getElementById('name').value.trim();
-            const address = document.getElementById('address').value.trim();
-            const city = document.getElementById('city').value.trim();
-            const state = document.getElementById('state').value.trim();
-            const gender = document.getElementById('gender').value;
             const mobile = document.getElementById('mobile').value.trim();
             const email = document.getElementById('email').value.trim();
 
-            const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
-            const mobileRegex = /^[0-9]{10}$/;
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const nameRegex = /^[a-zA-Z]+(?:[',. -][a-zA-Z]+)*$/;
+            const mobileRegex = /^\d{10}$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
             if (!nameRegex.test(name)) {
                 document.getElementById('error').innerText = "Invalid Name";
@@ -62,7 +66,6 @@
                 return;
             }
 
-            // If all validations pass, you can proceed with form submission or other actions
             document.getElementById('error').innerText = ""; // Clear any previous error messages
             alert("Form submitted successfully!");
         }
