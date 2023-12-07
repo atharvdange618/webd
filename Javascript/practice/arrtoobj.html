@@ -4,31 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Append Object to Array</title>
 </head>
 
 <body>
-    <div id="result">
-
-    </div>
+    <div id="result"></div>
     <script>
         let result = document.getElementById("result");
 
-        let myarr = [1, 2, 3]; // Initializing an array
-        let myobj = { name: "atharv", age: 21 }; // Initializing an object
+        let myArray = [1, 2, 3]; // Initialize an array
+        let myObject = { name: "John", age: 30 }; // Initialize an object
 
-        let appendToArr = (obj, arr) => {
-            arr.push(obj); // Appending object to the array
+        let appendToObject = (obj, arr) => {
+            arr.push(obj); // Append object to the array
+            return arr; // Return the updated array
         }
 
         let checkIfArray = (obj) => {
-            return Array.isArray(obj); // Checking if the argument is an array
+            return Array.isArray(obj); // Check if the argument is an array
         }
 
-        appendToArr(myobj, myarr); // Appending the object to the array
+        let updatedArray = appendToObject(myObject, myArray); // Append the object to the array
 
-        result.innerHTML = "Is myobj an array? " + checkIfArray(myobj); // Checking if the object is an array
-        result.innerHTML += "<br>Is myarr an array? " + checkIfArray(myarr); // Checking if the array is an array
+        result.innerHTML = `Is the updated array an array? ${checkIfArray(updatedArray)}`;
     </script>
 </body>
 

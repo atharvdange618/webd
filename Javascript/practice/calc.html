@@ -2,86 +2,23 @@
 <html>
 
 <head>
-    <title>Simple Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 50px;
-        }
-
-        input[type="number"] {
-            width: 200px;
-            padding: 5px;
-            margin: 5px;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-        }
-    </style>
+    <title>DOM Example</title>
 </head>
 
 <body>
-    <h1>Simple Calculator</h1>
-
-    <input type="number" id="num1" placeholder="Enter first number">
-    <input type="number" id="num2" placeholder="Enter second number">
-
-    <br><br>
-
-    <button onclick="add()">Addition (+)</button>
-    <button onclick="subtract()">Subtraction (-)</button>
-    <button onclick="multiply()">Multiplication (*)</button>
-    <button onclick="divide()">Division (/)</button>
-    <button onclick="square()">Square (x^2)</button>
-
-    <br><br>
-
-    <p id="result"></p>
+    <h1 id="heading">Hello, World!</h1>
+    <p id="paragraph">This is a DOM example.</p>
 
     <script>
-        function add() {
-            const num1 = parseFloat(document.getElementById('num1').value);
-            const num2 = parseFloat(document.getElementById('num2').value);
-            const result = num1 + num2;
-            document.getElementById('result').innerText = `Result: ${result}`;
-        }
+        // Accessing DOM elements and modifying content
+        let heading = document.getElementById('heading');
+        heading.innerHTML = 'Welcome!';
 
-        function subtract() {
-            const num1 = parseFloat(document.getElementById('num1').value);
-            const num2 = parseFloat(document.getElementById('num2').value);
-            const result = num1 - num2;
-            document.getElementById('result').innerText = `Result: ${result}`;
-        }
-
-        function multiply() {
-            const num1 = parseFloat(document.getElementById('num1').value);
-            const num2 = parseFloat(document.getElementById('num2').value);
-            const result = num1 * num2;
-            document.getElementById('result').innerText = `Result: ${result}`;
-        }
-
-        function divide() {
-            const num1 = parseFloat(document.getElementById('num1').value);
-            const num2 = parseFloat(document.getElementById('num2').value);
-            if (num2 === 0) {
-                document.getElementById('result').innerText = "Cannot divide by zero";
-                return;
-            }
-            const result = num1 / num2;
-            document.getElementById('result').innerText = `Result: ${result}`;
-        }
-
-        function square() {
-            const num1 = parseFloat(document.getElementById('num1').value);
-            const result = num1 * num1;
-            document.getElementById('result').innerText = `Result: ${result}`;
-        }
+        // Creating a new element and appending it to the document
+        let newParagraph = document.createElement('p');
+        newParagraph.textContent = 'Added dynamically.';
+        document.body.appendChild(newParagraph);
     </script>
-
 </body>
 
 </html>

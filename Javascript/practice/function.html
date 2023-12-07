@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Pass by Reference</title>
+</head>
+
+<body>
+    <div id="result"></div>
+    <script>
+        // Function that performs addition of two objects
+        let addObjects = (obj1, obj2) => {
+            return obj1.value + obj2.value; // Addition of values from two objects
+        }
+
+        // Function to display the result
+        let displayResult = (result) => {
+            document.getElementById("result").innerHTML = `The addition result is: ${result}`;
+        }
+
+        // Two objects with value properties
+        let object1 = { value: 10 };
+        let object2 = { value: 20 };
+
+        // Passing the function by reference and displaying the result
+        displayResult(addObjects(object1, object2));
+    </script>
+</body>
+
+</html>
