@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Clone</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="header">
+        <img class="logo" src="./google.png" alt="Google Logo">
+        <div class="search-bar">
+            <form id="searchForm">
+                <input type="text" placeholder="Search in Google" name="q" id="google">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Search Results Section -->
+    <div class="search-results">
+        <!-- Sample search result -->
+        <div class="result">
+            <a href="#">Sample Result Title</a>
+            <p>This is a sample search result snippet. Description of the result goes here.</p>
+        </div>
+    </div>
+
+    <script>
+        //function to handle searches
+        function performSearch() {
+            const query = document.getElementById('google').value;
+            const searchURL = `https://www.google.com/search?q=${query}`;
+            window.location.href = searchURL;
+        }
+
+        //Event Listener for form submission
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault(); //prevent default form submissions
+            performSearch(); //call search the function
+        })
+    </script>
+</body>
+
+</html>
