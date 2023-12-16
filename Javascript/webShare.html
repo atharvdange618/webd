@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Share api testing</title>
+</head>
+
+<body>
+    Hello World
+    <button id="shareButton">Share</button>
+    <script>
+        const shareButton = document.getElementById('shareButton');
+
+        if (navigator.share) {
+            shareButton.addEventListener('click', () => {
+                navigator.share({
+                    title: 'atharvdange._',
+                    url: 'https://instagram.com/atharvdange._'
+                })
+                    .then(() => {
+                        console.log('Thanks for Sharing');
+                    })
+                    .catch((error) => {
+                        console.error('Error sharing:', error);
+                    });
+            });
+        } else {
+            console.log('Your Browser does not support web share api');
+        }
+    </script>
+</body>
+
+</html>
