@@ -1,39 +1,39 @@
-// var ans = new Promise((res, rej) => {
-//     if (true) {
-//         return res();
-//     }
-//     else {
-//         return rej();
-//     }
-// });
+var ans = new Promise((res, rej) => {
+    if (true) {
+        return res();
+    }
+    else {
+        return rej();
+    }
+});
 
-// ans
-//     .then(function () {
-//         console.log("resolve ho gaya hai");
-//     })
-//     .catch(function () {
-//         console.log("reject ho gaya");
-//     });
+ans
+    .then(function () {
+        console.log("resolve ho gaya hai");
+    })
+    .catch(function () {
+        console.log("reject ho gaya");
+    });
 
-// //if number is below 5 then below and if is greater then above
+//if number is below 5 then below and if is greater then above
 
-// var num = new Promise((res, rej) => {
-//     var n = Math.floor(Math.random() * 10);
-//     if (n < 5) {
-//         return res();
-//     }
-//     else {
-//         return rej();
-//     };
-// })
+var num = new Promise((res, rej) => {
+    var n = Math.floor(Math.random() * 10);
+    if (n < 5) {
+        return res();
+    }
+    else {
+        return rej();
+    };
+})
 
-// num
-//     .then(function () {
-//         console.log("below");
-//     })
-//     .catch(function () {
-//         console.log("above");
-//     })
+num
+    .then(function () {
+        console.log("below");
+    })
+    .catch(function () {
+        console.log("above");
+    })
 
 //promise chaining
 var p1 = new Promise((res, rej) => {
