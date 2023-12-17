@@ -5,6 +5,7 @@
     "express": "^4.18.2",
     "figlet": "^1.7.0",
     "firebase": "^10.3.0",
+    "mongoose": "^8.0.3",
     "one-liner-joke": "^1.2.2"
   }
 }
