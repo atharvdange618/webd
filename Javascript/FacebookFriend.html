@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Friend Feature</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: cornflowerblue;
+        }
+
+        .card {
+            height: 400px;
+            width: 300px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .card img {
+            height: 50%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 10px;
+        }
+
+        .card h1 {
+            font-size: 25px;
+            font-weight: 700;
+            margin: 10 0px;
+        }
+
+        .card h5 {
+            font-size: 25px;
+            color: red;
+            margin: 20px;
+            margin-bottom: 5px;
+        }
+
+        .card button {
+            all: unset;
+            background-color: rgba(35, 35, 236, 0.795);
+            padding: 12px 20px;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: 700;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .card #remove {
+            background-color: #dadada;
+            color: #111;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <img src="girl.jpg" alt="">
+        <h1>Emma</h1>
+        <h5>Stranger</h5>
+        <div class="btn-container">
+            <button id="remove">Remove Friend</button>
+            <button id="add">Add Friend</button>
+        </div>
+    </div>
+
+    <script>
+        var isStatus = document.querySelector('h5');
+        var add = document.querySelector("#add");
+        var remove = document.querySelector("#remove");
+
+        add.addEventListener("click", () => {
+            isStatus.textContent = "Friends";
+            isStatus.style.color = "green";
+        })
+
+        remove.addEventListener("click", () => {
+            isStatus.textContent = "Strangers"
+            isStatus.style.color = "red";
+        })
+    </script>
+</body>
+
+</html>
