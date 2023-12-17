@@ -6,6 +6,7 @@
     "figlet": "^1.7.0",
     "firebase": "^10.3.0",
     "mongoose": "^8.0.3",
+    "node-fetch": "^3.3.2",
     "one-liner-joke": "^1.2.2"
   }
 }
