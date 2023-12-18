@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insta Story Feature</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: serif;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: aliceblue;
+        }
+
+        .card {
+            height: 480px;
+            width: 300px;
+            background-color: #fff;
+            border-radius: 8px;
+            border: 3px solid black;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .storiyan {
+            height: 85px;
+            width: 99%;
+            border: 1px solid #dadada;
+            overflow-x: auto;
+            padding-top: 6px;
+            border-radius: 8px;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding-right: 2px;
+        }
+
+        .storiyan::-webkit-scrollbar {
+            display: none;
+        }
+
+        .story {
+            height: 70px;
+            width: 70px;
+            margin-left: 5px;
+            display: inline-block;
+            border-radius: 50%;
+            border: 2px solid red;
+            overflow: hidden;
+        }
+
+        .story img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .full-screen {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            border-radius: 8px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="full-screen">
+
+        </div>
+        <div class="storiyan">
+
+        </div>
+    </div>
+
+    <script>
+        const profiles = [
+            {
+                dp: "https://images.unsplash.com/photo-1623039497550-c4f2ccc7b875?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D",
+                story: "https://images.unsplash.com/photo-1621784563286-84f7646ef221?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            },
+            {
+                dp: "https://images.unsplash.com/photo-1556755211-3ed4f9dd41e2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHx8",
+                story: "https://images.unsplash.com/photo-1632218287847-c8270026b4de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YXNpYW4lMjBnaXJsfGVufDB8fDB8fHww"
+            },
+            {
+                dp: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmVhdXRpZnVsJTIwZmVtYWxlJTIwbW9kZWx8ZW58MHwxfDB8fHww",
+                story: "https://images.unsplash.com/photo-1524504259109-ddd837233694?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTV8fHxlbnwwfHx8fHw%3D"
+            },
+            {
+                dp: "https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJlYXV0aWZ1bCUyMGdpcmwlMjBwaG90b3xlbnwwfDF8MHx8fDA%3D",
+                story: "https://images.unsplash.com/photo-1486663845017-3eedaa78617f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJlYXV0aWZ1bCUyMGdpcmwlMjBpbiUyMG5hdHVyZXxlbnwwfDF8MHx8fDA%3D"
+            },
+            {
+                dp: "https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJlYXV0aWZ1bCUyMGdpcmwlMjBwaG90b3xlbnwwfDF8MHx8fDA%3D",
+                story: "https://images.unsplash.com/photo-1486663845017-3eedaa78617f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJlYXV0aWZ1bCUyMGdpcmwlMjBpbiUyMG5hdHVyZXxlbnwwfDF8MHx8fDA%3D"
+            },
+        ]
+
+        var stories = "";
+        var storiyan = document.querySelector(".storiyan");
+        profiles.forEach((elem, idx) => {
+            stories += `<div class="story">
+                <img id="${idx}" src="${elem.dp}">
+            </div>`;
+        })
+
+        storiyan.innerHTML = stories;
+
+        storiyan.addEventListener("click", (dets) => {
+            document.querySelector(".full-screen").style.backgroundImage = `url(${profiles[dets.target.id].story})`;
+            document.querySelector(".full-screen").style.display = "block";
+
+            setTimeout(() => {
+                document.querySelector(".full-screen").style.display = "none";
+            }, 2000);
+        })
+    </script>
+</body>
+
+</html>
