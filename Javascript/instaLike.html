@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insta like Feature</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: lightcoral;
+        }
+
+        .container {
+            height: 400px;
+            width: 300px;
+            border-radius: 10px;
+            position: relative;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .container img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .container i {
+            color: #fff;
+            font-size: 70px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: all ease 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <img src="https://images.unsplash.com/photo-1623039497026-00af61471107?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="">
+        <i class="ri-heart-3-fill"></i>
+    </div>
+    <script>
+        var con = document.querySelector(".container");
+        var love = document.querySelector("i");
+
+        con.addEventListener("dblclick", () => {
+            love.style.opacity = 0.8;
+            love.style.transform = "translate(-50%, -50%) scale(1)";
+            setTimeout(() => {
+                love.style.opacity = 0;
+            }, 500);
+            setTimeout(() => {
+                love.style.transform = "translate(-50%, -50%) scale(1)";
+            }, 800);
+        })
+    </script>
+</body>
+
+</html>
