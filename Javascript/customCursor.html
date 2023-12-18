@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Cursor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Gilroy";
+            color: white;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .main {
+            background-color: black;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cursor {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            mix-blend-mode: difference;
+            /* transition: all linear .2s; */
+        }
+
+        h1 {
+            font-size: 9vw;
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="cursor"></div>
+        <h1>Deadpool</h1>
+    </div>
+
+    <script>
+        var main = document.querySelector(".main");
+        var crsr = document.querySelector(".cursor");
+
+        main.addEventListener("mousemove", (dets) => {
+            crsr.style.left = dets.x + "px";
+            crsr.style.top = dets.y + "px";
+        })
+
+    </script>
+</body>
+
+</html>
