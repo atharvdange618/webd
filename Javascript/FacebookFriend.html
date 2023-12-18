@@ -73,25 +73,34 @@
         <h1>Emma</h1>
         <h5>Stranger</h5>
         <div class="btn-container">
-            <button id="remove">Remove Friend</button>
             <button id="add">Add Friend</button>
         </div>
     </div>
 
     <script>
         var isStatus = document.querySelector('h5');
-        var add = document.querySelector("#add");
-        var remove = document.querySelector("#remove");
+        var btn = document.querySelector("#add");
+        var check = 0;
 
-        add.addEventListener("click", () => {
-            isStatus.textContent = "Friends";
-            isStatus.style.color = "green";
+        btn.addEventListener("click", () => {
+            if (check === 0) {
+                isStatus.textContent = "Friends";
+                isStatus.style.color = "green";
+                btn.innerHTML = "Remove Friend"
+                btn.style.backgroundColor = "#dadada"
+                btn.style.color = "red"
+                check = 1;
+            }
+            else {
+                isStatus.textContent = "Strangers"
+                isStatus.style.color = "red";
+                btn.style.backgroundColor = "rgba(35, 35, 236, 0.795)"
+                btn.style.color = "white"
+                btn.innerHTML = "Add Friend"
+                check = 0;
+            }
         })
 
-        remove.addEventListener("click", () => {
-            isStatus.textContent = "Strangers"
-            isStatus.style.color = "red";
-        })
     </script>
 </body>
 
