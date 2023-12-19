@@ -525,3 +525,79 @@ for (let list of heroes) {
         console.log(name);
     }
 }
+
+//array spread operator
+//it allows an iterable such as an array or string to be expanded in places where zero or more argumnets are expected
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let maximum = Math.max(...numbers);
+console.log(maximum);
+
+//works with strings also
+let string = "Atharv Dange";
+console.log(...string);
+
+//it is helpful while merging arrays
+let class1 = ["ben", "allen", "kevin"];
+let class2 = ["atharv", "bumblebee", "johnny"];
+
+class1.push(...class2);
+console.log(class1);
+
+//rest parameters
+//represents an indefinite number of parameters(packs argument into an array)
+function sum(...numbers) {
+    let total = 0;
+    for (let number of numbers) {
+        total += number;
+    }
+    return total;
+}
+
+console.log(sum(1, 2, 3, 4, 5));
+
+//map method
+//executes a provided callback func once for each array element and creates a new array
+let squares = numbers.map(square);
+print(squares);
+function square(element) {
+    return Math.pow(element, 2);
+}
+
+function print(output) {
+    console.log(output);
+}
+
+//filter method
+//creates a new array with all elements that pass the test provided by a function
+let ages = [16, 18, 23, 17, 56, 19];
+let adults = ages.filter(checkAge);
+print(adults);
+
+function checkAge(element) {
+    return element >= 18;
+}
+
+//reduce method
+//reduces an array to a single value
+let prices = [5, 12, 56, 78, 23, 34, 57];
+let total = prices.reduce(checkOut);
+print(total);
+
+function checkOut(total, element) {
+    return total + element;
+}
+
+//sorting array in ascending and descending order
+let grades = [90, 50, 60, 34, 23, 98];
+let descendingSort = (x, y) => {
+    return y - x;
+}
+
+let ascendingSort = (x, y) => {
+    return x - y;
+}
+grades.sort(descendingSort);
+grades.forEach(print);
+console.log("\n");
+grades.sort(ascendingSort);
+grades.forEach(print);
