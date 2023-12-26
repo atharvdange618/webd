@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p class="result"></p>
+
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script>
+        const postData = async () => {
+            try {
+                const response = await axios.post('http://127.0.0.1:3000/', {
+                    firstName: "Atharv",
+                    lastName: "Dange"
+                });
+
+                console.log(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        postData();
+    </script>
+</body>
+
+</html>

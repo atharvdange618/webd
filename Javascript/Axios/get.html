@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p class="result"></p>
+
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script>
+        const result = document.querySelector(".result");
+        //get request using axios
+        const fetchData = async () => {
+            try {
+                const response = await axios.get("https://randomuser.me/api/");
+                result.innerHTML = JSON.stringify(response.data.results[0].name.first);
+                // console.log(response.data.results[0].name.first);
+            } catch (error) {
+                result.innerHTML = error;
+            }
+        }
+        fetchData();
+    </script>
+</body>
+
+</html>
