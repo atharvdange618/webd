@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Interactive Badge</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div class="main-content printed">
+        <div class="header"> <span>Attendee Information Form</span><span>Your Conference Badge</span></div>
+        <div class="id__wrapper">
+            <div class="deco"></div>
+            <label class="your-face" id="image-form" for="image-input">
+                <input type="file" id="image-input" />
+                <div class="image-persuader">Upload Image Here</div><img id="imager" src="#" alt="Your Image Here" />
+            </label>
+            <div class="name">
+                <label>Full Name</label>
+                <textarea class="full"></textarea>
+            </div>
+            <div class="job">
+                <label>Job Title</label>
+                <input class="full" />
+            </div>
+            <div class="country">
+                <label>Location</label>
+                <input class="full" />
+            </div>
+            <div class="instagram">
+                <label>Instagram</label>
+                <input class="full" value="" spellcheck="false" />
+            </div>
+            <div class="blood">
+                <label>Your Expertise</label>
+                <div class="checkbox__wrapper">
+                    <div class="checkbox">
+                        <input id="front-end" type="checkbox" value="1" checked />
+                        <label class="label-check" for="front-end">Front-end Dev</label>
+                    </div>
+                    <div class="checkbox">
+                        <input id="product" type="checkbox" value="2" />
+                        <label class="label-check" for="product">Product</label>
+                    </div>
+                    <div class="checkbox">
+                        <input id="other" type="checkbox" value="3" />
+                        <label class="label-check" for="other">Other</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside class="context">
+        <div class="explanation">
+            <div class="js-switch">Click me</div>
+        </div>
+    </aside>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
