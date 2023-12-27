@@ -601,3 +601,61 @@ grades.forEach(print);
 console.log("\n");
 grades.sort(ascendingSort);
 grades.forEach(print);
+
+//object literals 
+//how to create them
+const student2 = {
+    name: "atharv",
+    age: 21,
+    marks: 98
+};
+//different ways to access them
+console.log(student2);
+console.log(student2.name)
+console.log(student2["name"]);
+
+//way to manipulate them using a new obj ref
+const newName = new Object(student2);
+newName.name = "maithili";
+console.log(newName);
+
+//way to add new value
+student2.gender = "male";
+console.log(student2);
+
+//way to delete them 
+delete student2.gender;
+console.log(student2);
+
+//objects of objects
+const classInfo = {
+    atharv: {
+        grade: "A",
+        city: "Pune"
+    },
+
+    maithili: {
+        grade: "A+",
+        city: "Daund"
+    }
+}
+
+console.log(classInfo);
+console.log(classInfo.atharv);
+
+//array of objects
+var class3 = [
+    {
+        name: "atharv",
+        age: 21
+    },
+    {
+        name: "shraddha",
+        age: 25
+    }
+]
+
+console.log(class3[0].name);
+
+const cl = console.log.bind(console);
+cl("hello");
