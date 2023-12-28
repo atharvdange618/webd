@@ -59,3 +59,100 @@ for (let i = 0; i < arr2.length; i++) {
     }
 }
 console.log(largest); // Output the largest number in the array
+
+//Create a program that generates a random number representing a dice roll.
+//[The number should be between 1 and 6]
+const cl = console.log.bind(console);
+
+let random = Math.floor(Math.random() * 6) + 1;
+cl("dice roll: " + random);
+
+/*
+Create an object representing a car that stores the following properties for the
+car: name, model, color.
+Print the car’s name
+*/
+const car = {
+    name: "Honda",
+    model: "i10",
+    color: "silver"
+};
+cl(car.name);
+
+/*
+Create an object Person with their name, age and city.
+Edit their city’s original value to change it to “New York”.
+Add a new property country and set it to the United States
+*/
+
+const person = {
+    name: "atharv",
+    age: 21,
+    city: "ohio"
+};
+person.city = "New York";
+person.country = "United States";
+cl(person);
+
+
+//higher order functions
+//as a function that takes other function as an arg
+let greet = () => {
+    cl("Hello");
+}
+
+let multipleGreet = (func, count) => {
+    for (let i = 0; i < count; i++) {
+        func();
+    }
+}
+
+multipleGreet(greet, 3);
+
+
+//as a function that returns the other function
+let oddOrEvenTest = (request) => {
+    if (request == "odd") {
+        let odd = (n) => {
+            cl(!(n % 2 == 0));
+        }
+
+        return odd;
+    } else if (request == "even") {
+        let even = (n) => {
+            cl(n % 2 == 0);
+        }
+
+        return even;
+    }
+    else {
+        cl("wrong request");
+    }
+}
+
+let request = "even";
+let func = oddOrEvenTest(request);
+func(3);
+func(10);
+
+//methods
+const calculator = {
+    add: function (a, b) {
+        return a + b;
+    },
+
+    sub: function (a, b) {
+        return a - b;
+    },
+
+    mul(a, b) {
+        return a * b; //shorthand
+    },
+
+    div: function (a, b) {
+        return a / b;
+    }
+}
+
+cl(calculator)
+cl(calculator.mul(3, 4));
