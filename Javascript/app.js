@@ -659,3 +659,58 @@ console.log(class3[0].name);
 
 const cl = console.log.bind(console);
 cl("hello");
+
+//this exp
+const student3 = {
+    name: "atharv",
+    eng: 96,
+    maths: 96,
+    science: 98,
+    getAvg() {
+        let avg = (this.eng + this.maths + this.science) / 3;
+        cl(avg);
+    }
+}
+
+student3.getAvg()
+
+//arrow functions with implicit return
+const mul = (a, b) => (a * b); //or this way too const mul = (a, b) => a * b;
+//we use parenthesis instead of curly bracket because of syntax change
+cl(mul(3, 4));
+
+//setTimeout function
+cl("hi there!");
+// setTimeout(() => {
+//     cl("apna college");
+// }, 1000);
+
+cl("welcome to");
+
+//set interval function
+let func1 = setInterval(() => {
+    cl("hello world");
+}, 2000);
+
+let func2 = setInterval(() => {
+    cl("fuck you bitches");
+}, 3000);
+
+clearInterval(func1)
+clearInterval(func2)
+
+const student4 = {
+    name: "atharv",
+    marks: 86,
+    getName: function () {
+        console.log(this); //global
+        return cl(this.name);
+    },
+    getMarks: () => { 
+        console.log(this); //parent's scope => window
+        return cl(this.marks);
+    }
+}
+
+student4.getName();
+student4.getMarks();

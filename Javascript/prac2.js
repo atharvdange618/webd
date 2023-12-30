@@ -156,3 +156,42 @@ const calculator = {
 
 cl(calculator)
 cl(calculator.mul(3, 4));
+
+//practice questions
+//Write a JavaScript function that returns array elements larger than a number
+let arr3 = [8, 9, 10, 1, 2, 3, 4, 5, 6, 7];
+let num1 = 6;
+
+let getElements = (arr, num) => {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > num1) {
+            cl(arr[i]);
+        }
+    }
+}
+
+getElements(arr3, num1);
+
+//Write a JavaScript function to extract unique characters from a string.
+//Example: str = “abcdabcdefgggh” ans = “abcdefgh”
+let str = "abcdabcdefgggh";
+
+let uniqueChar = (str) => {
+    const extractChars = {};
+    for (let char of str) {
+        extractChars[char] = true;
+    }
+
+    return Object.keys(extractChars);
+}
+
+cl(uniqueChar(str));
+
+let id = setInterval(() => {
+    cl("hello world");
+}, 2000);
+
+setTimeout(() => {
+    clearInterval(id);
+}, 10000);
+
