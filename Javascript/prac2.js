@@ -187,11 +187,81 @@ let uniqueChar = (str) => {
 
 cl(uniqueChar(str));
 
-let id = setInterval(() => {
-    cl("hello world");
-}, 2000);
+// let id = setInterval(() => {
+//     cl("hello world");
+// }, 2000);
 
-setTimeout(() => {
-    clearInterval(id);
-}, 10000);
+// setTimeout(() => {
+//     clearInterval(id);
+// }, 10000);
 
+//Write a JavaScript function that accepts a list of country names as input and 
+//returns the longest country name as output
+let country = ["Australia", "Germany", "United States of America"];
+let longestName = (arr) => {
+    let idx = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].length > arr[idx].length) {
+            idx = i;
+        }
+    }
+    return arr[idx];
+}
+
+cl(longestName(country));
+
+//Write a JavaScript function to count the number of vowels in a String argument
+let vowels = ['a', 'e', 'i', 'o', 'u'];
+const vowelCounter = (str) => {
+    let vnum = 0;
+    str = str.toLowerCase();
+    for (let i = 0; i < str.length; i++)
+        if (vowels.includes(str.charAt(i))) {
+            vnum++;
+        }
+
+    return vnum;
+}
+
+cl(vowelCounter("yamete kudasai"));
+
+//Write a JavaScript function to generate a random number within a range (start, end)
+let randomNum = (start, end) => {
+    let diff = end - start;
+    return Math.floor(Math.random() * diff) + start;
+}
+
+cl(randomNum(5, 10));
+
+//arrow function practice
+//avg of array elements
+let arrayAvg = (arr) => {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum / arr.length;
+}
+
+cl(arrayAvg([1, 2, 3, 4, 5]));
+
+//check if even or not
+let isEven = (num) => {
+    if (num % 2 == 0) {
+        return cl("it is even");
+    } else {
+        return cl("it is odd");
+    }
+}
+
+isEven(2);
+
+//analyse the output
+const object = {
+    message: "Hello World",
+    logMessage() {
+        cl(this.message);
+    }
+}
+
+setTimeout(object.logMessage, 1000);
