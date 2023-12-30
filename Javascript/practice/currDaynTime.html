@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current date and time</title>
+</head>
+
+<body>
+    <p class="day">
+
+    </p>
+
+    <p class="time">
+
+    </p>
+    <script>
+        const day = document.querySelector(".day");
+        const time = document.querySelector(".time");
+
+        //data of today
+        let today = new Date();
+
+        //list of days
+        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        let currentDay = today.getDay();
+
+        // Get the current hour, minute, and second
+        var hour = today.getHours();
+        var minute = today.getMinutes();
+        var second = today.getSeconds();
+
+        // Determine if it's AM or PM
+        var prepand = (hour >= 12) ? " PM " : " AM ";
+
+        // Convert 24-hour format to 12-hour format
+        hour = (hour >= 12) ? hour - 12 : hour;
+
+        // Check for special cases when hour is 0
+        if (hour === 0 && prepand === ' PM ') {
+            if (minute === 0 && second === 0) {
+                hour = 12;
+                prepand = ' Noon';
+            } else {
+                hour = 12;
+                prepand = ' PM';
+            }
+        }
+
+        // Check for special cases when hour is 0
+        if (hour === 0 && prepand === ' AM ') {
+            if (minute === 0 && second === 0) {
+                hour = 12;
+                prepand = ' Midnight';
+            } else {
+                hour = 12;
+                prepand = ' AM';
+            }
+        }
+
+        time.innerHTML = `Current time is: ${hour} : ${minute} : ${second} ${prepand}`;
+        day.innerHTML = `Today is: ${days[currentDay]}`;
+    </script>
+</body>
+
+</html>

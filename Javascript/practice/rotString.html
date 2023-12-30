@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Basic Animation</title>
+</head>
+
+<body onload="anime()">
+    <pre id="target">
+    Deadpool
+    </pre>
+
+    <script>
+        function anime() {
+
+
+            //get the elements by its id
+            var element = document.getElementById("target");
+
+            //access the text node inside the element (assuming there are no other nodes)
+            var textNode = element.childNodes[0];
+
+            //extract initial text content of the text node
+            var text = textNode.data;
+
+            setInterval(() => {
+                //move the last character to the beginning of the string
+                text = text[text.length - 1] + text.substring(0, text.length - 1);
+
+                //update the text content of the text node with the modified string;
+                textNode.data = text;
+                console.log(text)
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var num = Math.ceil(Math.random() * 10);
+        // console.log(num);
+
+        var guess = prompt("guess the num between 1 and 10");
+
+        if (guess == num) {
+            console.log("you're correct!");
+        } else {
+            console.log("no it was " + num);
+        }
+    </script>
+</body>
+
+</html>

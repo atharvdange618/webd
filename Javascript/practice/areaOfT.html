@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area of Triangle using Heron's Formula</title>
+</head>
+
+<body>
+    <p class="area">
+
+    </p>
+    <script>
+        var a = 5;
+        var b = 6;
+        var c = 7;
+
+        var s = (a + b + c) / 2;
+
+        var areaOfT = Math.sqrt(s * ((s - a) * (s - b) * (s - c)));
+
+        document.querySelector(".area").innerHTML = areaOfT;
+    </script>
+</body>
+
+</html>
