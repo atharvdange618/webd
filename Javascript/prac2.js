@@ -264,4 +264,91 @@ const object = {
     }
 }
 
-setTimeout(object.logMessage, 1000);
+// setTimeout(object.logMessage, 1000);
+
+//higher order functions in array
+//forEach
+let arr4 = [1, 2, 3, 4, 5];
+arr4.forEach((el) => {
+    console.log(el);
+})
+
+//map function
+let square = arr4.map((el) => {
+    return el * el; //if this function doesn't return anything map function 
+    //creates an array of undefined elements of same size as the original one
+})
+
+cl(square);
+
+//filter
+let even = arr4.filter((num) => (num % 2 == 0));
+cl(even);
+
+//every
+cl(square.every((el) => (el % 2 == 0)));
+cl(even.every((el) => (el % 2 == 0)));
+
+//some
+cl([1, 3, 5, 7].some((el) => (el % 2 == 0)));
+cl(even.some((el) => (el % 2 == 0)));
+
+//reduce
+cl(even.reduce((res, el) => (res + el)));
+
+//find max using reduce function
+let ranNums = [10, 23, 5, 6, 7, 367, 2, 234];
+let max = ranNums.reduce((max, el) => {
+    if (max < el) {
+        return el;
+    }
+    else {
+        return max;
+    }
+});
+
+cl(max);
+
+//check if all the numbers in an array are multiples of 10
+let nums = [10, 20, 30, 40];
+cl(nums.every((el) => (el % 10 == 0)));
+
+//function to find min number in an array
+let min = ranNums.reduce((min, el) => {
+    if (min > el) {
+        return el;
+    }
+    else {
+        return min;
+    }
+})
+
+cl(min);
+
+//spread operator
+cl(...arr4);
+cl(...arr, ...arr2); //multiple arrays
+
+//convert array to obj
+let obj = { ...arr4 };
+cl(obj);
+let string = { ..."Hello" };
+cl(string);
+
+//destructuring arrays
+let names = ['tony', 'bruce', 'steve', 'peter'];
+let [winner, runnerUp, ...others] = names;
+cl(winner, runnerUp, others);
+
+//destructuring objects
+const student = {
+    name: "atharv",
+    age: 21,
+    class: "BE",
+    marks: 98,
+    username: "atharvdange._",
+    password: "Evildead"
+}
+
+let { username: user, password: secret } = student;
+cl(user, secret);
