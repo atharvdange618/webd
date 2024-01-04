@@ -11,6 +11,15 @@
   "dependencies": {
     "express": "^4.18.2",
     "express3-handlebars": "^0.5.2",
+    "linkchecker": "^1.1.0",
     "nodemon": "^3.0.2"
+  },
+  "devDependencies": {
+    "chai": "^5.0.0",
+    "grunt": "^1.6.1",
+    "grunt-contrib-jshint": "^3.2.0",
+    "grunt-exec": "^3.0.0",
+    "mocha": "^10.2.0",
+    "zombie": "^6.1.4"
   }
 }
