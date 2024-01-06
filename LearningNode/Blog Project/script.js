@@ -12,6 +12,10 @@ const homeController = require('./controller/home.js');
 const getPostController = require('./controller/getPost.js');
 const storePostController = require('./controller/storePost.js');
 const validateMiddleware = require('./middleware/validationMiddleware.js');
+const newUserController = require('./controller/newUser');
+const storeUserController = require('./controller/storeUser');
+const loginController = require('./controller/login.js');
+const loginUserController = require('./controller/loginUser');
 
 mongoose.connect('mongodb://localhost:27017/blog_project');
 
@@ -33,13 +37,19 @@ app.get('/post', postController)
 
 app.get('/contact', contactController)
 
+app.get('/auth/register', newUserController)
+
+app.post('/users/register', storeUserController)
+
+app.get('/auth/login', loginController);
+
+app.post('/users/login', loginUserController)
+
 app.get('/post/:id', getPostController)
 
-app.get('/posts/new', newPostController);
+app.get('/posts/new', newPostController)
 
-app.post('/posts/store', storePostController);
-
-
+app.post('/posts/store', storePostController)
 
 app.listen(3000, () => {
     console.log("Server started on http://localhost:3000");

@@ -11,8 +11,8 @@
                     <div class="row gx-4 gx-lg-5 justify-content-center">
                         <div class="col-md-10 col-lg-8 col-xl-7">
                             <div class="page-heading">
-                                <h1>New Post</h1>
-                                <span class="subheading">Create new posts here.</span>
+                                <h1>Register a new account</h1>
+                                <span class="subheading">Hello Friend! Create a new account here.</span>
                             </div>
                         </div>
                     </div>
@@ -24,29 +24,22 @@
                     <div class="row gx-4 gx-lg-5 justify-content-center">
                         <div class="col-md-10 col-lg-8 col-xl-7">
                             <div class="my-5">
-                                <form id="contactForm" action="/posts/store" method="post"
+                                <form id="contactForm" action="/users/register" method="post"
                                     enctype="multipart/form-data">
                                     <div class="form-floating">
-                                        <input class="form-control" id="title" type="text" placeholder="Title"
-                                            name="title" />
-                                        <label for="title">Title</label>
+                                        <input class="form-control" id="username" type="text" placeholder="Username "
+                                            name="username" />
+                                        <label for="username">Username</label>
                                     </div>
                                     <div class="form-floating">
-                                        <textarea class="form-control" id="body" name="body"
-                                            placeholder="Enter blog description here..."
-                                            style="height: 12rem"></textarea>
-                                        <label for="body">Description</label>
-                                    </div>
-                                    <div class="control-group">
-                                        <div class="form-group floating-label-form-group controls">
-                                            <label>Image</label>
-                                            <input type="file" class="form-control" id="image" name="image">
-                                        </div>
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" placeholder="Password" id="password"
+                                            name="password">
                                     </div>
                                     <br />
                                     <!-- Submit Button-->
                                     <button class="btn btn-primary text-uppercase" id="submitButton"
-                                        type="submit">Send</button>
+                                        type="submit">Register</button>
                                 </form>
                             </div>
                         </div>
