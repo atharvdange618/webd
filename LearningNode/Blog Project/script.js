@@ -1,11 +1,17 @@
 const express = require('express');
 const app = express();
-const path = require('path');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const BlogPost = require('./models/BlogPost.js')
-const fileUpload = require('express-fileupload')
+const fileUpload = require('express-fileupload');
+const newPostController = require('./controller/newPost.js')
+const aboutController = require('./controller/about.js');
+const contactController = require('./controller/contact.js');
+const postController = require('./controller/post.js');
+const homeController = require('./controller/home.js');
+const getPostController = require('./controller/getPost.js');
+const storePostController = require('./controller/storePost.js');
+const validateMiddleware = require('./middleware/validationMiddleware.js');
 
 mongoose.connect('mongodb://localhost:27017/blog_project');
 
@@ -17,50 +23,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(fileUpload());
 
-app.get('/', async (req, res) => {
-    const blogposts = await BlogPost.find({})
-    res.render('index', {
-        blogposts: blogposts
-    });
-})
+app.use('/posts/store', validateMiddleware);
 
-app.get('/about', (req, res) => {
-    res.render('about');
-})
+app.get('/', homeController)
 
-app.get('/contact', (req, res) => {
-    res.render('contact');
-})
+app.get('/about', aboutController)
 
-app.get('/post/:id', async (req, res) => {
-    try {
-        const blogpost = await BlogPost.findById(req.params.id);
-        res.render('post', { blogpost });
-    } catch (error) {
-        console.log(error);
-        res.status(404).send('Post not found');
-    }
-})
+app.get('/post', postController)
 
+app.get('/contact', contactController)
 
-app.get('/posts/new', (req, res) => {
-    res.render('create');
-})
+app.get('/post/:id', getPostController)
 
-app.post('/posts/store', async (req, res) => {
-    try {
-        let image = req.files.image;
-        await image.mv(path.resolve(__dirname, 'public/assets/img', image.name));
-        await BlogPost.create({
-            ...req.body,
-            image: '/assets/img/' + image.name
-        });
-        res.redirect('/');
-    } catch (error) {
-        console.log(error);
-        res.status(500).send('Error uploading the file.');
-    }
-});
+app.get('/posts/new', newPostController);
+
+app.post('/posts/store', storePostController);
 
 
 
