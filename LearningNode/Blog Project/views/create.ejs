@@ -24,7 +24,8 @@
                     <div class="row gx-4 gx-lg-5 justify-content-center">
                         <div class="col-md-10 col-lg-8 col-xl-7">
                             <div class="my-5">
-                                <form id="contactForm" action="/posts/store" method="post">
+                                <form id="contactForm" action="/posts/store" method="post"
+                                    enctype="multipart/form-data">
                                     <div class="form-floating">
                                         <input class="form-control" id="title" type="text" placeholder="Title"
                                             name="title" />
@@ -35,6 +36,12 @@
                                             placeholder="Enter blog description here..."
                                             style="height: 12rem"></textarea>
                                         <label for="body">Description</label>
+                                    </div>
+                                    <div class="control-group">
+                                        <div class="form-group floating-label-form-group controls">
+                                            <label>Image</label>
+                                            <input type="file" class="form-control" id="image" name="image">
+                                        </div>
                                     </div>
                                     <br />
                                     <!-- Submit Button-->
