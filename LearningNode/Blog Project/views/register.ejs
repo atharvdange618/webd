@@ -24,23 +24,34 @@
                     <div class="row gx-4 gx-lg-5 justify-content-center">
                         <div class="col-md-10 col-lg-8 col-xl-7">
                             <div class="my-5">
-                                <form id="contactForm" action="/users/register" method="post"
-                                    enctype="multipart/form-data">
-                                    <div class="form-floating">
-                                        <input class="form-control" id="username" type="text" placeholder="Username "
-                                            name="username" />
-                                        <label for="username">Username</label>
-                                    </div>
-                                    <div class="form-floating">
-                                        <label>Password</label>
-                                        <input type="password" class="form-control" placeholder="Password" id="password"
-                                            name="password">
-                                    </div>
-                                    <br />
-                                    <!-- Submit Button-->
-                                    <button class="btn btn-primary text-uppercase" id="submitButton"
-                                        type="submit">Register</button>
-                                </form>
+                                <% if(errors !=null && errors.length> 0){ %>
+                                    <ul class="list-group"></ul>
+                                    <% for (var i=0; i < errors.length; i++) { %>
+                                        <li class="list-group-item list-group-item-danger">
+                                            <%= errors[i] %>
+                                        </li>
+                                        <% } %>
+                                            </ul>
+                                            <% } %>
+                                                <form id="contactForm" action="/users/register" method="post"
+                                                    enctype="multipart/form-data">
+                                                    <div class="form-floating">
+                                                        <input class="form-control" id="username" type="text"
+                                                            placeholder="Username " name="username" value="<%=
+                                                            username %>" />
+                                                        <label for="username">Username</label>
+                                                    </div>
+                                                    <div class="form-floating">
+                                                        <label>Password</label>
+                                                        <input type="password" class="form-control"
+                                                            placeholder="Password" id="password" name="password" value="<%=
+                                                            password %>">
+                                                    </div>
+                                                    <br />
+                                                    <!-- Submit Button-->
+                                                    <button class="btn btn-primary text-uppercase" id="submitButton"
+                                                        type="submit">Register</button>
+                                                </form>
                             </div>
                         </div>
                     </div>

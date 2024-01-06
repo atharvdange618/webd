@@ -1,3 +1,4 @@
+//module imports
 const express = require('express');
 const app = express();
 const ejs = require('ejs');
@@ -5,6 +6,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const expressSession = require('express-session');
+const flash = require('connect-flash');
+
+//controllers
 const newPostController = require('./controller/newPost.js')
 const aboutController = require('./controller/about.js');
 const contactController = require('./controller/contact.js');
@@ -22,14 +26,17 @@ const redirectIfAuthenticatedMiddleware = require('./middleware/redirectIfAuthen
 const logoutController = require('./controller/logout');
 
 mongoose.connect('mongodb://localhost:27017/blog_project');
-
 app.set('view engine', 'ejs');
+
+//middlewares
 app.use(express.static('public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(fileUpload());
+
+app.use(flash());
 
 app.use(expressSession({
     secret: 'secretkey', // A secret key for session data encryption
@@ -44,6 +51,7 @@ app.use("*", (req, res, next) => {
     next();
 });
 
+//routes
 app.get('/', homeController)
 
 app.get('/about', aboutController)
