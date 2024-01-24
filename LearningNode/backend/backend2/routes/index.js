@@ -1,11 +1,44 @@
 var express = require('express');
 var router = express.Router();
-
+const localStrategy = require('passport-local').Strategy;
+const passport = require('passport');
 const userModel = require('./users');
+
+passport.use(new localStrategy(userModel.authenticate()));
 
 router.get('/', function (req, res) {
   res.render('index');
 });
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
+}
+
+router.post('/register', function (req, res) {
+  var userdata = new userModel({
+    username: req.body.username,
+    secret: req.body.secret,
+  });
+
+  userModel.register(userdata, req.body.password)
+    .then(function (registereduser) {
+      passport.authenticate('local')(req, res, function () {
+        res.redirect('/profile');
+      });
+    })
+    .catch(function (err) {
+      console.error(err);
+      res.redirect('/');
+    });
+});
+
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/profile',
+  failureRedirect: '/'
+}));
 
 router.get('/failed', function (req, res) {
   req.flash("age", 12);
@@ -44,8 +77,34 @@ router.get('/finddate', async function (req, res) {
 })
 
 //find docs based on the existence of the field
-router.get('/findfield', function (req, res) {
-  
+router.get('/findfield', async function (req, res) {
+  let user = await userModel.find({ categories: { $exists: true } });
+  res.send(user);
+});
+
+//find docs based on the specific field's length
+router.get('/findlength', async function (req, res) {
+  let user = await userModel.find({
+    $expr: {
+      $and: [
+        {
+          $gte: [{ $strLenCP: 'nickname' }, 2]
+        },
+        {
+          $lte: [{ $strLenCP: 'nickname' }, 12]
+        },
+      ]
+    }
+  });
+  res.send(user);
+});
+
+//logout functionality
+router.get("/logout", function (req, res, next) {
+  req.logout(function (err) {
+    if (err) { return next(err); }
+    res.redirect('/')
+  });
 });
 
 module.exports = router;
