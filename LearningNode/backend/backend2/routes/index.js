@@ -10,12 +10,9 @@ router.get('/', function (req, res) {
   res.render('index');
 });
 
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect('/');
-}
+router.get('/profile', isLoggedIn, function (req, res) {
+  res.render('profile');
+});
 
 router.post('/register', function (req, res) {
   var userdata = new userModel({
@@ -106,5 +103,12 @@ router.get("/logout", function (req, res, next) {
     res.redirect('/')
   });
 });
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
+}
 
 module.exports = router;

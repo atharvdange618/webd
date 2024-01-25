@@ -16,15 +16,16 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//allow server to save sessions
 app.use(expressSession({
   resave: false,
   saveUninitialized: false,
   secret: "nigga"
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
-passport.serializeUser(usersRouter.serializeUser());
+app.use(passport.initialize()); //initialize passport
+app.use(passport.session()); //allow passport to create session
+passport.serializeUser(usersRouter.serializeUser()); //perfrom hashing and dehashing for the data
 passport.deserializeUser(usersRouter.deserializeUser());
 
 app.use(flash());
