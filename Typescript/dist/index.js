@@ -104,8 +104,16 @@ const newPost = {
 };
 cl(authorOne);
 cl(newPost);
-//as function argument types
+//interfaces as function argument types
 function createPost(post) {
-    cl(`Created post ${post.title} by ${post.author.name}`);
+    cl(`Created post: ${post.title} by ${post.author.name}`);
 }
 createPost(newPost);
+//interfaces with arrays
+let posts = [];
+posts.push(newPost);
+//create a function that takes array as an input and returns it's first element
+function getFirst(arr) {
+    return arr[0];
+}
+cl(getFirst(['kamlesh', 'atharv', 'maithili']));

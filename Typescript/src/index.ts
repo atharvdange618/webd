@@ -2,6 +2,7 @@
 // console.log(age);
 //the code may look similar to js code there is strict type check going on in the backgorund
 //we use tsc command (typescript compiler ) to compile ts code into js code
+//ts command to run code nodemon --exec ts-node src/index.ts
 
 const cl = console.log.bind(console);
 
@@ -174,3 +175,54 @@ createPost(newPost);
 //interfaces with arrays
 let posts: Post[] = []
 posts.push(newPost);
+
+//create a function that takes array as an input and returns it's first element
+function getFirst(arr: any[]) {
+    return arr[0];
+}
+
+cl(getFirst(['suraj', 'atharv', 'maithili']));
+
+let numbers: number[] = [1, 2, 3, 4, 5];
+for (const elements of numbers) {
+    cl(elements);
+}
+
+interface person {
+    name: string,
+    age: number
+}
+
+const newPerson: person = { name: "atharv", age: 21 }
+cl(newPerson)
+
+//initialize the animal class
+class Animal {
+    name: string;
+    sound: string;
+
+    constructor(name: string, sound: string) {
+        this.name = name;
+        this.sound = sound;
+    }
+
+    makeSound(): void {
+        cl(`${this.name} makes the sound: ${this.sound}`);
+    }
+}
+
+//inherit the Animal class
+class Dog extends Animal {
+    breed: string;
+
+    constructor(name: string, sound: string, breed: string) {
+        super(name, sound) //inherit the constructor from animal class
+        this.breed = breed;
+    }
+}
+
+//creating an instance of Dog
+const myDog = new Dog('buddy', 'woof', 'Husky');
+
+myDog.makeSound();
+
