@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Merc with a mouth Corporation",
+        "numberOfEmployees": 100000,
+        "ceo": "Atharv",
+        "rating": 5.0
+    },
+    {
+        "name": "Stark Industries",
+        "numberOfEmployees": 1000000,
+        "ceo": "Tony Stark",
+        "rating": 4.5
+    }
+]

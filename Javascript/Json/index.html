@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Example</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        let companies =
+            ` [
+                {
+                    "name": "Merc with a mouth Corporation",
+                    "numberOfEmployees": 100000,
+                    "ceo": "Atharv",
+                    "rating": 5.0
+                },
+                {
+                    "name": "Stark Industries",
+                    "numberOfEmployees": 1000000,
+                    "ceo": "Tony Stark",
+                    "rating": 4.5
+                }
+            ]`
+        console.log(JSON.parse(companies)[0].name);
+    </script>
+</body>
+
+</html>
