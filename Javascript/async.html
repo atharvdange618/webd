@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Hello world</h1>
+    <script>
+        let h1 = document.querySelector("h1");
+        function colorChange(color, delay) {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    h1.style.color = color;
+                    console.log(`color was changed to: ${color}`);
+                    res("color changed");
+                }, delay);
+            });
+        };
+
+        async function changeDemo() {
+            await colorChange('red', 1000);
+            await colorChange('blue', 1000);
+            await colorChange('orange', 1000);
+            await colorChange('green', 1000);
+        }
+
+        changeDemo();
+
+        //async
+        async function hello() {
+            // throw "you are stupid"
+            return "hello bitch";
+        }
+
+        hello()
+            .then((result) => {
+                console.log("promise was successful");
+                console.log("result was: ", result)
+            })
+            .catch((err) => {
+                console.log("promise was rejected with err: ", err);
+            });
+
+        //await
+        function getNum() {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    let num = Math.floor(Math.random() * 10) + 1;
+                    console.log(num);
+                    res();
+                }, 1000);
+            })
+        }
+
+        async function demo() {
+            await getNum();
+            await getNum();
+            await getNum();
+            await getNum();
+        }
+
+        demo();
+    </script>
+</body>
+
+</html>
