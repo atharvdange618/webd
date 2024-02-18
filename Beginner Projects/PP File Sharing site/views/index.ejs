@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+</head>
+
+<body>
+    <% if(locals.fileLink !=null) {%>
+        <div style="margin-bottom:  1rem;">
+            Your File is uploaded
+            <a href="<%= locals.fileLink %>">
+                <%= locals.fileLink %>
+            </a>
+        </div>
+        <% } %>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="file">File: </label>
+                <input type="file" name="file" id="file" required>
+                <br><br>
+                <label for="password">Password: </label>
+                <input type="password" name="password" id="password">
+                <br>
+                <button style="grid-column: span 2;" type="submit">Share</button>
+            </form>
+</body>
+
+</html>
