@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <input type="text" placeholder="Enter country" spellcheck="false">
+    <button>search</button><br>
+    <ul id="result"></ul>
+    <script>
+        let url = "http://universities.hipolabs.com/search?name=";
+        let button = document.querySelector("button");
+
+        button.addEventListener("click", async () => {
+            let country = document.querySelector("input").value;
+            let colleges = await getColleges(country);
+            show(colleges);
+        });
+
+        function show(colleges) {
+            let list = document.querySelector('#result')
+            for (const college of colleges) {
+                let li = document.createElement("li");
+                li.innerText = college.name;
+                list.appendChild(li);
+            }
+        }
+
+        async function getColleges(country) {
+            try {
+                let res = await axios.get(url + country);
+                return res.data
+            } catch (err) {
+                console.log(err);
+                return [];
+            }
+        }
+    </script>
+</body>
+
+</html>

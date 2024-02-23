@@ -5,26 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
-
-    <p class="result"></p>
-
-    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <h4 class="result"></h4>
     <script>
         const result = document.querySelector(".result");
         //get request using axios
-        const fetchData = async () => {
+        async function fetchData() {
             try {
-                const response = await axios.get("https://randomuser.me/api/");
-                result.innerHTML = JSON.stringify(response.data.results[0].name.first);
-                // console.log(response.data.results[0].name.first);
+                const config = { headers: { Accept: "application/json" } }
+                let url = "https://icanhazdadjoke.com/"
+                let response = await axios.get(url, config);
+                result.innerHTML = response.data.joke
             } catch (error) {
                 result.innerHTML = error;
             }
         }
-        fetchData();
+
+        fetchData()
     </script>
 </body>
 
