@@ -26,6 +26,7 @@
         function show(colleges) {
             let list = document.querySelector('#result')
             for (const college of colleges) {
+                list.innerText = "";
                 let li = document.createElement("li");
                 li.innerText = college.name;
                 list.appendChild(li);
