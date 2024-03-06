@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 
+app.set("view engine", "ejs")
+app.use(express.static("public"))
+
 const PORT = process.env.PORT || 3000
 
 app.use((req, res, next) => {
@@ -23,9 +26,9 @@ app.get("/orange", (req, res) => {
 })
 
 //request parameters
-app.get("/:username/:id", (req, res) => {
-    let { username, id } = req.params
-    res.send(`welcome to the page of ${username} who has the id: ${id}`)
+app.get("/:username", (req, res) => {
+    let { username } = req.params
+    res.render("index", { "username": username })
 })
 
 //query strings
