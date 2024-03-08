@@ -1,9 +1,9 @@
 import React from 'react'
 
-function products() {
+function products({data, age}) {
     return (
-        <div className='text-white'>
-            <h1>hello nigga</h1>
+        <div>
+            <h1>hello {data.name} {data.surname}. Your age is: {age}</h1>
         </div>
     )
 }
