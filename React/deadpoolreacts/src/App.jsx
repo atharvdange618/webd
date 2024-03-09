@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
-import Products from './products'
+import React from 'react'
+import Hero from './hero'
+import Hello from './hello'
+import Card from './card'
+import Product from './products'
 
 function App() {
-  var [a, b] = useState(69);
   return (
-    <div className=' w-full h-screen bg-zinc-900 text-white p-5'>
-      <h1>{a}</h1>
-      <button onClick={() => b(a + 1)} className='px-3 py-1 bg-green-500 rounded-md text-sm'>click</button>
-      <Products age="21" data ={{name:"Atharv", surname:"Dange"}} />
+    <div className='w-full h-screen bg-zinc-900 text-white'>
+      <Hero />
+      <Hello name="Atharv" />
+      <Card />
+      <Product age="25" data={{ "name": "Atharv", "surname": "Dange" }} />
     </div>
-
   )
 }
 
