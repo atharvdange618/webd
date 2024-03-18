@@ -5,6 +5,8 @@ This web application enables users to search for cocktail recipes based on their
 ## Preview
 ![Cocktail Recipe App Preview](ui.png)
 
+## Live Demo link https://cocktailreceipe.netlify.app/
+
 ## Technologies Used
 - HTML
 - CSS
