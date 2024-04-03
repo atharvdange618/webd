@@ -37,3 +37,10 @@ The chat box provides a basic conversational experience allowing users to type m
 - This is a simple demonstration of a chatbot interface using predefined responses.
 - The bot's responses are based on specific trigger words and phrases present in the user input.
 
+## Contact
+
+If you have any questions or suggestions, please feel free to contact me:
+
+- Email: atharvdange.dev@gmail.com
+- LinkedIn: [Atharv Dange](http://linkedin.com/in/atharvdange)
+- Twitter: [@atharvdangedev](https://twitter.com/atharvdangedev)

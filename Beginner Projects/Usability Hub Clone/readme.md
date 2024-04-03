@@ -37,7 +37,7 @@ This project is a CSS-based clone of the Usability Hub website, a remote user re
 
 To run this project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/atharvdange618/webd/tree/main/Beginner%20Projects/Usability%20Hub%20Clone`
+1. Clone the repository: `git clone https://github.com/atharvdange618/webd.git`
 2. Navigate to the project directory: `cd Usability-Hub-Clone`
 3. Open `index.html` in a web browser to view the clone.
 
@@ -54,7 +54,3 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 3. Make your changes and commit them: `git commit -m "Add new feature"`
 4. Push to the branch: `git push origin feature/new-feature`
 5. Create a pull request
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).

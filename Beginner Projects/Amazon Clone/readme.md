@@ -36,8 +36,8 @@ This project is a CSS-based clone of Amazon's homepage, created as a part of lea
 
 To run this project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/atharvdange618/webd/tree/cb31d60ceccb73a27f03b530c34ae08413718378/Beginner%20Projects/Amazon%20Clone`
-2. Navigate to the project directory: `cd css-amazon-clone`
+1. Clone the repository: `git clone https://github.com/atharvdange618/webd.git`
+2. Navigate to the project directory: `cd Amazon Clone`
 3. Open `index.html` in a web browser to view the clone.
 
 ## Usage
@@ -54,6 +54,10 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 4. Push to the branch: `git push origin feature/new-feature`
 5. Create a pull request
 
-## License
+## Contact
 
-This project is licensed under the [MIT License](LICENSE).
+If you have any questions or suggestions, please feel free to contact me:
+
+- Email: atharvdange.dev@gmail.com
+- LinkedIn: [Atharv Dange](http://linkedin.com/in/atharvdange)
+- Twitter: [@atharvdangedev](https://twitter.com/atharvdangedev)

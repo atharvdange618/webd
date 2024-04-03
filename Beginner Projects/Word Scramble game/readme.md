@@ -17,6 +17,8 @@ Welcome to the Word Scramble Game, a fun and challenging word puzzle game where 
 
 The Word Scramble Game is a web-based word puzzle game designed to entertain and educate. The game takes a random word, scrambles its letters, and challenges the player to unscramble the word. It's a great way to improve your vocabulary, spelling, and cognitive skills while having fun.
 
+## Live [Demo Link](https://fun-word-scramble-game.netlify.app)
+
 ## How to Play
 
 1. When you open the game, you will see a scrambled word on the screen.
@@ -45,5 +47,10 @@ The Word Scramble Game is a web-based word puzzle game designed to entertain and
 ## Contributing
 We welcome contributions to the Word Scramble Game project. If you have ideas for improvements, new features, or bug fixes, please open an issue or submit a pull request. Let's make this game even better together!
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Contact
+
+If you have any questions or suggestions, please feel free to contact me:
+
+- Email: atharvdange.dev@gmail.com
+- LinkedIn: [Atharv Dange](http://linkedin.com/in/atharvdange)
+- Twitter: [@atharvdangedev](https://twitter.com/atharvdangedev)

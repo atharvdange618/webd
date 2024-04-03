@@ -34,7 +34,7 @@ This project is a CSS-based clone of YouTube's homepage, created to practice and
 
 To run this project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/atharvdange618/webd/tree/0e24d57dc3c85ddc01153f3205a1f1f1c71e9fe0/Beginner%20Projects/Youtube%20Clone`
+1. Clone the repository: `git clone https://github.com/atharvdange618/webd.git`
 2. Navigate to the project directory: `cd css-youtube-clone`
 3. Open `index.html` in a web browser to view the clone.
 
@@ -52,6 +52,10 @@ Contributions are encouraged! If you wish to contribute to this project, adhere 
 4. Push to the branch: `git push origin feature/new-feature`
 5. Create a pull request
 
-## License
+## Contact
 
-This project is licensed under the [MIT License](LICENSE).
+If you have any questions or suggestions, please feel free to contact me:
+
+- Email: atharvdange.dev@gmail.com
+- LinkedIn: [Atharv Dange](http://linkedin.com/in/atharvdange)
+- Twitter: [@atharvdangedev](https://twitter.com/atharvdangedev)

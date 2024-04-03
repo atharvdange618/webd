@@ -5,7 +5,7 @@ This web application enables users to search for cocktail recipes based on their
 ## Preview
 ![Cocktail Recipe App Preview](ui.png)
 
-## Live Demo link https://cocktailreceipe.netlify.app/
+## Live [Demo link ](https://cocktailreceipe.netlify.app/)
 
 ## Technologies Used
 - HTML
@@ -44,6 +44,10 @@ If you'd like to contribute to this project, feel free to fork the repository, m
 
 - Thanks to [TheCocktailDB API](https://www.thecocktaildb.com/api.php) for providing cocktail data.
 
-## License
+## Contact
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+If you have any questions or suggestions, please feel free to contact me:
+
+- Email: atharvdange.dev@gmail.com
+- LinkedIn: [Atharv Dange](http://linkedin.com/in/atharvdange)
+- Twitter: [@atharvdangedev](https://twitter.com/atharvdangedev)

@@ -43,3 +43,10 @@ The application allows users to select a text file and view its contents within 
 - Ensure the selected file is a text file with one of the supported extensions.
 - The FileReader API is used to read the content of the selected file and display it on the webpage.
 
+## Contact
+
+If you have any questions or suggestions, please feel free to contact me:
+
+- Email: atharvdange.dev@gmail.com
+- LinkedIn: [Atharv Dange](http://linkedin.com/in/atharvdange)
+- Twitter: [@atharvdangedev](https://twitter.com/atharvdangedev)

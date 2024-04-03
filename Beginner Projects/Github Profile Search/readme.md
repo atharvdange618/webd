@@ -5,6 +5,8 @@ This web application allows users to search for GitHub profiles by entering a us
 ## Preview
 ![GitHub Profile Searcher Preview](ui.png)
 
+## Live [Demo link](https://github-profile-search-by-atharv.netlify.app/)
+
 ## Technologies Used
 - HTML
 - CSS
@@ -43,6 +45,10 @@ If you'd like to contribute to this project, feel free to fork the repository, m
 
 - This project utilizes the [GitHub API](https://developer.github.com/v3/) to fetch user profile data.
 
-## License
+## Contact
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+If you have any questions or suggestions, please feel free to contact me:
+
+- Email: atharvdange.dev@gmail.com
+- LinkedIn: [Atharv Dange](http://linkedin.com/in/atharvdange)
+- Twitter: [@atharvdangedev](https://twitter.com/atharvdangedev)

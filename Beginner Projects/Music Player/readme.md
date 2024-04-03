@@ -40,6 +40,10 @@ This web-based music player allows users to listen to a collection of songs. It 
 
 If you'd like to contribute to this project, feel free to fork the repository, make changes, and submit a pull request.
 
-## License
+## Contact
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+If you have any questions or suggestions, please feel free to contact me:
+
+- Email: atharvdange.dev@gmail.com
+- LinkedIn: [Atharv Dange](http://linkedin.com/in/atharvdange)
+- Twitter: [@atharvdangedev](https://twitter.com/atharvdangedev)

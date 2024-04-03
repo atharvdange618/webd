@@ -41,6 +41,10 @@ The Glassmorphism Generator is a tool to create glassmorphic UI elements. It all
 
 If you'd like to contribute to this project, feel free to fork the repository, make changes, and submit a pull request.
 
-## License
+## Contact
 
-This project is available under the MIT License. See the [LICENSE](LICENSE) file for more details.
+If you have any questions or suggestions, please feel free to contact me:
+
+- Email: atharvdange.dev@gmail.com
+- LinkedIn: [Atharv Dange](http://linkedin.com/in/atharvdange)
+- Twitter: [@atharvdangedev](https://twitter.com/atharvdangedev)

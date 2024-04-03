@@ -35,7 +35,7 @@ This project is a simple quiz application with a timer. It provides users with a
 
 To run this project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/atharvdange618/webd/tree/main/Beginner%20Projects/Quiz%20Application%20with%20Timer`
+1. Clone the repository: `git clone https://github.com/atharvdange618/webd.git`
 2. Navigate to the project directory: `cd Quiz Application with Timer`
 3. Open `index.html` in a web browser to use the application.
 
@@ -58,6 +58,10 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 4. Push to the branch: `git push origin feature/new-feature`
 5. Create a pull request.
 
-## License
+## Contact
 
-This project is licensed under the [MIT License](LICENSE).
+If you have any questions or suggestions, please feel free to contact me:
+
+- Email: atharvdange.dev@gmail.com
+- LinkedIn: [Atharv Dange](http://linkedin.com/in/atharvdange)
+- Twitter: [@atharvdangedev](https://twitter.com/atharvdangedev)
