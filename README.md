@@ -53,7 +53,7 @@ Below is a brief overview of the projects you'll find in this repository:
 Below are the general steps to clone and set up the project:
 
 ```bash
-git clone https://github.com/your-username/webd.git
+git clone https://github.com/atharvdange/webd.git
 cd webd
 ```
 
