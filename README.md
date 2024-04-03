@@ -53,8 +53,8 @@ Below is a brief overview of the projects you'll find in this repository:
 Below are the general steps to clone and set up the project:
 
 ```bash
-git clone https://github.com/your-username/web-dev-practice.git
-cd web-dev-practice
+git clone https://github.com/your-username/webd.git
+cd webd
 ```
 
 ## For specific projects, please refer to the respective README files in each project directory.
