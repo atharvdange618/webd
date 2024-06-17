@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV2JSON</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-group {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>CSV to JSON Converter</h1>
+        <textarea id="csvInput" placeholder="Paste CSV here"></textarea>
+        <div class="button-group">
+            <button id="convertToJSON">Convert to JSON</button>
+            <button id="clearCSV">Clear</button>
+        </div>
+        <textarea id="jsonOutput" placeholder="JSON output will appear here"></textarea>
+
+        <h1>JSON to CSV Converter</h1>
+        <textarea id="jsonInput" placeholder="Paste JSON here"></textarea>
+        <div class="button-group">
+            <button id="convertToCSV">Convert to CSV</button>
+            <button id="clearJSON">Clear</button>
+        </div>
+        <textarea id="csvOutput" placeholder="CSV output will appear here"></textarea>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
