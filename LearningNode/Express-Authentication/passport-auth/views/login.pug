@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1 login
+    form(method='POST' action='/login')
+        fieldset
+            legend: div Enter email and password
+            div
+                label Email:
+                input(type="email" name="email" autofocus required)
+            div 
+            label Password: 
+            input(type="password" name="password" required)
+            div 
+            button login
