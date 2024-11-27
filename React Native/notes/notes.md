@@ -1,5 +1,17 @@
 ### React Native Study
 
+```
+    React Native is framework developed by Facebook (META) for 
+    building mobile applications using JavaScript and React.
+    It allows developers to write code once and deploy it 
+    both ios and Android platforms, leveraging a single codebase. It was developed by Facebook in 2013
+```
+
+#### Features
+    - Uses Components Model
+    - Build Modular Apps
+    - Learn Once, Write Anywhere
+
 #### Why Expo?
 Expo is a React Native framework designed for cross-platform development. It offers several benefits:
 1. **File-based routing**: Simplifies navigation by using a folder structure for routes.
@@ -17,3 +29,11 @@ Expo is a React Native framework designed for cross-platform development. It off
 4. **`components` folder**: Contains reusable UI components.
 5. **`hooks` folder**: Includes custom hooks to manage logic and reusable functionality.
 
+#### File Based Routing
+
+Expo follows file based routing where the file name is the route name
+
+Types of Navigation
+    - Stack Navigation
+    - Drawer Navigation
+    - Bottom Tab Navigation
