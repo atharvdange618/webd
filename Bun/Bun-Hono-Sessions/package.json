@@ -1,0 +1,13 @@
+{
+  "name": "Bun-Hono-Sessions",
+  "scripts": {
+    "dev": "bun run --hot src/index.js"
+  },
+  "dependencies": {
+    "hono": "^4.6.12",
+    "hono-sessions": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}

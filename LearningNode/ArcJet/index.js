@@ -1,5 +1,6 @@
 import arcjet, { shield, detectBot, tokenBucket } from "@arcjet/node";
 import express from "express";
+import helmet from 'helmet'
 
 const app = express();
 const port = 3000;
@@ -32,9 +33,10 @@ const aj = arcjet({
     ],
 });
 
+app.use(helmet());
+
 app.get("/", async (req, res) => {
     const decision = await aj.protect(req, { requested: 5 }); // Deduct 5 tokens from the bucket
-    console.log("Arcjet decision", decision);
 
     if (decision.isDenied()) {
         if (decision.reason.isRateLimit()) {
