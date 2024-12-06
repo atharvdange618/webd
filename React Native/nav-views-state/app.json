@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "first-app",
-    "slug": "first-app",
+    "name": "nav-views-state",
+    "slug": "nav-views-state",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
