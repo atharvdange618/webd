@@ -1,0 +1,15 @@
+{
+    "name": "hello-world",
+    "version": "1.0.0",
+    "description": "first electron js app",
+    "license": "ISC",
+    "author": "Atharv Dange",
+    "type": "commonjs",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "dependencies": {
+        "electron": "^34.2.0"
+    }
+}
