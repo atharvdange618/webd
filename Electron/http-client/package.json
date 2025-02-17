@@ -1,16 +1,20 @@
 {
-    "name": "http-client",
-    "version": "1.0.0",
-    "description": "A simple electron based http-client",
-    "license": "ISC",
-    "author": "Atharv Dange",
-    "type": "commonjs",
-    "main": "main.js",
-    "scripts": {
-        "start": "electron ."
-    },
-    "dependencies": {
-        "axios": "^1.7.9",
-        "electron": "^34.2.0"
-    }
+  "name": "http-client-electron",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bootstrap": "^5.2.0",
+    "pretty-bytes": "^5.6.0",
+    "@codemirror/basic-setup": "^0.19.1",
+    "@codemirror/commands": "^0.19.1",
+    "@codemirror/lang-json": "^0.19.1",
+    "@codemirror/view": "^0.19.46"
+  },
+  "devDependencies": {
+    "electron": "^25.0.0"
+  }
 }
