@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Electron HTTP Client</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Electron HTTP Client</h1>
+        </header>
+        <main>
+            <form id="http-form">
+                <div class="form-group">
+                    <label for="url">URL</label>
+                    <input type="text" id="url" placeholder="Enter URL" required />
+                </div>
+                <div class="form-group">
+                    <label for="method">Method</label>
+                    <select id="method">
+                        <option value="GET">GET</option>
+                        <option value="POST" selected>POST</option>
+                        <option value="PUT">PUT</option>
+                        <option value="DELETE">DELETE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="headers">Headers (JSON)</label>
+                    <textarea id="headers"
+                        placeholder='{"Content-Type": "application/x-www-form-urlencoded"}'></textarea>
+                </div>
+                <!-- Actual request fields -->
+                <div class="form-group">
+                    <label for="identifier">Identifier</label>
+                    <input type="text" name="identifier" placeholder="identifier" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" placeholder="password" />
+                </div>
+                <button type="submit">Send Request</button>
+            </form>
+            <section class="response-section">
+                <h2>Response</h2>
+                <div id="response" class="response-box"></div>
+            </section>
+        </main>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+
+</html>
