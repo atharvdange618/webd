@@ -1,79 +1,108 @@
 # Web Development Practice Repository
 
-Welcome to my web development practice repository! Explore a variety of projects that showcase my journey in honing my web development skills. From HTML/CSS experiments to JavaScript explorations, this collection captures the diverse range of technologies I have been learning and mastering.
+Welcome to my web development practice repository! This collection captures my journey over the past 2 years as I’ve explored and mastered a wide range of web development technologies. From early experiments to advanced projects, each folder represents a milestone in my learning process.
 
-Join me in this coding journey and explore the following technologies:
+Join me on this coding adventure and explore projects built using a variety of technologies including:
 
-- HTML
-- CSS
-- JavaScript
-- React
-- Node.js
-- Express
-- TypeScript
-- Web Sockets
-- Docker
+- **Front-End:** HTML, CSS, JavaScript, Bootstrap, React, React Native, Next.js, Remix, Zustand
+- **Back-End:** Node.js, Express, Bun, DNS, SMTP, Redis, TypeScript, WebSockets
+- **DevOps & Tools:** Docker
+- **Desktop:** Electron
+
+---
 
 ## Projects Overview
 
-Below is a brief overview of the projects you'll find in this repository:
+Below is a brief overview of the projects organized by technology:
 
-### 1. HTML/CSS Experiments
+### 1. Beginner Projects
 
-- **Cocktail Receipe app**: This web application enables users to search for cocktail recipes based on their names. It utilizes the TheCocktailDB API to fetch cocktail details and display the recipe information.
-- **GitHub Profile Searcher**: This web application allows users to search for GitHub profiles by entering a username. It retrieves and displays profile details using the GitHub API.
+- **Beginner Projects:** A collection of my earliest experiments as I got started with web development.
 
-### 2. JavaScript Explorations
+### 2. HTML/CSS Experiments
 
-- **QR Code Generator**: This web application allows users to generate QR codes for any kind of URLs
-- **Music Player**: This web-based music player allows users to listen to a collection of songs.
+- **Cocktail Recipe App:** A web application that lets users search for cocktail recipes using TheCocktailDB API.
+- **GitHub Profile Searcher:** An app that retrieves and displays GitHub profile details by querying the GitHub API.
 
-### 3. React Projects
+### 3. JavaScript Explorations
 
-- **Photo Sharing App**: The Photo Sharing App is built using the MERN Stack, which helps their memories on shared small circle
-- **Currency Exchange App**: The Currency Exchange App is built using React and utilizes the currency exchange API created by Fawaz Ahmad. With this app, users can easily convert between different currencies to get accurate exchange rates.
+- **QR Code Generator:** Generate QR codes for any URL.
+- **Music Player:** A web-based music player to enjoy a curated collection of songs.
 
-### 4. Node.js & Express
+### 4. Front-End & React Ecosystem
 
-- **Blog Site**: This project is a blogging platform developed using Express.js, Node.js, MongoDB, and Bootstrap.
-- **Deadpool's File Sharer**: Deadpool's File Sharer is a simple file-sharing web application developed using Express.js, Node.js, MongoDB, and basic HTML/CSS.
+- **React Projects:**
+  - **Photo Sharing App:** Built with the MERN stack to share memories with a close circle.
+  - **Currency Exchange App:** Uses a currency exchange API (by Fawaz Ahmad) to convert between currencies.
+- **React Native:** Projects exploring mobile development with React Native.
+- **React SSR:** Experiments with server-side rendering using React.
+- **React Tanstack Query:** Exploring data fetching and state management with Tanstack Query.
+- **Next.JS Study:** Learning the ins and outs of Next.js for optimized, server-rendered React applications.
+- **Remix:** Experimenting with the Remix framework for building modern React applications.
+- **Zustand:** Testing state management solutions in React.
+- **Bootstrap:** Projects focusing on responsive design and styling with Bootstrap.
 
-### 5. TypeScript Practice Programs
+### 5. Back-End & Node.js
 
-### 6. Web Sockets
+- **Express & Node.js:**
+  - **Blog Site:** A blogging platform built using Express.js, Node.js, MongoDB, and Bootstrap.
+  - **Deadpool's File Sharer:** A file-sharing application using Express.js, Node.js, and MongoDB.
+  - **Express Crash Course:** A project documenting my rapid dive into Express.js.
+  - **LearningNode:** A series of Node.js practice projects.
+  - **Nodejs-OpenAI:** Integrating Node.js with OpenAI’s API for innovative applications.
+- **Additional Server Projects:**
 
-- **Realtime Chat App**: The Realtime Chat App is a simple chat application that allows users to join a chat room, send messages, and receive real-time updates. It is built using Express.js, Node.js, and Socket.IO.
+  - **DNS_Server:** A project focused on building a DNS server.
+  - **SMTP-Server:** Creating a simple SMTP server for email handling.
 
-### 7. Docker Projects
+### 6. Electron
+  - **Electron Text Editor:** A simple Electron based text editor that lets you save and open txt files
+  - **Electron HTTP Client:** A simple Electron based HTTP Client that let's you send get and post requests
 
-- **Docker-Node**: Created first Docker image and pushed it to the docker hub
+### 7. Other Technologies & Tools
+
+- **TypeScript Practice Programs:** Experiments and projects focused on TypeScript.
+- **WebSockets:**
+  - **Realtime Chat App:** A chat application enabling real-time communication using Socket.IO.
+- **Docker Projects:**
+  - **Docker-Node:** My first Docker image, built and pushed to Docker Hub.
+- **Bun:** Exploring the Bun runtime for modern JavaScript tooling.
+- **Redis:** Learning and implementing caching strategies with Redis.
+- **Practice Questions:** A folder dedicated to solving coding challenges and practice problems.
+- **Worldline:** A project that explores new concepts and technologies beyond traditional web development.
+
+---
 
 ## Installation and Setup
 
-Below are the general steps to clone and set up the project:
+To clone and set up the project locally, run:
 
 ```bash
-git clone https://github.com/atharvdange/webd.git
+git clone https://github.com/atharvdange618/webd.git
 cd webd
 ```
 
-## For specific projects, please refer to the respective README files in each project directory.
+For details about individual projects, please refer to the README files located in each project folder.
+
+---
 
 ## Contribution
 
-Your contributions and suggestions are welcome! Here's how you can contribute to this project:
+Your contributions and suggestions are welcome! To contribute:
 
-1. Fork the repository
-2. Create a new branch
-3. Make your changes
-4. Submit a pull request
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes.
+4. Submit a pull request.
+
+---
 
 ## Contact
 
-If you have any questions or suggestions, please feel free to contact me:
+For any questions or suggestions, feel free to reach out:
 
-- Email: atharvdange.dev@gmail.com
-- LinkedIn: [Atharv Dange](http://linkedin.com/in/atharvdange)
-- Twitter: [@atharvdangedev](https://twitter.com/atharvdangedev)
+- **Email:** atharvdange.dev@gmail.com
+- **LinkedIn:** [Atharv Dange](http://linkedin.com/in/atharvdange)
+- **Threads:** [@atharvdange._](https://www.threads.net/@atharvdange._)
 
 Happy Coding! 🚀
