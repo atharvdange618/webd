@@ -2,8 +2,27 @@ import axios from "axios";
 import puppeteer from "puppeteer";
 import { parse } from "node-html-parser";
 
+// Configuration object for thresholds and logging
+const config = {
+  csr: {
+    minimalContentLength: 200, // Minimum HTML length to consider as valid content
+    minimalChildNodes: 5, // Minimum number of child nodes in <body>
+    scriptCountThreshold: 10, // Threshold for number of <script> tags
+    contentScriptRatio: 1000, // Minimum ratio of HTML length per script tag
+    rootSelectors: ["#root", "#__next"], // Markers for typical CSR frameworks (React, Next.js)
+  },
+  puppeteer: {
+    waitForSelectorsTimeout: 10000, // Timeout waiting for critical selectors
+    gotoTimeout: 60000, // Timeout for page.goto
+    waitUntil: "networkidle2", // Wait until network is idle
+  },
+  logging: {
+    verbose: true,
+  },
+};
+
 // Main crawling function
-async function crawlSite(baseUrl, maxPages = 100) {
+async function crawlSite(baseUrl, maxPages = 100, cfg = config, onProgress) {
   const visited = new Set();
   const queue = [baseUrl];
   const sitemapUrls = [];
@@ -13,20 +32,38 @@ async function crawlSite(baseUrl, maxPages = 100) {
     while (queue.length > 0 && sitemapUrls.length < maxPages) {
       const currentUrl = queue.shift();
 
+      // Fire the callback so the server can push an SSE update
+      if (onProgress) {
+        onProgress(currentUrl, sitemapUrls.length + 1);
+      }
+
       if (visited.has(currentUrl)) continue;
       visited.add(currentUrl);
 
-      console.log(`Crawling: ${currentUrl}`);
+      if (cfg.logging.verbose) console.log(`Crawling: ${currentUrl}`);
 
       try {
         // First attempt with HTTP request
-        const { links, isCSR } = await getLinksWithHTTP(baseUrl, currentUrl);
+        const { links, isCSR } = await getLinksWithHTTP(
+          baseUrl,
+          currentUrl,
+          cfg
+        );
 
-        if (!isCSR) {
-          // Regular site - process links normally
+        // Hybrid approach: if HTTP returns no links but content length is high, try Puppeteer
+        let finalLinks = links;
+        let finalIsCSR = isCSR;
+        if (!isCSR && links.length === 0) {
+          if (cfg.logging.verbose)
+            console.log(
+              `No links extracted via HTTP; trying Puppeteer for ${currentUrl}`
+            );
+          finalIsCSR = true;
+        }
+
+        if (!finalIsCSR) {
           sitemapUrls.push(currentUrl);
-
-          for (const link of links) {
+          for (const link of finalLinks) {
             if (!visited.has(link) && !queue.includes(link)) {
               queue.push(link);
             }
@@ -36,15 +73,13 @@ async function crawlSite(baseUrl, maxPages = 100) {
           if (!puppeteerBrowser) {
             puppeteerBrowser = await puppeteer.launch({ headless: true });
           }
-
           const puppeteerLinks = await getLinksWithPuppeteer(
             puppeteerBrowser,
             baseUrl,
-            currentUrl
+            currentUrl,
+            cfg
           );
-
           sitemapUrls.push(currentUrl);
-
           for (const link of puppeteerLinks) {
             if (!visited.has(link) && !queue.includes(link)) {
               queue.push(link);
@@ -64,53 +99,60 @@ async function crawlSite(baseUrl, maxPages = 100) {
   return sitemapUrls;
 }
 
-// HTTP request function with CSR detection
-async function getLinksWithHTTP(baseUrl, currentUrl) {
+// HTTP request function with enhanced CSR detection
+async function getLinksWithHTTP(baseUrl, currentUrl, cfg) {
   const response = await axios.get(currentUrl);
   const html = response.data;
   const root = parse(html);
 
-  // CSR detection logic
-  const isCSR = detectCSR(html, root);
+  // CSR detection using the provided configuration thresholds
+  const isCSR = detectCSR(html, root, cfg);
 
   if (!isCSR) {
     const links = extractLinks(root, baseUrl, currentUrl);
     return { links, isCSR: false };
   }
-
   return { links: [], isCSR: true };
 }
 
-// Puppeteer-based link extraction
-async function getLinksWithPuppeteer(browser, baseUrl, currentUrl) {
+// Puppeteer-based link extraction with enhanced wait conditions
+async function getLinksWithPuppeteer(browser, baseUrl, currentUrl, cfg) {
   const page = await browser.newPage();
 
   try {
     await page.goto(currentUrl, {
-      waitUntil: "networkidle2",
-      timeout: 30000,
+      waitUntil: cfg.puppeteer.waitUntil,
+      timeout: cfg.puppeteer.gotoTimeout,
     });
 
-    // Wait for content to load
-    await page.waitForSelector("a", { timeout: 5000 }).catch(() => {});
+    // Wait for multiple selectors that indicate the page is loaded:
+    // any <a> tag or specific root markers used by CSR frameworks
+    const selectors = "a," + cfg.csr.rootSelectors.join(",");
+    try {
+      await page.waitForSelector(selectors, {
+        timeout: cfg.puppeteer.waitForSelectorsTimeout,
+      });
+    } catch (e) {
+      if (cfg.logging.verbose)
+        console.log(
+          `Timeout waiting for selectors (${selectors}) on ${currentUrl}`
+        );
+    }
 
-    // Extract all links
+    // Extract all links from the page
     const links = await page.evaluate((baseUrl) => {
       const linkElements = document.querySelectorAll("a[href]");
       const urls = [];
-
       for (const element of linkElements) {
         try {
           const href = element.getAttribute("href");
           if (!href) continue;
-
           const url = new URL(href, window.location.href);
           if (url.origin === baseUrl && !url.hash) {
             urls.push(url.href);
           }
         } catch {}
       }
-
       return [...new Set(urls)];
     }, baseUrl);
 
@@ -120,40 +162,67 @@ async function getLinksWithPuppeteer(browser, baseUrl, currentUrl) {
   }
 }
 
-// Detect if a page is client-side rendered
-function detectCSR(html, root) {
-  // Check for common CSR indicators
-  const hasNextJSMarkers =
-    html.includes('id="__next"') || html.includes("data-reactroot");
-  const hasEmptyBody = root.querySelector("body").childNodes.length < 5;
+// CSR detection with configurable thresholds and additional markers
+function detectCSR(html, root, cfg) {
+  const {
+    minimalContentLength,
+    minimalChildNodes,
+    scriptCountThreshold,
+    contentScriptRatio,
+    rootSelectors,
+  } = cfg.csr;
+
+  const body = root.querySelector("body");
+  const bodyChildCount = body ? body.childNodes.length : 0;
+
+  // Basic checks
+  const isShortHtml = html.length < minimalContentLength;
+  const hasEmptyBody = bodyChildCount < minimalChildNodes;
+
+  // Count <script> tags and measure ratio
+  const scriptElements = root.querySelectorAll("script");
+  const scriptMatches = html.match(/<script/g);
+  const scriptCount = scriptElements.length;
+  const ratio = html.length / (scriptMatches ? scriptMatches.length : 1);
+  const hasManyScripts = scriptCount > scriptCountThreshold;
+  const lowContentRatio = ratio < contentScriptRatio;
+
+  // Check for specific root selectors (e.g. #root, #__next)
+  // by querying the DOM instead of searching the raw HTML.
+  const hasRootDiv = rootSelectors.some(
+    (selector) => root.querySelector(selector) !== null
+  );
+
+  // Look for loading/spinner indicators in the raw HTML
   const hasLoadingIndicator =
     html.includes("loading") || html.includes("spinner");
-  const hasManyScripts = root.querySelectorAll("script").length > 10;
 
-  // Check for SPA frameworks
-  const hasReact = html.includes("react");
-  const hasVue = html.includes("vue");
-  const hasAngular = html.includes("angular");
+  // // Verbose logs
+  // if (cfg.logging.verbose) {
+  //   console.log("CSR Detection Details:");
+  //   console.log(`- HTML length: ${html.length}`);
+  //   console.log(`- Body child nodes: ${bodyChildCount}`);
+  //   console.log(`- Script count: ${scriptCount}`);
+  //   console.log(`- Content-Script ratio: ${ratio.toFixed(2)}`);
+  //   console.log(`- Has root div (#root or #__next): ${hasRootDiv}`);
+  //   console.log(`- Has loading indicators: ${hasLoadingIndicator}`);
+  // }
 
-  // Minimal content with JS loading is a good indicator of CSR
-  const contentToScriptRatio =
-    html.length / (html.match(/<script/g)?.length || 1);
-  const lowContentRatio = contentToScriptRatio < 1000;
-
+  // Decide if it's CSR based on combined heuristics
   return (
-    (hasNextJSMarkers && (hasEmptyBody || hasLoadingIndicator)) ||
+    // If the HTML is very short, or the body is nearly empty, or we see a known root div
+    isShortHtml ||
+    (hasRootDiv && (hasEmptyBody || hasLoadingIndicator)) ||
     (hasEmptyBody && hasManyScripts) ||
-    (lowContentRatio && (hasReact || hasVue || hasAngular))
+    (lowContentRatio && hasRootDiv)
   );
 }
 
-// Extract and normalize links
+// Extract and normalize links from the HTML document
 function extractLinks(root, baseUrl, currentUrl) {
   const links = [];
   const currentUrlObj = new URL(currentUrl);
   const baseUrlObj = new URL(baseUrl);
-
-  // Get all anchor tags
   const anchors = root.querySelectorAll("a");
 
   for (const anchor of anchors) {
@@ -161,15 +230,10 @@ function extractLinks(root, baseUrl, currentUrl) {
     if (!href) continue;
 
     try {
-      // Resolve relative URLs
+      // Resolve relative URLs and check for same-domain
       const url = new URL(href, currentUrl);
-
-      // Only include links from the same domain
       if (url.hostname === baseUrlObj.hostname) {
-        // Remove hash and query parameters
-        url.hash = "";
-
-        // Add to list if it's a valid page
+        url.hash = ""; // Remove hash
         if (isValidUrl(url.href) && url.pathname !== currentUrlObj.pathname) {
           links.push(url.href);
         }
@@ -180,9 +244,8 @@ function extractLinks(root, baseUrl, currentUrl) {
   return [...new Set(links)];
 }
 
-// Check if URL should be included in sitemap
+// Validate URL based on its extension to avoid non-HTML resources
 function isValidUrl(url) {
-  // Skip non-HTML resources
   const skipExtensions = [
     ".jpg",
     ".jpeg",
@@ -192,18 +255,19 @@ function isValidUrl(url) {
     ".zip",
     ".css",
     ".js",
+    ".webp",
+    ".svg",
+    ".ico",
+    ".mp4",
+    ".mp3",
+    ".avif",
   ];
-  if (skipExtensions.some((ext) => url.toLowerCase().endsWith(ext))) {
-    return false;
-  }
-
-  return true;
+  return !skipExtensions.some((ext) => url.toLowerCase().endsWith(ext));
 }
 
-// Generate XML sitemap
+// Generate an XML sitemap from the list of URLs
 function generateSitemap(urls) {
   const date = new Date().toISOString();
-
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
@@ -218,9 +282,10 @@ function generateSitemap(urls) {
   return xml;
 }
 
-// Main function
+// Main entry point for generating the sitemap
 export async function createSitemap(websiteUrl, maxPages = 100) {
   const baseUrl = new URL(websiteUrl).origin;
-  const urls = await crawlSite(baseUrl, maxPages);
+  const urls = await crawlSite(baseUrl, maxPages, config);
+  if (config.logging.verbose) console.log(`Crawled ${urls.length} pages`);
   return generateSitemap(urls);
 }
