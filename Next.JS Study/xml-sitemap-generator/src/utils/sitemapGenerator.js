@@ -23,7 +23,7 @@ const config = {
 };
 
 // Main crawling function
-async function crawlSite(baseUrl, maxPages = 100, cfg = config, onProgress) {
+async function crawlSite(baseUrl, maxPages = 100, cfg = config) {
   const visited = new Set();
   const queue = [baseUrl];
   const sitemapUrls = [];
@@ -32,11 +32,6 @@ async function crawlSite(baseUrl, maxPages = 100, cfg = config, onProgress) {
   try {
     while (queue.length > 0 && sitemapUrls.length < maxPages) {
       const currentUrl = queue.shift();
-
-      // Fire the callback so the server can push an SSE update
-      if (onProgress) {
-        onProgress(currentUrl, sitemapUrls.length + 1);
-      }
 
       if (visited.has(currentUrl)) continue;
       visited.add(currentUrl);
@@ -130,7 +125,7 @@ async function getLinksWithHTTP(baseUrl, currentUrl, cfg) {
   return { links: [], isCSR: true };
 }
 
-// Puppeteer-based link extraction with enhanced wait conditions
+// Puppeteer-based link extraction with wait conditions
 async function getLinksWithPuppeteer(browser, baseUrl, currentUrl, cfg) {
   const page = await browser.newPage();
 
@@ -177,7 +172,7 @@ async function getLinksWithPuppeteer(browser, baseUrl, currentUrl, cfg) {
   }
 }
 
-// CSR detection with configurable thresholds and additional markers
+// CSR detection with thresholds and additional markers
 function detectCSR(html, root, cfg) {
   const {
     minimalContentLength,
@@ -283,7 +278,7 @@ function generateSitemap(urls) {
   return xml;
 }
 
-// Main entry point for generating the sitemap
+// Entry point for generating the sitemap
 export async function createSitemap(websiteUrl, maxPages = 100) {
   const baseUrl = new URL(websiteUrl).origin;
   const urls = await crawlSite(baseUrl, maxPages, config);
