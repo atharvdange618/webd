@@ -29,8 +29,6 @@ async function crawlSite(baseUrl, maxPages = 100, cfg = config, onProgress) {
   const sitemapUrls = [];
   let puppeteerBrowser = null;
 
-  console.log(process.env.CHROME_EXECUTABLE_PATH);
-
   try {
     while (queue.length > 0 && sitemapUrls.length < maxPages) {
       const currentUrl = queue.shift();
@@ -289,6 +287,11 @@ function generateSitemap(urls) {
 export async function createSitemap(websiteUrl, maxPages = 100) {
   const baseUrl = new URL(websiteUrl).origin;
   const urls = await crawlSite(baseUrl, maxPages, config);
+
+  if (urls.length === 0) {
+    throw new Error("No pages were crawled. Sitemap cannot be generated.");
+  }
+
   if (config.logging.verbose) console.log(`Crawled ${urls.length} pages`);
   return generateSitemap(urls);
 }
