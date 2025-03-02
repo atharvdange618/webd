@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sparticuz/chromium-min": "^132.0.0",
     "axios": "^1.8.1",
+    "chrome-aws-lambda": "^10.1.0",
     "next": "15.2.0",
     "node-html-parser": "^7.0.1",
     "puppeteer": "^24.3.0",
+    "puppeteer-core": "^10.4.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -21,6 +24,7 @@
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.2.0",
+    "ignore-loader": "^0.1.2",
     "tailwindcss": "^4"
   }
 }

@@ -1,5 +1,6 @@
 import axios from "axios";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
+import chromium from "@sparticuz/chromium-min";
 import { parse } from "node-html-parser";
 
 // Configuration object for thresholds and logging
@@ -27,6 +28,8 @@ async function crawlSite(baseUrl, maxPages = 100, cfg = config, onProgress) {
   const queue = [baseUrl];
   const sitemapUrls = [];
   let puppeteerBrowser = null;
+
+  console.log(process.env.CHROME_EXECUTABLE_PATH);
 
   try {
     while (queue.length > 0 && sitemapUrls.length < maxPages) {
@@ -71,7 +74,21 @@ async function crawlSite(baseUrl, maxPages = 100, cfg = config, onProgress) {
         } else {
           // CSR detected - fallback to Puppeteer
           if (!puppeteerBrowser) {
-            puppeteerBrowser = await puppeteer.launch({ headless: true });
+            const isWindows = process.platform === "win32";
+
+            const executablePath =
+              process.env.NODE_ENV === "production" || !isWindows
+                ? await chromium.executablePath
+                : process.env.CHROME_EXECUTABLE_PATH;
+
+            puppeteerBrowser = await puppeteer.launch({
+              args: chromium.args,
+              executablePath,
+              headless:
+                process.env.NODE_ENV === "production" || !isWindows
+                  ? chromium.headless
+                  : true,
+            });
           }
           const puppeteerLinks = await getLinksWithPuppeteer(
             puppeteerBrowser,
@@ -188,7 +205,6 @@ function detectCSR(html, root, cfg) {
   const lowContentRatio = ratio < contentScriptRatio;
 
   // Check for specific root selectors (e.g. #root, #__next)
-  // by querying the DOM instead of searching the raw HTML.
   const hasRootDiv = rootSelectors.some(
     (selector) => root.querySelector(selector) !== null
   );
@@ -197,20 +213,7 @@ function detectCSR(html, root, cfg) {
   const hasLoadingIndicator =
     html.includes("loading") || html.includes("spinner");
 
-  // // Verbose logs
-  // if (cfg.logging.verbose) {
-  //   console.log("CSR Detection Details:");
-  //   console.log(`- HTML length: ${html.length}`);
-  //   console.log(`- Body child nodes: ${bodyChildCount}`);
-  //   console.log(`- Script count: ${scriptCount}`);
-  //   console.log(`- Content-Script ratio: ${ratio.toFixed(2)}`);
-  //   console.log(`- Has root div (#root or #__next): ${hasRootDiv}`);
-  //   console.log(`- Has loading indicators: ${hasLoadingIndicator}`);
-  // }
-
-  // Decide if it's CSR based on combined heuristics
   return (
-    // If the HTML is very short, or the body is nearly empty, or we see a known root div
     isShortHtml ||
     (hasRootDiv && (hasEmptyBody || hasLoadingIndicator)) ||
     (hasEmptyBody && hasManyScripts) ||
