@@ -19,6 +19,17 @@ export async function POST(request) {
     });
   } catch (error) {
     console.error("Error generating sitemap:", error);
+
+    if (error.message.includes("No pages were crawled")) {
+      return NextResponse.json(
+        {
+          error:
+            "No pages were found on the provided URL. Sitemap cannot be generated.",
+        },
+        { status: 404 }
+      );
+    }
+
     return NextResponse.json(
       { error: "Failed to generate sitemap" },
       { status: 500 }

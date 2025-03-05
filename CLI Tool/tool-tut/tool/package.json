@@ -1,0 +1,21 @@
+{
+  "name": "tool",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "bin": "./bin/index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "arg": "^5.0.2",
+    "chalk": "^5.4.1",
+    "cosmiconfig": "^9.0.0",
+    "package-up": "^5.0.0"
+  }
+}
