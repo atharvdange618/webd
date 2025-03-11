@@ -24,8 +24,14 @@ export default function Home() {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to generate sitemap");
+        let errorMessage = "Failed to generate sitemap";
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          errorMessage = "Unexpected error occurred";
+        }
+        throw new Error(errorMessage);
       }
 
       // Create a blob URL for the XML
@@ -33,8 +39,8 @@ export default function Home() {
       const blobUrl = URL.createObjectURL(blob);
       setSitemapUrl(blobUrl);
     } catch (error) {
-      console.error(error);
-      setError(error.message || "Error generating sitemap");
+      console.error("Error generating sitemap:", error.message);
+      setError(error.message);
     } finally {
       setLoading(false);
     }
