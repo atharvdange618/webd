@@ -1,0 +1,13 @@
+{
+  "name": "hello-world",
+  "scripts": {
+    "dev": "bun run --hot src/learn.js"
+  },
+  "dependencies": {
+    "hono": "^4.7.5",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
