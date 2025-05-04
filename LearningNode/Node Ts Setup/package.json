@@ -1,0 +1,24 @@
+{
+  "name": "node-ts-setup",
+  "version": "1.0.0",
+  "description": "my node js typescript setup",
+  "keywords": [
+    "Typescript",
+    "Setup"
+  ],
+  "license": "ISC",
+  "author": "Atharv Dange",
+  "type": "commonjs",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.1",
+    "@types/node": "^22.14.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.6",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
+  }
+}
