@@ -1,0 +1,148 @@
+#include <WiFi.h>
+#include <ESPAsyncWebServer.h>
+#include <SPIFFS.h>
+#include <ArduinoJson.h>
+#include <ESPmDNS.h>
+#include <SoftwareSerial.h>
+
+const char* ssid = "your ssid";
+const char* password = "your password";
+
+AsyncWebServer server(80);
+SoftwareSerial mySerial(16, 17); // RX on pin 16, TX on pin 17
+
+#define FILE_REQUEST_CODE 'R'
+#define FILE_CHUNK_SIZE 512
+
+void setup() {
+  Serial.begin(115200);
+  mySerial.begin(9600);
+
+  if (!SPIFFS.begin()) {
+    Serial.println("Failed to mount SPIFFS");
+    return;
+  }
+
+  if (!MDNS.begin("babdigangserver")) {
+    Serial.println("Error setting up mDNS");
+  }
+  Serial.println("mDNS responder started");
+
+  IPAddress staticIP(192, 168, 1, 100);
+  IPAddress gateway(192, 168, 1, 1);
+  IPAddress subnet(255, 255, 255, 0);
+  WiFi.config(staticIP, gateway, subnet);
+
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi...");
+  }
+  Serial.println("Connected to WiFi");
+
+  server.on("/", HTTP_GET, [](AsyncWebServerRequest* request) { servePage(request, "/web/login.html"); });
+  server.on("/index.html", HTTP_GET, [](AsyncWebServerRequest* request) { servePage(request, "/web/index.html"); });
+  server.on("/download.html", HTTP_GET, [](AsyncWebServerRequest* request) { servePage(request, "/web/download.html"); });
+  server.on("/upload.html", HTTP_GET, [](AsyncWebServerRequest* request) { servePage(request, "/web/upload.html"); });
+  server.on("/request.html", HTTP_GET, [](AsyncWebServerRequest* request) { servePage(request, "/web/request.html"); });
+  server.on("/delete.html", HTTP_GET, [](AsyncWebServerRequest* request) { servePage(request, "/web/delete.html"); });
+  server.on("/directory.html", HTTP_GET, [](AsyncWebServerRequest* request) { servePage(request, "/web/directory.html"); });
+  server.on("/login.html", HTTP_GET, [](AsyncWebServerRequest* request) { servePage(request, "/web/login.html"); });
+
+  server.on("/fetchFiles", HTTP_GET, handleFetchFiles);
+  server.on("/download", HTTP_GET, handleDownload);
+  server.on("/file", HTTP_GET, handleFile);
+  server.on("/delete", HTTP_GET, handleDelete);
+  server.on("/upload.html", HTTP_GET, [](AsyncWebServerRequest* request) { request->send(SPIFFS, "/upload.html"); });
+  server.on("/fupload", HTTP_POST, handleUpload);
+
+  server.begin();
+  Serial.print("HTTP server started at http://");
+  Serial.println(WiFi.localIP());
+}
+
+void servePage(AsyncWebServerRequest* request, const char* path) {
+  File file = SPIFFS.open(path, "r");
+  if (file && file.size()) {
+    request->send(file, String(), "text/html");
+    file.close();
+  } else {
+    request->send(404, "text/plain", "File not found");
+  }
+}
+
+void handleFetchFiles(AsyncWebServerRequest* request) {
+  File folder = SPIFFS.open("/files");
+  if (!folder) {
+    request->send(500, "text/plain", "Failed to open the folder");
+    return;
+  }
+  StaticJsonDocument<1024> serverResponse;
+  JsonArray fileArray = serverResponse.to<JsonArray>();
+  File file = folder.openNextFile();
+  while (file) {
+    JsonObject fileObject = fileArray.createNestedObject();
+    fileObject["name"] = file.name();
+    fileObject["size"] = file.size();
+    file = folder.openNextFile();
+  }
+  AsyncResponseStream* response = request->beginResponseStream("application/json");
+  serializeJson(serverResponse, *response);
+  request->send(response);
+}
+
+void handleDownload(AsyncWebServerRequest* request) {
+  String filePath = "/files/" + request->arg("filepath");
+  File file = SPIFFS.open(filePath, "r");
+  if (file) {
+    request->send(file, String(), "application/octet-stream");
+    file.close();
+  } else {
+    request->send(404, "text/plain", "File Not Found: " + filePath);
+  }
+}
+
+void handleUpload(AsyncWebServerRequest* request, const String& filename, size_t index, uint8_t* data, size_t len, bool final) {
+  File f = index ? SPIFFS.open("/files/" + filename, FILE_APPEND) : SPIFFS.open("/files/" + filename, FILE_WRITE);
+  if (!f) {
+    Serial.println("Failed to create file");
+    return;
+  }
+  for (size_t i = 0; i < len; i++) {
+    f.write(data[i]);
+  }
+  if (final) {
+    f.close();
+    int bytes = f.size();
+    String fsize = bytes < 1024 ? String(bytes) + " B" : bytes < (1024 * 1024) ? String(bytes / 1024.0, 3) + " KB" : bytes < (1024 * 1024 * 1024) ? String(bytes / 1024.0 / 1024.0, 3) + " MB" : String(bytes / 1024.0 / 1024.0 / 1024.0, 3) + " GB";
+    Serial.println(filename + " uploaded of size " + fsize);
+    request->send(200, "text/plain", "File uploaded successfully");
+    request->redirect("/directory.html");
+  }
+}
+
+void handleDelete(AsyncWebServerRequest* request) {
+  String filename = request->arg("filename");
+  if (SPIFFS.remove("/files/" + filename)) {
+    request->send(200, "text/plain", "File Deleted: " + filename);
+  } else {
+    request->send(404, "text/plain", "File Not Found: " + filename);
+  }
+}
+
+void handleFile(AsyncWebServerRequest* request) {
+  String filename = request->arg("filename");
+  String filePath = "/files/" + filename;
+  File file = SPIFFS.open(filePath, "r");
+  if (!file) {
+    request->send(500, "text/plain", "Error: Failed to open file");
+    return;
+  }
+  String content = file.readString();
+  file.close();
+  request->send(200, "text/plain", content);
+}
+
+void loop() {
+  // Nothing to do here
+}
