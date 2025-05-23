@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Storage App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.4/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-5 text-success">Merc With A Mouth File Storage</h1>
+
+      <h2 class="mt-4">Upload File</h2>
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <input type="file" name="file" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+      </form>
+
+      <h2 class="mt-4">Delete File</h2>
+      <form id="deleteForm">
+        <div class="mb-3">
+          <select id="fileSelect" name="fileName" class="form-select"></select>
+        </div>
+        <button type="button" class="btn btn-danger" onclick="deleteFile()">
+          Delete
+        </button>
+      </form>
+
+      <h2 class="mt-4">Uploaded Files</h2>
+      <ul id="fileList" class="list-group"></ul>
+    </div>
+
+    <script>
+      function populateFileListWithIcons() {
+        fetch("/view")
+          .then((response) => response.json())
+          .then((data) => {
+            const fileList = document.getElementById("fileList");
+            fileList.innerHTML = "";
+
+            data.files.forEach((fileName) => {
+              const listItem = document.createElement("li");
+              listItem.className =
+                "list-group-item d-flex justify-content-between align-items-center";
+
+              const fileExtension = fileName.split(".").pop();
+
+              const iconSpan = document.createElement("span");
+              iconSpan.className = "me-3";
+              iconSpan.innerHTML = getFileIconHTML(fileExtension);
+
+              const fileLink = document.createElement("a");
+              fileLink.href = `/uploads/${fileName}`;
+              fileLink.textContent = fileName;
+
+              listItem.appendChild(iconSpan);
+              listItem.appendChild(fileLink);
+
+              fileList.appendChild(listItem);
+            });
+          })
+          .catch((error) => console.error(error));
+      }
+
+      function getFileIconHTML(fileExtension) {
+        const iconClasses = {
+          pdf: "far fa-file-pdf",
+          doc: "far fa-file-word",
+          docx: "far fa-file-word",
+          xls: "far fa-file-excel",
+          xlsx: "far fa-file-excel",
+          ppt: "far fa-file-powerpoint",
+          pptx: "far fa-file-powerpoint",
+          txt: "far fa-file-alt",
+          jpg: "far fa-file-image",
+          jpeg: "far fa-file-image",
+          png: "far fa-file-image",
+          gif: "far fa-file-image",
+          default: "far fa-file",
+        };
+
+        return `<i class="${
+          iconClasses[fileExtension.toLowerCase()] || iconClasses["default"]
+        }">
+      </i>`;
+      }
+
+      function deleteFile() {
+        const deleteForm = document.getElementById("deleteForm");
+        const formData = new FormData(deleteForm);
+
+        fetch(`/delete/${formData.get("fileName")}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.text())
+          .then((message) => {
+            alert(message);
+            populateFileListWithIcons();
+            populateDeleteOptions();
+          })
+          .catch((error) => console.error(error));
+      }
+
+      function populateDeleteOptions() {
+        fetch("/view")
+          .then((response) => response.json())
+          .then((data) => {
+            const fileSelect = document.getElementById("fileSelect");
+            fileSelect.innerHTML = "";
+            data.files.forEach((fileName) => {
+              const option = document.createElement("option");
+              option.value = fileName;
+              option.textContent = fileName;
+              fileSelect.appendChild(option);
+            });
+          })
+          .catch((error) => console.error(error));
+      }
+
+      populateFileListWithIcons();
+      populateDeleteOptions();
+    </script>
+  </body>
+</html>
