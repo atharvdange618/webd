@@ -1,6 +1,6 @@
 # CSS Usability Hub Clone
 
-![image](ui.png)
+![image](home.png)
 
 A CSS-based clone of the Usability Hub website, demonstrating web development skills.
 

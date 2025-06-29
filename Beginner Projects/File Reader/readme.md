@@ -5,6 +5,8 @@ This project demonstrates how to read and display the content of a text file usi
 ## Interface
 ![image](ui.png)
 
+#### [Live Demo](https://file-reader.surge.sh)
+
 ## Overview
 
 The application allows users to select a text file and view its contents within the web browser.
